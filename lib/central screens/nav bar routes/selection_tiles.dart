@@ -8,8 +8,8 @@ class SelectionTiles extends StatelessWidget {
   final List section = [
     "Matching Tiles",
     "Fill in the missing letter",
-    "To-do2",
-    "To-do3"
+    "To-do3",
+    "To-do4"
   ];
   //final List routes = [HiddenDrawer(), null, null, null];
   final List routes = [MatchingTilesGame1(), null, null, null];
@@ -20,7 +20,14 @@ class SelectionTiles extends StatelessWidget {
       backgroundColor: Colors.blue[200],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("Choose your section!"),
+        title: Text(
+          "VR Activities",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+          ),
+        ),
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
         actions: [
