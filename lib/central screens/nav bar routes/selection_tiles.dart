@@ -65,19 +65,28 @@ class SelectionTiles extends StatelessWidget {
                           horizontal: 15.0, vertical: 15.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            border: Border.all(color: Colors.white10),
-                            borderRadius: BorderRadius.circular(30)),
+                          color: Colors.grey[300],
+                          border: Border.all(color: Colors.white10),
+                          borderRadius: BorderRadius.circular(30),
+                          image: DecorationImage(
+                            image: AssetImage('lib/assets/VR3.jpg'),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                         height: 100,
                         width: 375,
-                        child: Center(
-                            child: Text(
-                          section[index],
-                          style: TextStyle(
-                              fontSize: 24.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            section[index],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 34.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        )),
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),

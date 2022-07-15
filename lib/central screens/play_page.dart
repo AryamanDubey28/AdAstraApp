@@ -36,12 +36,22 @@ class _PlayPageState extends State<PlayPage> {
 
   final screens = [
     SelectionTiles(),
-    ExplorePage(),
+    SelectionTiles(),
+    //ExplorePage(),
     Settings(),
     ProfilePage(),
   ];
 
   int currentIndex = 0;
+  int oldIndex = 0;
+
+  Widget showScreen() {
+    if (currentIndex != 1) {
+      return screens[currentIndex];
+    } else {
+      return screens[oldIndex];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +69,13 @@ class _PlayPageState extends State<PlayPage> {
               gap: 7,
               onTabChange: (value) {
                 setState(() {
+                  oldIndex = currentIndex;
                   currentIndex = value;
                 });
+                if (value == 1) {
+                  showModalBottomSheet(
+                      context: context, builder: ((context) => ExplorePage()));
+                }
 
                 // if (value == 0) {
                 // } else if (value == 1) {
@@ -110,7 +125,7 @@ class _PlayPageState extends State<PlayPage> {
           //   ),
           // ],
 
-          body: screens[currentIndex]
+          body: showScreen()
           // ListView.builder(
           //   scrollDirection: Axis.horizontal,
           //   itemCount: section.length,
