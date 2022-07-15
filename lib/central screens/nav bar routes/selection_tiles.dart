@@ -56,13 +56,12 @@ class SelectionTiles extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.fromLTRB(8, 25, 4, 10),
                   child: GestureDetector(
                     onTap: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => routes[index])),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15.0, vertical: 15.0),
+                      padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
@@ -73,19 +72,28 @@ class SelectionTiles extends StatelessWidget {
                             fit: BoxFit.fill,
                           ),
                         ),
-                        height: 100,
-                        width: 375,
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Text(
-                            section[index],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 34.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                        //height: 100,
+                        width: 300,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text(
+                                section[index],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
-                          ),
+                            SizedBox(
+                              height: 30,
+                            ),
+
+                            //Image.asset('lib/assets/adastralogo.jpg'),
+                          ],
                         ),
                       ),
                     ),
