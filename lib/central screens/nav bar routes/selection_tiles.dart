@@ -1,3 +1,4 @@
+import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,8 @@ class SelectionTiles extends StatelessWidget {
     "To-do4"
   ];
   //final List routes = [HiddenDrawer(), null, null, null];
-  final List routes = [MatchingTilesGame1(), null, null, null];
+  //final List routes = [MatchingTilesGame1(), null, null, null];
+  final List routes = [InformationSheet(), null, null, null];
 
   @override
   Widget build(BuildContext context) {

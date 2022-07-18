@@ -48,6 +48,7 @@ dependencies:
   auto_size_text: ^3.0.0
   google_nav_bar: ^5.0.6
   iconsax: ^0.0.8
+  font_awesome_flutter: ^10.1.0
   
   
 

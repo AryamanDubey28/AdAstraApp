@@ -16,9 +16,12 @@ class ExplorePage extends StatelessWidget {
         body: ListView(
           children: [
             Center(
-                child: Text(
-              "Toggle between VR, NVR and Numeracy",
-              style: TextStyle(fontSize: 24.0),
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Toggle between VR, NVR and Numeracy",
+                style: TextStyle(fontSize: 24.0),
+              ),
             )),
           ],
         ));

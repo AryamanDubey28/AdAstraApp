@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_questions.dart';
 import 'package:firebase_attempt/central%20screens/question_sheets.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,7 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
 
     while (choices.length < 5) {
       Word? word = await QuestionSheets.getById(getRandomNum());
-      if (getRandomNum() != 9) {
-        choices[word!.toJson()['word']] = word.toJson()['definition'];
-      }
+      choices[word!.toJson()['word']] = word.toJson()['definition'];
     }
 
     if (roundCounter > 2) {
@@ -67,25 +66,41 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
 
   int getRandomNum() {
     Random random = new Random();
+    //646
     int r1 = random.nextInt(16) + 1;
     int r2 = random.nextInt(16);
     if (r1 == r2) {
       r1 = random.nextInt(16) + 1;
     }
 
-    if (r1 + 1 == 9 || r2 + 1 == 9) {
-      return 8;
-    }
     print(r2 + 1);
     return r2 + 1;
   }
 
   @override
   void initState() {
+    //Navigator.pushNamed(context, 'info');
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: ((context) => InformationSheet())));
+
     print(choices);
     buildChoices();
+    //initGame();
     super.initState();
   }
+
+  // initGame() {
+  //   myScore = 0;
+  //   gameOver = false;
+  //   items = [
+  //     ItemModel(Icons.ac_unit, "AC", "AC", true),
+  //     ItemModel(Icons.air, "Air", "Air", true),
+  //     ItemModel(Icons.table_restaurant, "Table", "Table", true),
+  //   ];
+  //   items2 = List<ItemModel>.from(items);
+  //   items.shuffle();
+  //   items2.shuffle();
+  // }
 
   int randomiser = 1;
 
@@ -93,16 +108,126 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
     return false;
   }
 
+  // Widget showScreenOne() {
+  //   return Row(
+  //     children: [
+  //       Column(
+  //         crossAxisAlignment: CrossAxisAlignment.center,
+  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //         children: items
+  //             .map((e) => Container(
+  //                   margin: EdgeInsets.all(8),
+  //                   child: Draggable<ItemModel>(
+  //                     data: e,
+  //                     childWhenDragging: Icon(e.icon),
+  //                     feedback: Icon(
+  //                       Icons.question_mark,
+  //                       color: Colors.blue,
+  //                     ),
+  //                     child: Icon(
+  //                       e.icon,
+  //                       color: Colors.pink,
+  //                     ),
+  //                   ),
+  //                 ))
+  //             .toList(),
+  //       ),
+  //       SizedBox(
+  //         height: 10,
+  //       ),
+  //       Column(
+  //         children: items2
+  //             .map((e) => DragTarget<ItemModel>(
+  //                 onAccept: (recievedItem) {
+  //                   if (e.value == recievedItem.value) {
+  //                     setState(() {
+  //                       items.remove(recievedItem);
+  //                       items2.remove(e);
+  //                       myScore += 10;
+  //                       e.accepting = false;
+  //                     });
+  //                   } else {
+  //                     setState(() {
+  //                       myScore -= 5;
+  //                       e.accepting = false;
+  //                     });
+  //                   }
+  //                 },
+  //                 onLeave: (recievedItem) {
+  //                   setState(() {
+  //                     e.accepting = false;
+  //                   });
+  //                 },
+  //                 onWillAccept: (recievedItem) {
+  //                   setState(() {
+  //                     e.accepting = true;
+  //                     if (items.isEmpty) {
+  //                       gameOver = true;
+  //                     }
+  //                   });
+  //                   return true;
+  //                 },
+  //                 builder: ((context, candidateData, rejectedData) => Container(
+  //                       color: e.accepting ? Colors.red : Colors.teal,
+  //                       height: 50,
+  //                       width: 100,
+  //                       child: Text(e.name),
+  //                     ))))
+  //             .toList(),
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  // Widget showScreenTwo() {
+  //   return Column(
+  //     children: [
+  //       Text("Game Over"),
+  //       ElevatedButton(
+  //         child: Text("Done"),
+  //         onPressed: () {
+  //           Navigator.popAndPushNamed(context, '/congrats');
+  //         },
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  // late bool gameOver;
+  // late int myScore;
+  // late List<ItemModel> items;
+  // late List<ItemModel> items2;
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   // TODO: implement build
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text("Test"),
+  //     ),
+  //     body: SingleChildScrollView(
+  //       padding: EdgeInsets.all(16),
+  //       child: Column(
+  //         children: [
+  //           Text("Score: $myScore"),
+  //           !gameOver ? showScreenOne() : showScreenTwo(),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.blue[200],
         appBar: AppBar(
           title: Text('Score: ${score.length} / ${choices.length}'),
-          backgroundColor: Colors.blue[900],
+          backgroundColor: Colors.blue[200],
           automaticallyImplyLeading: false,
+          elevation: 1,
           actions: [
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -111,7 +236,7 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
                     buildChoices();
                   },
                   child: Icon(Icons.refresh)),
-            )
+            ),
           ],
         ),
         // floatingActionButton: FloatingActionButton(
@@ -187,7 +312,7 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
                 child:
                     //Text(choices[arrow]),
                     AutoSizeText(
-              choices[arrow],
+              choices[arrow] + "   ",
               style: TextStyle(fontSize: 16),
               maxLines: 2,
             )),
@@ -242,5 +367,19 @@ class DragOne extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ItemModel {
+  late IconData icon;
+  late String name;
+  late String value;
+  late bool accepting;
+
+  ItemModel(icon, name, value, accepting) {
+    this.icon = icon;
+    this.name = name;
+    this.value = value;
+    this.accepting = accepting;
   }
 }
