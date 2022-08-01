@@ -22,7 +22,7 @@ class _PlayPageState extends State<PlayPage> {
   final List section = [
     "Matching Tiles",
     "Fill in the missing letter",
-    "To-do2",
+    "Practice Test",
     "To-do3"
   ];
   //final List routes = [HiddenDrawer(), null, null, null];

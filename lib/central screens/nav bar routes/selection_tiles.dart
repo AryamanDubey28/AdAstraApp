@@ -1,4 +1,5 @@
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
+import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -8,13 +9,13 @@ import '../game screens/matching tiles/matching_tiles_g1.dart';
 class SelectionTiles extends StatelessWidget {
   final List section = [
     "Matching Tiles",
+    "Practice Test",
     "Fill in the missing letter",
-    "To-do3",
-    "To-do4"
+    "Something",
   ];
   //final List routes = [HiddenDrawer(), null, null, null];
   //final List routes = [MatchingTilesGame1(), null, null, null];
-  final List routes = [InformationSheet(), null, null, null];
+  final List routes = [InformationSheet(), QuizScreen(), null, null];
 
   @override
   Widget build(BuildContext context) {
