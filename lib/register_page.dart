@@ -97,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('lib/assets/adastralogo.png'),
+                  backgroundImage: AssetImage('lib/assets/adastralogo.jpg'),
                   radius: 85.0,
                 ),
                 SizedBox(

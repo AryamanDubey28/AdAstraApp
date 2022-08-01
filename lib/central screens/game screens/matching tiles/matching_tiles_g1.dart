@@ -67,10 +67,10 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
   int getRandomNum() {
     Random random = new Random();
     //646
-    int r1 = random.nextInt(16) + 1;
-    int r2 = random.nextInt(16);
+    int r1 = random.nextInt(50) + 1;
+    int r2 = random.nextInt(50);
     if (r1 == r2) {
-      r1 = random.nextInt(16) + 1;
+      r1 = random.nextInt(50) + 1;
     }
 
     print(r2 + 1);

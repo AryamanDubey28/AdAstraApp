@@ -6,10 +6,10 @@ class MatchingTilesGame2 extends StatefulWidget {
   const MatchingTilesGame2({Key? key}) : super(key: key);
 
   @override
-  State<MatchingTilesGame2> createState() => _MatchingTilesGame1State();
+  State<MatchingTilesGame2> createState() => _MatchingTilesGame2State();
 }
 
-class _MatchingTilesGame1State extends State<MatchingTilesGame2> {
+class _MatchingTilesGame2State extends State<MatchingTilesGame2> {
   final Map<String, bool> score = {};
 
   final Map choices = {

@@ -44,7 +44,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           selectedStyle: myStyle,
           colorLineSelected: Color.fromARGB(255, 0, 106, 192),
         ),
-        Settings(),
+        SettingsPage(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(

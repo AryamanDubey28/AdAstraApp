@@ -1,4 +1,5 @@
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/controllers/question_controller.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:iconsax/iconsax.dart';
@@ -18,7 +19,7 @@ class ProgressBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
       ),
       child: GetBuilder<QuestionController>(
-          init: QuestionController(),
+          init: QuestionController(ExplorePage.index),
           builder: (controller) {
             //print(controller.animation.value);
             return Stack(

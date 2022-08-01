@@ -11,7 +11,7 @@ class MySquare extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue[300],
+          color: Colors.grey[200],
           border: Border.all(color: Colors.white10),
           borderRadius: BorderRadius.circular(30),
         ),
@@ -20,9 +20,7 @@ class MySquare extends StatelessWidget {
             child: Text(
           text,
           style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[300]),
+              fontSize: 40.0, fontWeight: FontWeight.bold, color: Colors.black),
         )),
       ),
     );

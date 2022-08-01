@@ -13,12 +13,15 @@ class IntroPage1 extends StatelessWidget {
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         FadeIn(
           duration: Duration(milliseconds: 1400),
-          child: Text(
-            "Ad Astra",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.ubuntu(
-              fontSize: 66.0,
-              fontWeight: FontWeight.bold,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Ad Astra",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.ubuntu(
+                fontSize: 76.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -35,7 +38,7 @@ class IntroPage1 extends StatelessWidget {
         FadeIn(
           duration: Duration(milliseconds: 1800),
           child: Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(6.0),
             child: Text(
               "Reaching for Excellence in Education",
               textAlign: TextAlign.center,

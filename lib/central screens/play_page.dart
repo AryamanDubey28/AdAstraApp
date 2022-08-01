@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_g1.dart';
 import 'package:firebase_attempt/central%20screens/hidden_drawer.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
@@ -19,14 +20,9 @@ class PlayPage extends StatefulWidget {
 }
 
 class _PlayPageState extends State<PlayPage> {
-  final List section = [
-    "Matching Tiles",
-    "Fill in the missing letter",
-    "Practice Test",
-    "To-do3"
-  ];
+  static int tilesScreenIndex = 0;
+
   //final List routes = [HiddenDrawer(), null, null, null];
-  final List routes = [MatchingTilesGame1(), null, null, null];
 
   Future<bool> _onWillPop() async {
     return false;
@@ -35,10 +31,10 @@ class _PlayPageState extends State<PlayPage> {
   Color? mygrey = Colors.grey[350];
 
   final screens = [
-    SelectionTiles(),
+    SelectionTiles(ExplorePage.index),
     //SelectionTiles(),
     ExplorePage(),
-    Settings(),
+    SettingsPage(),
     ProfilePage(),
   ];
 
@@ -53,8 +49,24 @@ class _PlayPageState extends State<PlayPage> {
     }
   }
 
+  Widget currentScreen() {
+    setState(() {});
+    return screens[currentIndex];
+  }
+
+  // Future addUserDetails(
+  //     String firstname, String surname, int age, String email) async {
+  //   await FirebaseFirestore.instance.collection('users').add({
+  //     'First Name': firstname,
+  //     'Last Name': surname,
+  //     'Age': age,
+  //     'Email': email,
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
+    print(ExplorePage.index);
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -125,7 +137,8 @@ class _PlayPageState extends State<PlayPage> {
         //   ),
         // ],
 
-        body: screens[currentIndex], //showScreen()
+        body: screens[currentIndex],
+        //showScreen()
 
         // ListView.builder(
         //   scrollDirection: Axis.horizontal,

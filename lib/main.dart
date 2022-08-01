@@ -5,6 +5,7 @@ import 'package:firebase_attempt/central%20screens/game%20screens/matching%20til
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_layout.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/score_screen.dart';
 import 'package:firebase_attempt/central%20screens/hidden_drawer.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles_nvr.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
 import 'package:firebase_attempt/main_page.dart';
@@ -39,11 +40,12 @@ class MyApp extends StatelessWidget {
         '/congrats': (context) => const CongratsScreen(),
         '/mtsection': (context) => HiddenDrawer(),
         '/playpage': (context) => PlayPage(),
-        '/settings': (context) => Settings(),
+        '/settings': (context) => SettingsPage(),
         '/info': (context) => InformationSheet(),
         '/game1': (context) => MatchingTilesGame1(),
         '/game2': (context) => QuizLayout(),
         '/scoreScreen': (context) => ScoreScreen(),
+        '/nvrtiles': (context) => SelectionTilesNVR(),
       },
     );
   }

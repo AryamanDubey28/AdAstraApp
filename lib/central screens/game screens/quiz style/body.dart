@@ -2,16 +2,29 @@ import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/c
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/progress_bar.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/question.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/question_card.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
   @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    QuestionController _questionController = Get.put(QuestionController());
+    QuestionController _questionController = Get.put(QuestionController(
+      ExplorePage.index,
+    ));
     return Scaffold(
         backgroundColor: Colors.blue[500],
         body: Column(
