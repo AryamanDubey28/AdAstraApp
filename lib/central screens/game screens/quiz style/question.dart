@@ -304,6 +304,62 @@ const List sample_data_vr = [
     "answer_index": 0,
     "category": "number sequences"
   },
+  {
+    'id': 35,
+    "question": "(conquer defeat) (strike pound)",
+    "image": "none",
+    "options": ["beat", "force", "punch", "triumph", "win"],
+    "answer_index": 0,
+    "category": ""
+  },
+  {
+    'id': 36,
+    "question": "(decieve cheat) (recline rest)",
+    "image": "none",
+    "options": ["false", "bed", "untrue", "lie", "sleep"],
+    "answer_index": 3,
+    "category": ""
+  },
+  {
+    'id': 37,
+    "question": "(level flat) (regular constant)",
+    "image": "none",
+    "options": ["smooth", "uniform", "even", "same", "plain"],
+    "answer_index": 2,
+    "category": ""
+  },
+  {
+    'id': 38,
+    "question": "(rigid stiff) (company business)",
+    "image": "none",
+    "options": ["hard", "trader", "solid", "firm", "inflexible"],
+    "answer_index": 3,
+    "category": ""
+  },
+  {
+    'id': 39,
+    "question": "(attack invade) (price fee)",
+    "image": "none",
+    "options": ["bill", "charge", "assault", "cost", "raid"],
+    "answer_index": 1,
+    "category": ""
+  },
+  {
+    'id': 40,
+    "question": "(siren bell) (frighten terrify)",
+    "image": "none",
+    "options": ["alarm", "scare", "startle", "horn", "warn"],
+    "answer_index": 0,
+    "category": ""
+  },
+  {
+    'id': 41,
+    "question": "(group type) (friendly generous)",
+    "image": "none",
+    "options": ["class", "kind", "tender", "sort", "gentle"],
+    "answer_index": 1,
+    "category": ""
+  },
 ];
 
 const List sample_data_numeracy = [
