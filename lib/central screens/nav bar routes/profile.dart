@@ -86,7 +86,17 @@ class ProfilePage extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
-        actions: [],
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/settings');
+              },
+              child: Icon(Icons.settings),
+            ),
+          )
+        ],
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),

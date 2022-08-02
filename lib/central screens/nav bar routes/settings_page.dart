@@ -12,8 +12,8 @@ class _SettingsState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
-        automaticallyImplyLeading: false,
+        title: Text("Settings"),
+        //automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
       ),

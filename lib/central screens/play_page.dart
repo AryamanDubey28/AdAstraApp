@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_g1.dart';
 import 'package:firebase_attempt/central%20screens/hidden_drawer.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/discover.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
@@ -34,7 +35,7 @@ class _PlayPageState extends State<PlayPage> {
     SelectionTiles(ExplorePage.index),
     //SelectionTiles(),
     ExplorePage(),
-    SettingsPage(),
+    DiscoverPage(),
     ProfilePage(),
   ];
 
@@ -106,8 +107,8 @@ class _PlayPageState extends State<PlayPage> {
                 text: "Explore",
               ),
               GButton(
-                icon: Icons.settings,
-                text: "Settings",
+                icon: Icons.rocket_launch,
+                text: "Discover",
               ),
               GButton(
                 icon: Icons.person,
