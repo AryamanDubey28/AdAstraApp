@@ -15,6 +15,23 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  final Map descriptions = {
+    "Letter Codes":
+        "Find the letters that will complete the sentence in the best way and select the correct answer from the options",
+    "Word Codes":
+        "You need to work out a different code for each question and choose the correct option",
+    "Number Sequences":
+        "Find the number that continues the series in the most sensible way",
+    "Word Connections":
+        "In these questions, there are two pairs of words. Select which word goes equally as well with both pairs",
+    "Missing Letter":
+        "The same letter must fit into both sets of brackets to complete the word infront of the brackets and begin the word after the brackets",
+    "Missing Number":
+        "In these questions, the three numbers in each group are related in the same way. Find the number that completes the last group",
+    "Make A Word From Another Word":
+        "These questions contain three pairs of words. Find the word that completes the last pair in the same way as the other two pairs",
+  };
+
   String getText() {
     // if (ExplorePage.index == 0) {
     //   return "A VR Style Quiz";
@@ -25,7 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
     // } else {
     //   return "";
     // }
-    return "A " + SelectionTiles.topic + " game";
+    return "A '${SelectionTiles.topic}' game";
   }
 
   String getAnim() {
@@ -38,6 +55,27 @@ class _QuizScreenState extends State<QuizScreen> {
     } else {
       return "";
     }
+  }
+
+  String getDescription() {
+    // for (int i = 0; i < descriptions.length; i++) {
+    //   // Map<String, String> map = descriptions[i];
+    //   // print("map key ----------- " + map.keys.elementAt(i));
+    //   // if (map.keys.elementAt(i) == SelectionTiles.topic) {
+    //   //   print("map val -------- " + map.values.elementAt(i));
+    //   //   return map.values.elementAt(i);
+    //   // }
+    //   String key = descriptions.keys.elementAt(i);
+    //   String val = descriptions.values.elementAt(i);
+    //   if (key == SelectionTiles.topic) {
+    //     return val;
+    //   }
+    // }
+    // return "No description found...";
+    if (descriptions.containsKey(SelectionTiles.topic)) {
+      return descriptions[SelectionTiles.topic];
+    }
+    return "No description found...";
   }
 
   // @override
@@ -71,76 +109,101 @@ class _QuizScreenState extends State<QuizScreen> {
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
       ),
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Column(
-              children: [
-                Center(
-                  child: FadeIn(
-                    duration: Duration(milliseconds: 1400),
-                    child: SizedBox(
-                      height: 300,
-                      width: 300,
-                      child: Center(
-                        child: Lottie.network(getAnim()),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            SafeArea(
+              child: Column(
+                children: [
+                  Center(
+                    child: FadeIn(
+                      duration: Duration(milliseconds: 1400),
+                      child: SizedBox(
+                        height: 275,
+                        width: 275,
+                        child: Center(
+                          child: Lottie.network(getAnim()),
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                Center(
-                  child: Text(
-                    "Lets Play",
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 96.0,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      "Lets Play",
+                      style: GoogleFonts.bebasNeue(
+                        fontSize: 96.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Center(
-                  child: Text(
-                    getText(),
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 30.0,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: Text(
+                      getText(),
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.bebasNeue(
+                        fontSize: 30.0,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(50.0),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.popAndPushNamed(context, "/game2");
-                      },
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Divider(
+                    thickness: 2,
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Start",
+                        // getText(),
+                        getDescription(),
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 44,
+                          fontFamily: "Cambria",
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                      )),
-                ),
+                      ),
+                    ),
+                  ),
 
-                // Padding(
-                //   padding: const EdgeInsets.all(50.0),
-                //   child: ElevatedButton(
-                //       onPressed: () {
-                //         // BuildQuizDB buildQuizDB = BuildQuizDB();
-                //         // buildQuizDB.setData();
-                //       },
-                //       child: Text(
-                //         "Set Data",
-                //         style: TextStyle(
-                //           fontSize: 30,
-                //         ),
-                //       )),
-                // ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.popAndPushNamed(context, "/game2");
+                        },
+                        child: Text(
+                          "Start",
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        )),
+                  ),
+
+                  // Padding(
+                  //   padding: const EdgeInsets.all(50.0),
+                  //   child: ElevatedButton(
+                  //       onPressed: () {
+                  //         // BuildQuizDB buildQuizDB = BuildQuizDB();
+                  //         // buildQuizDB.setData();
+                  //       },
+                  //       child: Text(
+                  //         "Set Data",
+                  //         style: TextStyle(
+                  //           fontSize: 30,
+                  //         ),
+                  //       )),
+                  // ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
