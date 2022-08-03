@@ -7,6 +7,7 @@ import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/read%20data/get_user_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -95,10 +96,13 @@ class _HomePageState extends State<HomePage> {
                       //wrap this with the sliding thingy
                       GestureDetector(
                           onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return PlayPage();
-                            }));
+                            // Navigator.push(context,
+                            //     MaterialPageRoute(builder: (context) {
+                            //   return PlayPage();
+                            // }));
+                            Get.to(() => PlayPage(),
+                                transition: Transition.topLevel,
+                                duration: Duration(seconds: 2));
                           },
                           child: Text("Done"))
                       : GestureDetector(

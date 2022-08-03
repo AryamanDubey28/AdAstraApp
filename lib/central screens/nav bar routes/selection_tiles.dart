@@ -3,6 +3,8 @@ import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/q
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 
 import '../../main_page.dart';
 import '../game screens/matching tiles/matching_tiles_g1.dart';
@@ -16,7 +18,6 @@ class SelectionTiles extends StatelessWidget {
 
   final List vr_section = [
     "Matching Tiles",
-    "Practice Quiz",
     "Letter Codes",
     "Word Codes",
     "Number Sequences",
@@ -52,7 +53,6 @@ class SelectionTiles extends StatelessWidget {
   //final List routes = [MatchingTilesGame1(), null, null, null];
   final List vr_routes = [
     InformationSheet(),
-    QuizScreen(),
     QuizScreen(),
     QuizScreen(),
     QuizScreen(),
@@ -143,10 +143,16 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = vr_section[index];
                       print(topic);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => vr_routes[index]));
+                      //old navigation below -> works perf
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => vr_routes[index]));
+                      Widget screen = vr_routes[index]; //allows for transitions
+                      Get.to(() => screen,
+                          //transition: Transition.topLevel,
+                          transition: Transition.upToDown,
+                          duration: Duration(milliseconds: 750));
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
@@ -273,10 +279,15 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = nvr_section[index];
                       print(topic);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => nvr_routes[index]));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => nvr_routes[index]));
+                      Widget screen = nvr_routes[index];
+                      Get.to(() => screen,
+                          //transition: Transition.topLevel,
+                          transition: Transition.upToDown,
+                          duration: Duration(milliseconds: 750));
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
@@ -403,10 +414,15 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = numeracy_section[index];
                       print(topic);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => numeracy_routes[index]));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => numeracy_routes[index]));
+                      Widget screen = numeracy_routes[index];
+                      Get.to(() => screen,
+                          //transition: Transition.topLevel,
+                          transition: Transition.upToDown,
+                          duration: Duration(milliseconds: 750));
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
