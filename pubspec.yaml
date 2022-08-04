@@ -52,6 +52,7 @@ dependencies:
   websafe_svg: ^2.1.2+1
   get: ^4.6.5
   firebase_database: ^9.0.19
+  flutter_slidable: ^2.0.0
   
   
 

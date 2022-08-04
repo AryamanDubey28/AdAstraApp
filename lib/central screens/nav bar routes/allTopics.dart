@@ -1,6 +1,7 @@
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AllTopics extends StatefulWidget {
@@ -34,15 +35,65 @@ class _AllTopicsState extends State<AllTopics> {
   }
 
   Widget buildTopicTile(int index, String topic) {
-    return ListTile(
+    return Slidable(
       key: ValueKey(topic),
-      leading: Icon(Icons.square),
-      title: Text(
-        topic,
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 20),
+      startActionPane: ActionPane(
+        motion: StretchMotion(),
+        children: [
+          SlidableAction(
+            onPressed: ((context) {
+              //do something
+            }),
+            backgroundColor: Colors.red,
+            icon: Iconsax.heart,
+          ),
+          SlidableAction(
+            onPressed: ((context) {
+              //do something
+            }),
+            backgroundColor: Colors.green,
+            icon: Icons.move_down,
+          ),
+          SlidableAction(
+              onPressed: ((context) {
+                //do something
+              }),
+              backgroundColor: Color.fromARGB(255, 244, 165, 6),
+              icon: Icons.move_up),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: StretchMotion(),
+        children: [
+          SlidableAction(
+            onPressed: ((context) {
+              //do something
+            }),
+            backgroundColor: Colors.deepPurple,
+            icon: Icons.rocket_launch,
+          ),
+        ],
+      ),
+      child: ListTile(
+        //key: ValueKey(topic),
+        leading: Icon(Icons.square),
+        title: Text(
+          topic,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
+
+    // return ListTile(
+    //   key: ValueKey(topic),
+    //   leading: Icon(Icons.square),
+    //   title: Text(
+    //     topic,
+    //     textAlign: TextAlign.center,
+    //     style: TextStyle(fontSize: 20),
+    //   ),
+    // );
   }
 
   @override
@@ -76,6 +127,7 @@ class _AllTopicsState extends State<AllTopics> {
         backgroundColor: Colors.blue[200],
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          backgroundColor: Colors.blue[200],
           title: Text(
             "Reorder Topics",
             textAlign: TextAlign.center,
