@@ -1,5 +1,6 @@
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class SelectionTiles extends StatelessWidget {
     index = screenIndex;
   }
 
-  final List vr_section = [
+  static List vr_section = [
     "Matching Tiles",
     "Letter Codes",
     "Word Codes",
@@ -85,11 +86,36 @@ class SelectionTiles extends StatelessWidget {
     QuizScreen(),
   ];
 
-  final List nvr_section = ["Odd One Out", "Practice Quiz", "Make a pair"];
+  static List nvr_section = [
+    "Odd One Out",
+    "Practice Quiz",
+    "Series",
+    "Similarities",
+    "Analogies",
+    "Hidden Shapes",
+    "Matricies",
+    "Reflected Shapes",
+    "Nets of Cubes",
+    "Codes",
+    "Combined Shapes"
+  ];
 
-  final List nvr_routes = [null, QuizScreen(), null, null];
+  final List nvr_routes = [
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+    QuizScreen(),
+  ];
 
-  final List numeracy_section = [
+  static List numeracy_section = [
     "Fractions",
     "Quick Maths",
     "Algebra",
@@ -102,37 +128,88 @@ class SelectionTiles extends StatelessWidget {
       backgroundColor: Colors.blue[200],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          "VR Activities",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
+        titleSpacing: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => MainPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.logout)),
+            ),
+            Text(
+              "VR Activities",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(AllTopics());
+                  },
+                  child: Icon(Icons.list)),
+            ),
+
+            // IconButton(
+            //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
+          ],
         ),
+        // Text(
+        //   "VR Activities",
+        //   textAlign: TextAlign.center,
+        //   style: TextStyle(
+        //     color: Colors.white,
+        //     fontWeight: FontWeight.bold,
+        //     fontSize: 28,
+        //   ),
+        // ),
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: GestureDetector(
-                onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => MainPage(),
-                    ),
-                    (route) => false,
-                  );
-                },
-                child: Icon(Icons.logout)),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         Get.to(AllTopics());
+          //       },
+          //       child: Icon(Icons.list)),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         FirebaseAuth.instance.signOut();
+          //         Navigator.pushAndRemoveUntil(
+          //           context,
+          //           MaterialPageRoute(
+          //             builder: (BuildContext context) => MainPage(),
+          //           ),
+          //           (route) => false,
+          //         );
+          //       },
+          //       child: Icon(Icons.logout)),
+          // ),
         ],
       ),
       body: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: vr_section.length,
+        //itemCount: vr_section.length,
+        itemCount: 5,
         itemBuilder: ((context, index) {
           return Column(
             children: [
@@ -149,6 +226,13 @@ class SelectionTiles extends StatelessWidget {
                       //     MaterialPageRoute(
                       //         builder: (context) => vr_routes[index]));
                       Widget screen = vr_routes[index]; //allows for transitions
+
+                      if (topic == "Matching Tiles") {
+                        screen = InformationSheet();
+                      } else {
+                        screen = QuizScreen();
+                      }
+
                       Get.to(() => screen,
                           //transition: Transition.topLevel,
                           transition: Transition.upToDown,
@@ -194,6 +278,8 @@ class SelectionTiles extends StatelessWidget {
                   ),
                 ),
               ),
+
+              //Icon(Icons.next_plan)
               // ElevatedButton(
               //     onPressed: () => Navigator.push(
               //         context,
@@ -238,37 +324,79 @@ class SelectionTiles extends StatelessWidget {
       backgroundColor: Colors.blue[200],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          "NVR Activities",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
+        titleSpacing: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => MainPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.logout)),
+            ),
+            Text(
+              "NVR Activities",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(AllTopics());
+                  },
+                  child: Icon(Icons.list)),
+            ),
+
+            // IconButton(
+            //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
+          ],
         ),
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: GestureDetector(
-                onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => MainPage(),
-                    ),
-                    (route) => false,
-                  );
-                },
-                child: Icon(Icons.logout)),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         Get.to(AllTopics());
+          //       },
+          //       child: Icon(Icons.list)),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         FirebaseAuth.instance.signOut();
+          //         Navigator.pushAndRemoveUntil(
+          //           context,
+          //           MaterialPageRoute(
+          //             builder: (BuildContext context) => MainPage(),
+          //           ),
+          //           (route) => false,
+          //         );
+          //       },
+          //       child: Icon(Icons.logout)),
+          // ),
         ],
       ),
       body: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: nvr_section.length,
+        //itemCount: nvr_section.length,
+        itemCount: 5,
         itemBuilder: ((context, index) {
           return Column(
             children: [
@@ -373,37 +501,79 @@ class SelectionTiles extends StatelessWidget {
       backgroundColor: Colors.blue[200],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          "Numeracy Activities",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
+        titleSpacing: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => MainPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.logout)),
+            ),
+            Text(
+              "Numeracy Activities",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 26,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(AllTopics());
+                  },
+                  child: Icon(Icons.list)),
+            ),
+
+            // IconButton(
+            //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
+          ],
         ),
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: GestureDetector(
-                onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => MainPage(),
-                    ),
-                    (route) => false,
-                  );
-                },
-                child: Icon(Icons.logout)),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         Get.to(AllTopics());
+          //       },
+          //       child: Icon(Icons.list)),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         FirebaseAuth.instance.signOut();
+          //         Navigator.pushAndRemoveUntil(
+          //           context,
+          //           MaterialPageRoute(
+          //             builder: (BuildContext context) => MainPage(),
+          //           ),
+          //           (route) => false,
+          //         );
+          //       },
+          //       child: Icon(Icons.logout)),
+          // ),
         ],
       ),
       body: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: numeracy_section.length,
+        //itemCount: numeracy_section.length,
+        itemCount: 5,
         itemBuilder: ((context, index) {
           return Column(
             children: [

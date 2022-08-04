@@ -30,6 +30,7 @@ class _QuizScreenState extends State<QuizScreen> {
         "In these questions, the three numbers in each group are related in the same way. Find the number that completes the last group",
     "Make A Word From Another Word":
         "These questions contain three pairs of words. Find the word that completes the last pair in the same way as the other two pairs",
+    "Nets of Cubes": "Pain",
   };
 
   String getText() {

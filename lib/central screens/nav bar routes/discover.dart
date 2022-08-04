@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/question_sheets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
@@ -16,11 +17,16 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage> {
   late Future<Map> wordMap;
+  late Timer timer;
+  late int randomNumber;
 
   @override
   void initState() {
     super.initState();
-    wordMap = getWordOfDayMap(getRandomNum());
+
+    randomNumber = getRandomNum();
+    wordMap = getWordOfDayMap(randomNumber);
+    //callMethod();
   }
 
   Future<Map> getWordOfDayMap(int x) async {
@@ -33,8 +39,16 @@ class _DiscoverPageState extends State<DiscoverPage> {
     //choices[word!.toJson()['word']] = word.toJson()['definition'];
   }
 
+  // Future callMethod() async {
+  //   timer = Timer.periodic(Duration(seconds: 5), (Timer t) {
+  //     //print("in timer");
+  //     randomNumber = getRandomNum();
+  //     wordMap = getWordOfDayMap(randomNumber);
+  //   });
+  // }
+
   int getRandomNum() {
-    Random random = new Random();
+    Random random = Random();
     //646
     int r1 = random.nextInt(640) + 1;
     int r2 = random.nextInt(640);
@@ -94,8 +108,8 @@ class _DiscoverPageState extends State<DiscoverPage> {
               height: 2.0,
             ),
             SizedBox(
-              height: 400,
-              width: 400,
+              height: 250,
+              width: 250,
               child: Center(
                 child: Lottie.network(
                     "https://assets5.lottiefiles.com/packages/lf20_ii6qdbgz.json"),
@@ -135,9 +149,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     String word = map?["word"];
                     String def = map?["definition"];
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         word + " - " + def,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: "Cambria",
                             fontSize: 20,
@@ -149,7 +164,26 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   }
                 }),
             SizedBox(
-              height: 10,
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
+                // IconButton(onPressed: () {}, icon: Icon(Icons.feed))
+                ButtonWidget(text: "Todays Maths Game!", onClicked: () {})
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
+                // IconButton(onPressed: () {}, icon: Icon(Icons.feed))
+                ButtonWidget(text: "Latest News", onClicked: () {})
+              ],
             ),
           ]),
         ));
