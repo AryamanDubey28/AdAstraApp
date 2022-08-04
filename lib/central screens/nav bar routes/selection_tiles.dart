@@ -160,7 +160,9 @@ class SelectionTiles extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: GestureDetector(
                   onTap: () {
-                    Get.to(AllTopics());
+                    Get.to(() => AllTopics(),
+                        transition: Transition.topLevel,
+                        duration: Duration(seconds: 1));
                   },
                   child: Icon(Icons.list)),
             ),
@@ -356,7 +358,9 @@ class SelectionTiles extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: GestureDetector(
                   onTap: () {
-                    Get.to(AllTopics());
+                    Get.to(() => AllTopics(),
+                        transition: Transition.topLevel,
+                        duration: Duration(seconds: 1));
                   },
                   child: Icon(Icons.list)),
             ),
@@ -533,7 +537,9 @@ class SelectionTiles extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: GestureDetector(
                   onTap: () {
-                    Get.to(AllTopics());
+                    Get.to(() => AllTopics(),
+                        transition: Transition.topLevel,
+                        duration: Duration(seconds: 1));
                   },
                   child: Icon(Icons.list)),
             ),
