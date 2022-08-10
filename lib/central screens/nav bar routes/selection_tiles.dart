@@ -17,6 +17,8 @@ class SelectionTiles extends StatelessWidget {
     index = screenIndex;
   }
 
+  static List likedTopics = [];
+
   static List vr_section = [
     "Matching Tiles",
     "Letter Codes",
@@ -211,7 +213,7 @@ class SelectionTiles extends StatelessWidget {
       body: ListView.builder(
         scrollDirection: Axis.horizontal,
         //itemCount: vr_section.length,
-        itemCount: 5,
+        itemCount: vr_section.length,
         itemBuilder: ((context, index) {
           return Column(
             children: [

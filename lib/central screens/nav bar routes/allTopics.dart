@@ -5,7 +5,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AllTopics extends StatefulWidget {
-  const AllTopics({Key? key}) : super(key: key);
+  //const AllTopics({Key? key}) : super(key: key);
+
+  late final List allTopics;
 
   @override
   State<AllTopics> createState() => _AllTopicsState();
@@ -34,6 +36,12 @@ class _AllTopicsState extends State<AllTopics> {
     }
   }
 
+  // static List allLikedTopics = [];
+
+  // List getAllLikedTopics() {
+  //   return allLikedTopics;
+  // }
+
   Widget buildTopicTile(int index, String topic) {
     return Slidable(
       key: ValueKey(topic),
@@ -43,6 +51,15 @@ class _AllTopicsState extends State<AllTopics> {
           SlidableAction(
             onPressed: ((context) {
               //do something
+              if (ExplorePage.index == 0) {
+                SelectionTiles.likedTopics.add(topic + " - VR");
+              } else if (ExplorePage.index == 1) {
+                SelectionTiles.likedTopics.add(topic + " - NVR");
+              } else if (ExplorePage.index == 2) {
+                SelectionTiles.likedTopics.add(topic + " - Numeracy");
+              }
+
+              print("added $topic");
             }),
             backgroundColor: Colors.red,
             icon: Iconsax.heart,
