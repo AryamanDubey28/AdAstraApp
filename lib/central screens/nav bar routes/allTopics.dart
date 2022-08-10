@@ -1,7 +1,9 @@
+import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AllTopics extends StatefulWidget {
@@ -85,6 +87,10 @@ class _AllTopicsState extends State<AllTopics> {
           SlidableAction(
             onPressed: ((context) {
               //do something
+              SelectionTiles.topic = topic;
+              Get.to(() => QuizScreen(),
+                  transition: Transition.topLevel,
+                  duration: Duration(seconds: 1));
             }),
             backgroundColor: Colors.deepPurple,
             icon: Icons.rocket_launch,
