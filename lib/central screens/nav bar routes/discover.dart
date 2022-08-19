@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:firebase_attempt/central%20screens/game%20screens/maths_game.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/question_sheets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -171,7 +173,12 @@ class _DiscoverPageState extends State<DiscoverPage> {
               children: [
                 // IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
                 // IconButton(onPressed: () {}, icon: Icon(Icons.feed))
-                ButtonWidget(text: "Todays Maths Game!", onClicked: () {})
+                ButtonWidget(
+                    text: "Todays Maths Game!",
+                    onClicked: () {
+                      Get.to(() => MathsGame(),
+                          transition: Transition.downToUp);
+                    })
               ],
             ),
             SizedBox(
