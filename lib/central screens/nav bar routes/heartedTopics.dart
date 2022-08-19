@@ -20,6 +20,8 @@ class _HeartedTopicsState extends State<HeartedTopics> {
     // TODO: implement initState
     super.initState();
     print(heartedTopics);
+    heartedTopics = heartedTopics.toSet().toList();
+    print(heartedTopics);
   }
 
   void goToQuizPage(int index) {

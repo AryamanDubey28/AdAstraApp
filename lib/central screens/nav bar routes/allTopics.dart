@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:like_button/like_button.dart';
 
 class AllTopics extends StatefulWidget {
   //const AllTopics({Key? key}) : super(key: key);
@@ -65,6 +66,7 @@ class _AllTopicsState extends State<AllTopics> {
             }),
             backgroundColor: Colors.red,
             icon: Iconsax.heart,
+            //icon: LikeButton()
           ),
           SlidableAction(
             onPressed: ((context) {
