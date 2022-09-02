@@ -3,7 +3,10 @@ import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:firebase_attempt/central%20screens/square_temp.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class HeartedTopics extends StatefulWidget {
   const HeartedTopics({Key? key}) : super(key: key);
@@ -32,6 +35,50 @@ class _HeartedTopicsState extends State<HeartedTopics> {
         transition: Transition.topLevel, duration: Duration(seconds: 1));
   }
 
+  Widget emptyListScreen() {
+    return Column(
+      children: [
+        Spacer(),
+        Lottie.network(
+            "https://assets10.lottiefiles.com/packages/lf20_AcjHPq.json"),
+        FadeIn(
+          duration: Duration(milliseconds: 1800),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Heart some Topics Now!",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.ubuntu(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white60,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Spacer(),
+      ],
+    );
+  }
+
+  Widget screenContent() {
+    if (heartedTopics.isEmpty) {
+      return emptyListScreen();
+    } else {}
+    return ListView.builder(
+        itemCount: heartedTopics.length,
+        itemBuilder: ((context, index) {
+          return GestureDetector(
+              onTap: () {
+                print("hi");
+                goToQuizPage(index);
+              },
+              child: MySquare(text: heartedTopics[index]));
+        }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,16 +91,17 @@ class _HeartedTopicsState extends State<HeartedTopics> {
         ),
         elevation: 0.0,
       ),
-      body: ListView.builder(
-          itemCount: heartedTopics.length,
-          itemBuilder: ((context, index) {
-            return GestureDetector(
-                onTap: () {
-                  print("hi");
-                  goToQuizPage(index);
-                },
-                child: MySquare(text: heartedTopics[index]));
-          })),
+      body: screenContent(),
+      // body: ListView.builder(
+      //     itemCount: heartedTopics.length,
+      //     itemBuilder: ((context, index) {
+      //       return GestureDetector(
+      //           onTap: () {
+      //             print("hi");
+      //             goToQuizPage(index);
+      //           },
+      //           child: MySquare(text: heartedTopics[index]));
+      //     })),
     );
   }
 }
