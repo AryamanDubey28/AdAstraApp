@@ -82,7 +82,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     "Discover Page",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
-                      fontSize: 48.0,
+                      fontSize: 46.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -129,7 +129,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     "Expand your Vocabulary with:",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
-                      fontSize: 30.0,
+                      fontSize: 28.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.white60,
                     ),

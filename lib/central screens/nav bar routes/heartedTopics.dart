@@ -66,17 +66,18 @@ class _HeartedTopicsState extends State<HeartedTopics> {
   Widget screenContent() {
     if (heartedTopics.isEmpty) {
       return emptyListScreen();
-    } else {}
-    return ListView.builder(
-        itemCount: heartedTopics.length,
-        itemBuilder: ((context, index) {
-          return GestureDetector(
-              onTap: () {
-                print("hi");
-                goToQuizPage(index);
-              },
-              child: MySquare(text: heartedTopics[index]));
-        }));
+    } else {
+      return ListView.builder(
+          itemCount: heartedTopics.length,
+          itemBuilder: ((context, index) {
+            return GestureDetector(
+                onTap: () {
+                  print("hi");
+                  goToQuizPage(index);
+                },
+                child: MySquare(text: heartedTopics[index]));
+          }));
+    }
   }
 
   @override
