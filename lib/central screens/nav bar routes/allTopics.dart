@@ -281,6 +281,7 @@ class _AllTopicsState extends State<AllTopics> {
                 }),
             itemBuilder: (context, index) {
               String topic = allTopics[index];
+
               return buildTopicTile(index, topic);
             }),
       ),

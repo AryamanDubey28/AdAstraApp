@@ -125,6 +125,21 @@ class SelectionTiles extends StatelessWidget {
   ];
   final List numeracy_routes = [null, QuizScreen(), null, null];
 
+  void showLike(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          Future.delayed(Duration(seconds: 1), () {
+            Navigator.of(context).pop(true);
+          });
+          return AlertDialog(
+            backgroundColor: Colors.grey[200],
+            title: Center(child: Text("Added to Liked")),
+          );
+        });
+  }
+
   Widget VRScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[200],
@@ -241,6 +256,17 @@ class SelectionTiles extends StatelessWidget {
                           //transition: Transition.topLevel,
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
+                    },
+                    onDoubleTap: () {
+                      topic = vr_section[index];
+                      if (ExplorePage.index == 0) {
+                        SelectionTiles.likedTopics.add(topic + " - VR");
+                      } else if (ExplorePage.index == 1) {
+                        SelectionTiles.likedTopics.add(topic + " - NVR");
+                      } else if (ExplorePage.index == 2) {
+                        SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                      }
+                      showLike(context);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
@@ -423,6 +449,17 @@ class SelectionTiles extends StatelessWidget {
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
                     },
+                    onDoubleTap: () {
+                      topic = vr_section[index];
+                      if (ExplorePage.index == 0) {
+                        SelectionTiles.likedTopics.add(topic + " - VR");
+                      } else if (ExplorePage.index == 1) {
+                        SelectionTiles.likedTopics.add(topic + " - NVR");
+                      } else if (ExplorePage.index == 2) {
+                        SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                      }
+                      showLike(context);
+                    },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
                       child: Container(
@@ -601,6 +638,17 @@ class SelectionTiles extends StatelessWidget {
                           //transition: Transition.topLevel,
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
+                    },
+                    onDoubleTap: () {
+                      topic = vr_section[index];
+                      if (ExplorePage.index == 0) {
+                        SelectionTiles.likedTopics.add(topic + " - VR");
+                      } else if (ExplorePage.index == 1) {
+                        SelectionTiles.likedTopics.add(topic + " - NVR");
+                      } else if (ExplorePage.index == 2) {
+                        SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                      }
+                      showLike(context);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
