@@ -126,7 +126,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Word of the day:",
+                    "Expand your Vocabulary with:",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
                       fontSize: 30.0,
@@ -145,7 +145,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 future: wordMap,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    return Text("Unable to show word of the day");
+                    return Text("Unable to show word");
                   } else if (snapshot.hasData) {
                     Map<dynamic, dynamic>? map = snapshot.data;
                     String word = map?["word"];
@@ -182,7 +182,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
