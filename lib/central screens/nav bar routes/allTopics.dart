@@ -195,7 +195,7 @@ class _AllTopicsState extends State<AllTopics> {
       ),
       child: ListTile(
         //key: ValueKey(topic),
-        leading: Icon(Icons.circle),
+        trailing: Icon(Icons.menu),
         title: Text(
           topic,
           textAlign: TextAlign.center,
@@ -247,6 +247,7 @@ class _AllTopicsState extends State<AllTopics> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.blue[200],
+          centerTitle: true,
           title: Text(
             "Reorder Topics",
             textAlign: TextAlign.center,

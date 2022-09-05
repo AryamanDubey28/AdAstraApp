@@ -1,11 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
+import 'package:firebase_attempt/central%20screens/game%20screens/nvr%20draggable%20qs/nvr_draggable.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../main_page.dart';
 import '../game screens/matching tiles/matching_tiles_g1.dart';
@@ -225,16 +229,25 @@ class SelectionTiles extends StatelessWidget {
           // ),
         ],
       ),
-      body: ListView.builder(
-        scrollDirection: Axis.horizontal,
+      body: CarouselSlider.builder(
+        options: CarouselOptions(
+          height: 800,
+          viewportFraction: 0.8,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false,
+          //enlargeStrategy: CenterPageEnlargeStrategy.height
+        ),
+        //body: Swiper(
+        //body: ListView.builder(
+        //scrollDirection: Axis.horizontal,
         //itemCount: vr_section.length,
         itemCount: vr_section.length,
-        itemBuilder: ((context, index) {
+        itemBuilder: ((context, index, realIndex) {
           return Column(
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 25, 4, 10),
+                  padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                   child: GestureDetector(
                     onTap: () {
                       topic = vr_section[index];
@@ -281,7 +294,7 @@ class SelectionTiles extends StatelessWidget {
                           ),
                         ),
                         //height: 100,
-                        width: 300,
+                        width: 600,
                         child: Column(
                           children: [
                             Padding(
@@ -308,6 +321,7 @@ class SelectionTiles extends StatelessWidget {
                   ),
                 ),
               ),
+              //SmoothPageIndicator(controller: controller, count: count)
 
               //Icon(Icons.next_plan)
               // ElevatedButton(
@@ -425,16 +439,23 @@ class SelectionTiles extends StatelessWidget {
           // ),
         ],
       ),
-      body: ListView.builder(
-        scrollDirection: Axis.horizontal,
+      body: CarouselSlider.builder(
+        options: CarouselOptions(
+          height: 800,
+          viewportFraction: 0.8,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false,
+          //enlargeStrategy: CenterPageEnlargeStrategy.height
+        ),
+        //scrollDirection: Axis.horizontal,
         //itemCount: nvr_section.length,
         itemCount: 5,
-        itemBuilder: ((context, index) {
+        itemBuilder: ((context, index, realIndex) {
           return Column(
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 25, 4, 10),
+                  padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                   child: GestureDetector(
                     onTap: () {
                       topic = nvr_section[index];
@@ -615,16 +636,23 @@ class SelectionTiles extends StatelessWidget {
           // ),
         ],
       ),
-      body: ListView.builder(
-        scrollDirection: Axis.horizontal,
+      body: CarouselSlider.builder(
+        options: CarouselOptions(
+          height: 800,
+          viewportFraction: 0.8,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false,
+          //enlargeStrategy: CenterPageEnlargeStrategy.height
+        ),
+        //scrollDirection: Axis.horizontal,
         //itemCount: numeracy_section.length,
-        itemCount: 5,
-        itemBuilder: ((context, index) {
+        itemCount: numeracy_section.length,
+        itemBuilder: ((context, index, realIndex) {
           return Column(
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 25, 4, 10),
+                  padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                   child: GestureDetector(
                     onTap: () {
                       topic = numeracy_section[index];
