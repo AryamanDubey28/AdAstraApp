@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_attempt/alert%20dialog/custom_dialog.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/nvr%20draggable%20qs/nvr_draggable.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
@@ -137,10 +138,11 @@ class SelectionTiles extends StatelessWidget {
           Future.delayed(Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          return AlertDialog(
-            backgroundColor: Colors.grey[200],
-            title: Center(child: Text("Added to Liked")),
-          );
+          // return AlertDialog(
+          //   backgroundColor: Colors.grey[200],
+          //   title: Center(child: Text("Added to Liked")),
+          // );
+          return CustomAlertDialog(title: "Added to Liked");
         });
   }
 

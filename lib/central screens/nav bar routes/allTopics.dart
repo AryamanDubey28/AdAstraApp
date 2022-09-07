@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
 
+import '../../alert dialog/custom_dialog.dart';
+
 class AllTopics extends StatefulWidget {
   //const AllTopics({Key? key}) : super(key: key);
 
@@ -62,7 +64,20 @@ class _AllTopicsState extends State<AllTopics> {
     //         title: Center(child: Text("Added to Liked")),
     //       );
     //     });
-    _openCustomDialog("Added to Liked");
+    //_openCustomDialog("Added to Liked");
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          Future.delayed(Duration(seconds: 1), () {
+            Navigator.of(context).pop(true);
+          });
+          // return AlertDialog(
+          //   backgroundColor: Colors.grey[200],
+          //   title: Center(child: Text("Added to Liked")),
+          // );
+          return CustomAlertDialog(title: "Added to Liked");
+        });
   }
 
   void showDownDialogue() {
@@ -78,7 +93,21 @@ class _AllTopicsState extends State<AllTopics> {
     //         title: Center(child: Text("Moved to Bottom")),
     //       );
     //     });
-    _openCustomDialog("Moved to Bottom");
+    //_openCustomDialog("Moved to Bottom");
+
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          Future.delayed(Duration(milliseconds: 1500), () {
+            Navigator.of(context).pop(true);
+          });
+          // return AlertDialog(
+          //   backgroundColor: Colors.grey[200],
+          //   title: Center(child: Text("Added to Liked")),
+          // );
+          return CustomAlertDialog(title: "Moved to Bottom");
+        });
   }
 
   void showUpDialogue() {
@@ -94,7 +123,20 @@ class _AllTopicsState extends State<AllTopics> {
     //         title: Center(child: Text("Moved to Top")),
     //       );
     //     });
-    _openCustomDialog("Moved to Top");
+    //_openCustomDialog("Moved to Top");
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          Future.delayed(Duration(milliseconds: 1500), () {
+            Navigator.of(context).pop(true);
+          });
+          // return AlertDialog(
+          //   backgroundColor: Colors.grey[200],
+          //   title: Center(child: Text("Added to Liked")),
+          // );
+          return CustomAlertDialog(title: "Moved to Top");
+        });
   }
 
   void _openCustomDialog(String text) {

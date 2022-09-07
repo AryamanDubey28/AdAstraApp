@@ -88,6 +88,7 @@ flutter:
     - lib/assets/numeracy_images/
     - lib/assets/vr_images/
     - lib/assets/nvr_images/
+    - lib/assets/animations/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
