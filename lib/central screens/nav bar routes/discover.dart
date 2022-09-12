@@ -77,7 +77,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               duration: Duration(milliseconds: 1800),
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     "Discover Page",
                     textAlign: TextAlign.center,

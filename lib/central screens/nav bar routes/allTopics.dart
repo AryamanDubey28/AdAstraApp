@@ -8,6 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
 
 import '../../alert dialog/custom_dialog.dart';
+import '../play_page.dart';
 
 class AllTopics extends StatefulWidget {
   //const AllTopics({Key? key}) : super(key: key);
@@ -267,8 +268,10 @@ class _AllTopicsState extends State<AllTopics> {
       print("Disposeddddd");
     } else if (ExplorePage.index == 1) {
       SelectionTiles.nvr_section = allTopics;
+      print("Disposed");
     } else if (ExplorePage.index == 2) {
       SelectionTiles.numeracy_section = allTopics;
+      print("Disposed");
     }
 
     //Navigator.popAndPushNamed(context, '/playpage');
@@ -293,49 +296,62 @@ class _AllTopicsState extends State<AllTopics> {
     String topicString = getTopic();
     allTopics = buildTopicsList();
     String state = getState();
-    return Scaffold(
-      backgroundColor: Colors.blue[200],
-      appBar: AppBar(
-        //automaticallyImplyLeading: false,
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
         backgroundColor: Colors.blue[200],
-        centerTitle: true,
-        title: Text(
-          "All $topicString Topics",
-          textAlign: TextAlign.center,
-        ),
-        actions: [
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         Navigator.popAndPushNamed(context, '/playpage');
-          //       },
-          //       child: Icon(Iconsax.back_square)),
-          // ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    allTopics.shuffle();
-                  });
-                },
-                child: Icon(Icons.shuffle)),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.blue[200],
+          centerTitle: true,
+          title: Text(
+            "All $topicString Topics",
+            textAlign: TextAlign.center,
           ),
-        ],
-      ),
-      body: ReorderableListView.builder(
-          itemCount: allTopics.length,
-          onReorder: (oldIndex, newIndex) => setState(() {
-                final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
-                final topic = allTopics.removeAt(oldIndex);
-                allTopics.insert(index, topic);
-              }),
-          itemBuilder: (context, index) {
-            String topic = allTopics[index];
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: GestureDetector(
+                  onTap: () {
+                    //Navigator.popAndPushNamed(context, '/playpage');
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation1, animation2) =>
+                            PlayPage(),
+                        transitionDuration: Duration.zero,
+                        reverseTransitionDuration: Duration.zero,
+                      ),
+                    );
+                    //Get.back();
+                  },
+                  child: Icon(Iconsax.back_square)),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      allTopics.shuffle();
+                    });
+                  },
+                  child: Icon(Icons.shuffle)),
+            ),
+          ],
+        ),
+        body: ReorderableListView.builder(
+            itemCount: allTopics.length,
+            onReorder: (oldIndex, newIndex) => setState(() {
+                  final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
+                  final topic = allTopics.removeAt(oldIndex);
+                  allTopics.insert(index, topic);
+                }),
+            itemBuilder: (context, index) {
+              String topic = allTopics[index];
 
-            return buildTopicTile(index, topic);
-          }),
+              return buildTopicTile(index, topic);
+            }),
+      ),
     );
   }
 }
