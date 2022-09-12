@@ -278,56 +278,64 @@ class _AllTopicsState extends State<AllTopics> {
     return false;
   }
 
+  String getTopic() {
+    if (ExplorePage.index == 0) {
+      return "VR";
+    } else if (ExplorePage.index == 1) {
+      return "NVR";
+    } else {
+      return "Numeracy";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    String topicString = getTopic();
     allTopics = buildTopicsList();
     String state = getState();
-    return WillPopScope(
-      onWillPop: _onWillPop,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.blue[200],
+      appBar: AppBar(
+        //automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[200],
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.blue[200],
-          centerTitle: true,
-          title: Text(
-            "Reorder Topics",
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: GestureDetector(
-                  onTap: () {
-                    Navigator.popAndPushNamed(context, '/playpage');
-                  },
-                  child: Icon(Iconsax.back_square)),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      allTopics.shuffle();
-                    });
-                  },
-                  child: Icon(Icons.shuffle)),
-            ),
-          ],
+        centerTitle: true,
+        title: Text(
+          "All $topicString Topics",
+          textAlign: TextAlign.center,
         ),
-        body: ReorderableListView.builder(
-            itemCount: allTopics.length,
-            onReorder: (oldIndex, newIndex) => setState(() {
-                  final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
-                  final topic = allTopics.removeAt(oldIndex);
-                  allTopics.insert(index, topic);
-                }),
-            itemBuilder: (context, index) {
-              String topic = allTopics[index];
-
-              return buildTopicTile(index, topic);
-            }),
+        actions: [
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          //   child: GestureDetector(
+          //       onTap: () {
+          //         Navigator.popAndPushNamed(context, '/playpage');
+          //       },
+          //       child: Icon(Iconsax.back_square)),
+          // ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    allTopics.shuffle();
+                  });
+                },
+                child: Icon(Icons.shuffle)),
+          ),
+        ],
       ),
+      body: ReorderableListView.builder(
+          itemCount: allTopics.length,
+          onReorder: (oldIndex, newIndex) => setState(() {
+                final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
+                final topic = allTopics.removeAt(oldIndex);
+                allTopics.insert(index, topic);
+              }),
+          itemBuilder: (context, index) {
+            String topic = allTopics[index];
+
+            return buildTopicTile(index, topic);
+          }),
     );
   }
 }

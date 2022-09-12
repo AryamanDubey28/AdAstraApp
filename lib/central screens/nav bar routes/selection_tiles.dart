@@ -5,8 +5,11 @@ import 'package:firebase_attempt/central%20screens/game%20screens/nvr%20draggabl
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
+import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:focused_menu/focused_menu.dart';
+import 'package:focused_menu/modals.dart';
 
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
@@ -171,12 +174,71 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.logout)),
             ),
-            Text(
-              "VR Activities",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
+            FocusedMenuHolder(
+              menuWidth: MediaQuery.of(context).size.width * 0.5,
+              blurBackgroundColor: Colors.blue[200],
+              openWithTap: true,
+              duration: Duration(seconds: 0),
+              animateMenuItems: false,
+              onPressed: () {},
+              menuItems: [
+                FocusedMenuItem(
+                    title: Text(
+                      "VR",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {
+                      ExplorePage.index = 0;
+                      // Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("NVR", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 1;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 2;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+              ],
+              menuOffset: 10,
+              child: Text(
+                "VR Activities ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
               ),
             ),
             Padding(
@@ -390,12 +452,79 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.logout)),
             ),
-            Text(
-              "NVR Activities",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
+            // Text(
+            //   "NVR Activities",
+            //   style: TextStyle(
+            //     color: Colors.white,
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 28,
+            //   ),
+            // ),
+            FocusedMenuHolder(
+              menuWidth: MediaQuery.of(context).size.width * 0.5,
+              blurBackgroundColor: Colors.blue[200],
+              openWithTap: true,
+              duration: Duration(seconds: 0),
+              animateMenuItems: false,
+              onPressed: () {},
+              menuItems: [
+                FocusedMenuItem(
+                    title: Text(
+                      "VR",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {
+                      ExplorePage.index = 0;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("NVR", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 1;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 2;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+              ],
+              menuOffset: 10,
+              child: Text(
+                "NVR Activities",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
               ),
             ),
             Padding(
@@ -473,7 +602,7 @@ class SelectionTiles extends StatelessWidget {
                           duration: Duration(milliseconds: 750));
                     },
                     onDoubleTap: () {
-                      topic = vr_section[index];
+                      topic = nvr_section[index];
                       if (ExplorePage.index == 0) {
                         SelectionTiles.likedTopics.add(topic + " - VR");
                       } else if (ExplorePage.index == 1) {
@@ -587,12 +716,85 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.logout)),
             ),
-            Text(
-              "Numeracy Activities",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
+            // Text(
+            //   "Numeracy Activities",
+            //   style: TextStyle(
+            //     color: Colors.white,
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 26,
+            //   ),
+            // ),
+            FocusedMenuHolder(
+              menuWidth: MediaQuery.of(context).size.width * 0.5,
+              blurBackgroundColor: Colors.blue[200],
+              openWithTap: true,
+              duration: Duration(seconds: 0),
+              animateMenuItems: false,
+              onPressed: () {},
+              menuItems: [
+                FocusedMenuItem(
+                    title: Text(
+                      "VR",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {
+                      ExplorePage.index = 0;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("NVR", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 1;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      //
+                      //
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                      //
+                      //
+                      // Get.to(() => PlayPage(),
+                      //     transition: Transition.noTransition);
+                    }),
+                FocusedMenuItem(
+                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 2;
+                      //Navigator.popAndPushNamed(context, '/playpage');
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+              ],
+              menuOffset: 10,
+              child: Text(
+                "Numeracy",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
               ),
             ),
             Padding(
@@ -670,7 +872,7 @@ class SelectionTiles extends StatelessWidget {
                           duration: Duration(milliseconds: 750));
                     },
                     onDoubleTap: () {
-                      topic = vr_section[index];
+                      topic = numeracy_section[index];
                       if (ExplorePage.index == 0) {
                         SelectionTiles.likedTopics.add(topic + " - VR");
                       } else if (ExplorePage.index == 1) {
