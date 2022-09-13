@@ -4,6 +4,7 @@ import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_
 import 'package:firebase_attempt/central%20screens/square_temp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -75,9 +76,51 @@ class _HeartedTopicsState extends State<HeartedTopics> {
                   print("hi");
                   goToQuizPage(index);
                 },
-                child: MySquare(text: heartedTopics[index]));
+                child: Slidable(
+                    startActionPane: ActionPane(
+                      motion: StretchMotion(),
+                      children: [
+                        SlidableAction(
+                          onPressed: ((context) {
+                            goToQuizPage(index);
+                          }),
+                          icon: Icons.rocket_launch_sharp,
+                          backgroundColor: Colors.purple,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ],
+                    ),
+                    endActionPane: ActionPane(
+                      motion: StretchMotion(),
+                      children: [
+                        SlidableAction(
+                          onPressed: ((context) {
+                            deleteTopic(index);
+                            //setState(() {});
+                          }),
+                          icon: Icons.delete,
+                          backgroundColor: Colors.red,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ],
+                    ),
+                    child: MySquare(text: heartedTopics[index])
+                    // child: Container(
+                    //   color: Colors.grey[200],
+                    //   child: ListTile(
+                    //     leading: Icon(Icons.gamepad),
+                    //     title: Text(heartedTopics[index]),
+                    //   ),
+                    // )
+                    ));
           }));
     }
+  }
+
+  void deleteTopic(int index) {
+    setState(() {
+      heartedTopics.removeAt(index);
+    });
   }
 
   @override

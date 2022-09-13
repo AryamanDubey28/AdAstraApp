@@ -20,12 +20,12 @@ class MySquare extends StatelessWidget {
           //   fit: BoxFit.fill,
           // ),
         ),
-        height: 200,
+        height: 100,
         child: Center(
             child: Text(
           text,
           style: TextStyle(
-              fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
         )),
       ),
     );
