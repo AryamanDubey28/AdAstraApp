@@ -6,6 +6,7 @@ import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/q
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
+import 'package:firebase_attempt/database/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
@@ -13,6 +14,7 @@ import 'package:focused_menu/modals.dart';
 
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
+import 'package:hive/hive.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../main_page.dart';
@@ -24,8 +26,18 @@ class SelectionTiles extends StatelessWidget {
   SelectionTiles(int screenIndex) {
     index = screenIndex;
   }
-
   static List likedTopics = [];
+
+  final _myBox = Hive.box('mybox');
+  SelectionTilesDB db = SelectionTilesDB();
+
+  void getLikedTopics() {
+    if (_myBox.get("LIKEDTOPICS") == null) {
+      likedTopics = [];
+    } else {
+      likedTopics = db.loadDataList();
+    }
+  }
 
   static List vr_section = [
     "Matching Tiles",
@@ -147,6 +159,8 @@ class SelectionTiles extends StatelessWidget {
           // );
           return CustomAlertDialog(title: "Added to Liked");
         });
+    _myBox.put("LIKEDTOPICS", likedTopics);
+    print("Saved change to DB");
   }
 
   Widget VRScreen(BuildContext context) {

@@ -15,7 +15,7 @@ class ExplorePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.blue[200],
         appBar: AppBar(
-          title: Text("Toggle below!"),
+          title: Text("Browse All Videos!"),
           automaticallyImplyLeading: false,
           elevation: 0.0,
           backgroundColor: Colors.blue[200],
@@ -32,77 +32,80 @@ class ExplorePage extends StatelessWidget {
             )
           ],
         ),
-        body: ListView(
-          children: [
-            // Center(
-            //     child: Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: GestureDetector(
-            //     onTap: () {
-            //       index = 0;
-            //       Navigator.popAndPushNamed(context, '/playpage');
-            //     },
-            //     child: Text(
-            //       "VR",
-            //       style: TextStyle(fontSize: 24.0),
-            //     ),
-            //   ),
-            // )),
-            // Center(
-            //     child: Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: GestureDetector(
-            //     onTap: () {
-            //       //Navigator.popAndPushNamed(context, '/nvrtiles');
-            //       index = 1;
-            //       print("index now 1");
-            //       //Navigator.pop(context, index);
-            //       Navigator.popAndPushNamed(context, '/playpage');
-            //     },
-            //     child: Text(
-            //       "NVR",
-            //       style: TextStyle(fontSize: 24.0),
-            //     ),
-            //   ),
-            // )),
-            // Center(
-            //     child: Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: GestureDetector(
-            //     onTap: () {
-            //       index = 2;
-            //       Navigator.popAndPushNamed(context, '/playpage');
-            //     },
-            //     child: Text(
-            //       "Numeracy",
-            //       style: TextStyle(fontSize: 24.0),
-            //     ),
-            //   ),
-            // )
-            //),
-            GestureDetector(
-                onTap: () {
-                  index = 0;
-                  Navigator.popAndPushNamed(context, '/playpage');
-                },
-                child: MySquare(text: "VR ")),
+        body: Lottie.network(
+            "https://assets10.lottiefiles.com/packages/lf20_ihspk1vg.json")
+        // ListView(
+        //   children: [
+        //     // Center(
+        //     //     child: Padding(
+        //     //   padding: const EdgeInsets.all(8.0),
+        //     //   child: GestureDetector(
+        //     //     onTap: () {
+        //     //       index = 0;
+        //     //       Navigator.popAndPushNamed(context, '/playpage');
+        //     //     },
+        //     //     child: Text(
+        //     //       "VR",
+        //     //       style: TextStyle(fontSize: 24.0),
+        //     //     ),
+        //     //   ),
+        //     // )),
+        //     // Center(
+        //     //     child: Padding(
+        //     //   padding: const EdgeInsets.all(8.0),
+        //     //   child: GestureDetector(
+        //     //     onTap: () {
+        //     //       //Navigator.popAndPushNamed(context, '/nvrtiles');
+        //     //       index = 1;
+        //     //       print("index now 1");
+        //     //       //Navigator.pop(context, index);
+        //     //       Navigator.popAndPushNamed(context, '/playpage');
+        //     //     },
+        //     //     child: Text(
+        //     //       "NVR",
+        //     //       style: TextStyle(fontSize: 24.0),
+        //     //     ),
+        //     //   ),
+        //     // )),
+        //     // Center(
+        //     //     child: Padding(
+        //     //   padding: const EdgeInsets.all(8.0),
+        //     //   child: GestureDetector(
+        //     //     onTap: () {
+        //     //       index = 2;
+        //     //       Navigator.popAndPushNamed(context, '/playpage');
+        //     //     },
+        //     //     child: Text(
+        //     //       "Numeracy",
+        //     //       style: TextStyle(fontSize: 24.0),
+        //     //     ),
+        //     //   ),
+        //     // )
+        //     //),
+        //     GestureDetector(
+        //         onTap: () {
+        //           index = 0;
+        //           Navigator.popAndPushNamed(context, '/playpage');
+        //         },
+        //         child: MySquare(text: "VR ")),
 
-            GestureDetector(
-                onTap: () {
-                  index = 1;
-                  print("index now 1");
-                  //       //Navigator.pop(context, index);
-                  Navigator.popAndPushNamed(context, '/playpage');
-                },
-                child: MySquare(text: "NVR ")),
+        //     GestureDetector(
+        //         onTap: () {
+        //           index = 1;
+        //           print("index now 1");
+        //           //       //Navigator.pop(context, index);
+        //           Navigator.popAndPushNamed(context, '/playpage');
+        //         },
+        //         child: MySquare(text: "NVR ")),
 
-            GestureDetector(
-                onTap: () {
-                  index = 2;
-                  Navigator.popAndPushNamed(context, '/playpage');
-                },
-                child: MySquare(text: "Numeracy ")),
-          ],
-        ));
+        //     GestureDetector(
+        //         onTap: () {
+        //           index = 2;
+        //           Navigator.popAndPushNamed(context, '/playpage');
+        //         },
+        //         child: MySquare(text: "Numeracy ")),
+        //   ],
+        // )
+        );
   }
 }

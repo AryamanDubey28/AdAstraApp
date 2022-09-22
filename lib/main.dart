@@ -12,6 +12,8 @@ import 'package:firebase_attempt/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'central screens/nav bar routes/settings_page.dart';
 import 'central screens/question_sheets.dart';
 import 'login_page.dart';
@@ -20,6 +22,10 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await QuestionSheets.init();
+
+  await Hive.initFlutter();
+
+  var box = await Hive.openBox('mybox');
 
   runApp(const MyApp());
 }

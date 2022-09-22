@@ -4,6 +4,7 @@ import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
 
@@ -21,6 +22,7 @@ class AllTopics extends StatefulWidget {
 
 class _AllTopicsState extends State<AllTopics> {
   List allTopics = [];
+  final _myBox = Hive.box('mybox');
 
   String getState() {
     if (ExplorePage.index == 0) {
@@ -189,6 +191,7 @@ class _AllTopicsState extends State<AllTopics> {
               showHeartedDialogue();
 
               print("added $topic");
+              _myBox.put("LIKEDTOPICS", SelectionTiles.likedTopics);
             }),
             backgroundColor: Colors.red,
             icon: Iconsax.heart,

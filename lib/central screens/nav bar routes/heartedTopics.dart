@@ -7,7 +7,10 @@ import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../database/database.dart';
 
 class HeartedTopics extends StatefulWidget {
   const HeartedTopics({Key? key}) : super(key: key);
@@ -19,13 +22,21 @@ class HeartedTopics extends StatefulWidget {
 class _HeartedTopicsState extends State<HeartedTopics> {
   List heartedTopics = SelectionTiles.likedTopics;
 
+  final _myBox = Hive.box('mybox');
+  //SelectionTilesDB db = SelectionTilesDB();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(heartedTopics);
+    //print(heartedTopics);
     heartedTopics = heartedTopics.toSet().toList();
-    print(heartedTopics);
+    //print(heartedTopics);
+    if (_myBox.get("LIKEDTOPICS") == null) {
+      print("DB is empty");
+    } else {
+      heartedTopics = _myBox.get("LIKEDTOPICS");
+    }
   }
 
   void goToQuizPage(int index) {
@@ -121,6 +132,9 @@ class _HeartedTopicsState extends State<HeartedTopics> {
     setState(() {
       heartedTopics.removeAt(index);
     });
+    //updateDataBase();
+    _myBox.put("LIKEDTOPICS", heartedTopics);
+    print("Saved delete change to DB");
   }
 
   @override
