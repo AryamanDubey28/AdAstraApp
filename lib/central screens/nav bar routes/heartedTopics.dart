@@ -20,7 +20,7 @@ class HeartedTopics extends StatefulWidget {
 }
 
 class _HeartedTopicsState extends State<HeartedTopics> {
-  List heartedTopics = SelectionTiles.likedTopics;
+  //List heartedTopics = SelectionTiles.likedTopics;
 
   final _myBox = Hive.box('mybox');
   //SelectionTilesDB db = SelectionTilesDB();
@@ -30,17 +30,20 @@ class _HeartedTopicsState extends State<HeartedTopics> {
     // TODO: implement initState
     super.initState();
     //print(heartedTopics);
-    heartedTopics = heartedTopics.toSet().toList();
+    //heartedTopics = heartedTopics.toSet().toList();
+    SelectionTiles.likedTopics = SelectionTiles.likedTopics.toSet().toList();
     //print(heartedTopics);
     if (_myBox.get("LIKEDTOPICS") == null) {
       print("DB is empty");
     } else {
-      heartedTopics = _myBox.get("LIKEDTOPICS");
+      //heartedTopics = _myBox.get("LIKEDTOPICS");
+      SelectionTiles.likedTopics = _myBox.get("LIKEDTOPICS");
     }
   }
 
   void goToQuizPage(int index) {
-    String s = heartedTopics[index];
+    //String s = heartedTopics[index];
+    String s = SelectionTiles.likedTopics[index];
     s = s.substring(0, s.indexOf("-") - 1);
     SelectionTiles.topic = s;
     Get.to(() => QuizScreen(),
@@ -76,11 +79,12 @@ class _HeartedTopicsState extends State<HeartedTopics> {
   }
 
   Widget screenContent() {
-    if (heartedTopics.isEmpty) {
+    //List heartedTopics = SelectionTiles.likedTopics;
+    if (SelectionTiles.likedTopics.isEmpty) {
       return emptyListScreen();
     } else {
       return ListView.builder(
-          itemCount: heartedTopics.length,
+          itemCount: SelectionTiles.likedTopics.length,
           itemBuilder: ((context, index) {
             return GestureDetector(
                 onTap: () {
@@ -115,7 +119,7 @@ class _HeartedTopicsState extends State<HeartedTopics> {
                         ),
                       ],
                     ),
-                    child: MySquare(text: heartedTopics[index])
+                    child: MySquare(text: SelectionTiles.likedTopics[index])
                     // child: Container(
                     //   color: Colors.grey[200],
                     //   child: ListTile(
@@ -130,10 +134,10 @@ class _HeartedTopicsState extends State<HeartedTopics> {
 
   void deleteTopic(int index) {
     setState(() {
-      heartedTopics.removeAt(index);
+      SelectionTiles.likedTopics.removeAt(index);
     });
     //updateDataBase();
-    _myBox.put("LIKEDTOPICS", heartedTopics);
+    _myBox.put("LIKEDTOPICS", SelectionTiles.likedTopics);
     print("Saved delete change to DB");
   }
 

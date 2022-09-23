@@ -5,6 +5,7 @@ import 'package:firebase_attempt/central%20screens/game%20screens/nvr%20draggabl
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/heartedTopics.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/database/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -159,6 +160,9 @@ class SelectionTiles extends StatelessWidget {
           // );
           return CustomAlertDialog(title: "Added to Liked");
         });
+
+    HeartedTopics ht = HeartedTopics();
+
     _myBox.put("LIKEDTOPICS", likedTopics);
     print("Saved change to DB");
   }
