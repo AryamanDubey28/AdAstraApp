@@ -2,6 +2,7 @@ import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/q
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:firebase_attempt/central%20screens/square_temp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -11,6 +12,7 @@ import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../database/database.dart';
+import '../../main.dart';
 
 class HeartedTopics extends StatefulWidget {
   const HeartedTopics({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class HeartedTopics extends StatefulWidget {
 }
 
 class _HeartedTopicsState extends State<HeartedTopics> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late String uid;
   //List heartedTopics = SelectionTiles.likedTopics;
 
   final _myBox = Hive.box('mybox');
@@ -29,16 +33,23 @@ class _HeartedTopicsState extends State<HeartedTopics> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    final User user = auth.currentUser!;
+    final email = user.email!;
+    uid = user.uid;
+    print(uid);
+
     //print(heartedTopics);
     //heartedTopics = heartedTopics.toSet().toList();
     SelectionTiles.likedTopics = SelectionTiles.likedTopics.toSet().toList();
+
     //print(heartedTopics);
-    if (_myBox.get("LIKEDTOPICS") == null) {
+    if (_myBox.get("LIKEDTOPICS_${uid}") == null) {
       print("DB is empty");
     } else {
       //heartedTopics = _myBox.get("LIKEDTOPICS");
-      SelectionTiles.likedTopics = _myBox.get("LIKEDTOPICS");
+      SelectionTiles.likedTopics = _myBox.get("LIKEDTOPICS_${uid}");
     }
+    SelectionTiles.likedTopics = SelectionTiles.likedTopics.toSet().toList();
   }
 
   void goToQuizPage(int index) {
@@ -137,7 +148,7 @@ class _HeartedTopicsState extends State<HeartedTopics> {
       SelectionTiles.likedTopics.removeAt(index);
     });
     //updateDataBase();
-    _myBox.put("LIKEDTOPICS", SelectionTiles.likedTopics);
+    _myBox.put("LIKEDTOPICS_${uid}", SelectionTiles.likedTopics);
     print("Saved delete change to DB");
   }
 

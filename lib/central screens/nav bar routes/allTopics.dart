@@ -1,6 +1,7 @@
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
 
 import '../../alert dialog/custom_dialog.dart';
+import '../../main.dart';
 import '../play_page.dart';
 
 class AllTopics extends StatefulWidget {
@@ -23,6 +25,18 @@ class AllTopics extends StatefulWidget {
 class _AllTopicsState extends State<AllTopics> {
   List allTopics = [];
   final _myBox = Hive.box('mybox');
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late String uid;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final User user = auth.currentUser!;
+    final email = user.email!;
+    uid = user.uid;
+    print(uid);
+  }
 
   String getState() {
     if (ExplorePage.index == 0) {
@@ -191,7 +205,7 @@ class _AllTopicsState extends State<AllTopics> {
               showHeartedDialogue();
 
               print("added $topic");
-              _myBox.put("LIKEDTOPICS", SelectionTiles.likedTopics);
+              _myBox.put("LIKEDTOPICS_${uid}", SelectionTiles.likedTopics);
             }),
             backgroundColor: Colors.red,
             icon: Iconsax.heart,

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:firebase_attempt/central%20screens/game%20screens/maths_game.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/question_sheets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:get/get.dart';
@@ -22,9 +23,16 @@ class _DiscoverPageState extends State<DiscoverPage> {
   late Timer timer;
   late int randomNumber;
 
+  // late String uid;
+
+  // FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
+    //User? user = auth.currentUser;
+    //String uid = user!.uid;
+    //print("user id is: $uid");
 
     randomNumber = getRandomNum();
     wordMap = getWordOfDayMap(randomNumber);

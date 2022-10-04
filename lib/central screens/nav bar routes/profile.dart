@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
     buildUsers();
     final User user = auth.currentUser!;
     final email = user.email!;
-    final uid = user.uid;
+    String uid = user.uid;
 
     Widget buildName(String user) {
       return Padding(
@@ -65,9 +65,9 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              user,
+              uid,
               style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 18.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),

@@ -8,6 +8,7 @@ import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_pa
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/heartedTopics.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/database/database.dart';
+import 'package:firebase_attempt/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
@@ -22,10 +23,17 @@ import '../../main_page.dart';
 import '../game screens/matching tiles/matching_tiles_g1.dart';
 
 class SelectionTiles extends StatelessWidget {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late String uid;
   static int index = 0;
   static String topic = "";
+
   SelectionTiles(int screenIndex) {
     index = screenIndex;
+    final User user = auth.currentUser!;
+    final email = user.email!;
+    uid = user.uid;
+    print(uid);
   }
   static List likedTopics = [];
 
@@ -33,7 +41,7 @@ class SelectionTiles extends StatelessWidget {
   SelectionTilesDB db = SelectionTilesDB();
 
   void getLikedTopics() {
-    if (_myBox.get("LIKEDTOPICS") == null) {
+    if (_myBox.get("LIKEDTOPICS_${uid}") == null) {
       likedTopics = [];
     } else {
       likedTopics = db.loadDataList();
@@ -162,8 +170,9 @@ class SelectionTiles extends StatelessWidget {
         });
 
     HeartedTopics ht = HeartedTopics();
+    print(uid);
 
-    _myBox.put("LIKEDTOPICS", likedTopics);
+    _myBox.put("LIKEDTOPICS_${uid}", likedTopics);
     print("Saved change to DB");
   }
 
@@ -334,6 +343,7 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = vr_section[index];
                       print(topic);
+                      print("USer id $uid");
                       //old navigation below -> works perf
                       // Navigator.push(
                       //     context,

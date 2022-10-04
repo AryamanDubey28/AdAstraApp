@@ -5,10 +5,12 @@ import 'package:firebase_attempt/central%20screens/game%20screens/matching%20til
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_layout.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/score_screen.dart';
 import 'package:firebase_attempt/central%20screens/hidden_drawer.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles_nvr.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
 import 'package:firebase_attempt/main_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
