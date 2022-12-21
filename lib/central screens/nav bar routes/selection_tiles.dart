@@ -178,7 +178,8 @@ class SelectionTiles extends StatelessWidget {
 
   Widget VRScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      // backgroundColor: Colors.blue[200],
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
@@ -292,7 +293,7 @@ class SelectionTiles extends StatelessWidget {
         //     fontSize: 28,
         //   ),
         // ),
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.grey[900],
         elevation: 0.0,
         actions: [
           // Padding(
@@ -343,7 +344,7 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = vr_section[index];
                       print(topic);
-                      print("USer id $uid");
+                      print("User id $uid");
                       //old navigation below -> works perf
                       // Navigator.push(
                       //     context,
@@ -381,7 +382,8 @@ class SelectionTiles extends StatelessWidget {
                           border: Border.all(color: Colors.white10),
                           borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
-                            image: AssetImage('lib/assets/VR3.jpg'),
+                            image: AssetImage(
+                                'lib/assets/central_screen/Numeracy_screen2.jpg'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -397,7 +399,7 @@ class SelectionTiles extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 24.0,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                  color: Colors.red,
                                 ),
                               ),
                             ),

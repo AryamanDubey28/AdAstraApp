@@ -96,6 +96,7 @@ flutter:
     - lib/assets/vr_images/
     - lib/assets/nvr_images/
     - lib/assets/animations/
+    - lib/assets/central_screen/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

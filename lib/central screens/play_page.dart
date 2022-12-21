@@ -23,13 +23,11 @@ class PlayPage extends StatefulWidget {
 class _PlayPageState extends State<PlayPage> {
   static int tilesScreenIndex = 0;
 
-  //final List routes = [HiddenDrawer(), null, null, null];
-
   Future<bool> _onWillPop() async {
     return false;
   }
 
-  Color? mygrey = Colors.grey[350];
+  Color? mygrey = Colors.grey[500];
 
   final screens = [
     SelectionTiles(ExplorePage.index),
@@ -71,12 +69,12 @@ class _PlayPageState extends State<PlayPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.grey[900],
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: GNav(
             backgroundColor: Colors.transparent,
-            color: Colors.black,
+            color: Colors.white,
             activeColor: Colors.white,
             tabBackgroundColor: mygrey!,
             gap: 7,
