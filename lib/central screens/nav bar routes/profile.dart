@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../main_page.dart';
+import '../PageColor.dart';
 
 class ProfilePage extends StatelessWidget {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -77,14 +78,14 @@ class ProfilePage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: pageColor,
       appBar: AppBar(
         // title: Text(
         //   "Profile",
         //   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         // ),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         elevation: 0.0,
         actions: [
           Padding(
@@ -166,7 +167,7 @@ class ProfilePage extends StatelessWidget {
             "Your statistics: ",
             style: TextStyle(
               fontSize: 35,
-              color: Colors.grey[800],
+              color: Colors.grey[700],
               fontWeight: FontWeight.bold,
             ),
           ),

@@ -16,21 +16,6 @@ class Question {
       this.category});
 }
 
-// class BuildQuizDB {
-//   late final dref = FirebaseDatabase.instance.ref();
-//   late DatabaseReference databaseReference;
-
-//   setData() async {
-//     await dref.child("Questions").set({
-//       'id': 4,
-//       "question": "9 + 10 = _____",
-//       "options": ["20", "23", "17", "19"],
-//       "answer_index": 3
-//     });
-//     print("done");
-//   }
-// }
-
 const List sample_data_vr = [
   {
     'id': 1,

@@ -11,6 +11,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../PageColor.dart';
+
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key? key}) : super(key: key);
 
@@ -73,10 +75,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.blue[200],
+          backgroundColor: pageColor,
           elevation: 0.0,
         ),
         body: SingleChildScrollView(

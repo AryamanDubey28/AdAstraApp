@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
+import '../PageColor.dart';
+
 class ExplorePage extends StatelessWidget {
   //const ExplorePage({Key? key}) : super(key: key);
 
@@ -13,12 +15,12 @@ class ExplorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         appBar: AppBar(
           title: Text("Browse All Videos!"),
           automaticallyImplyLeading: false,
           elevation: 0.0,
-          backgroundColor: Colors.blue[200],
+          backgroundColor: pageColor,
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),

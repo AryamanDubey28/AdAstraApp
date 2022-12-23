@@ -14,6 +14,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
 import '../login_page.dart';
+import 'PageColor.dart';
 
 class PlayPage extends StatefulWidget {
   @override
@@ -69,7 +70,7 @@ class _PlayPageState extends State<PlayPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: pageColor,
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: GNav(

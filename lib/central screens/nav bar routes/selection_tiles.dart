@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_attempt/alert%20dialog/custom_dialog.dart';
+import 'package:firebase_attempt/central%20screens/PageColor.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/nvr%20draggable%20qs/nvr_draggable.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
@@ -27,6 +28,7 @@ class SelectionTiles extends StatelessWidget {
   late String uid;
   static int index = 0;
   static String topic = "";
+  Color myPageCol = pageColor!;
 
   SelectionTiles(int screenIndex) {
     index = screenIndex;
@@ -179,7 +181,7 @@ class SelectionTiles extends StatelessWidget {
   Widget VRScreen(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.blue[200],
-      backgroundColor: Colors.grey[900],
+      backgroundColor: myPageCol,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
@@ -204,7 +206,7 @@ class SelectionTiles extends StatelessWidget {
             ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: Colors.blue[200],
+              blurBackgroundColor: pageColor,
               openWithTap: true,
               duration: Duration(seconds: 0),
               animateMenuItems: false,
@@ -293,7 +295,7 @@ class SelectionTiles extends StatelessWidget {
         //     fontSize: 28,
         //   ),
         // ),
-        backgroundColor: Colors.grey[900],
+        backgroundColor: pageColor,
         elevation: 0.0,
         actions: [
           // Padding(
@@ -459,7 +461,7 @@ class SelectionTiles extends StatelessWidget {
 
   Widget NVRScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: pageColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
@@ -492,7 +494,7 @@ class SelectionTiles extends StatelessWidget {
             // ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: Colors.blue[200],
+              blurBackgroundColor: pageColor,
               openWithTap: true,
               duration: Duration(seconds: 0),
               animateMenuItems: false,
@@ -572,7 +574,7 @@ class SelectionTiles extends StatelessWidget {
             //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
           ],
         ),
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         elevation: 0.0,
         actions: [
           // Padding(
@@ -723,7 +725,7 @@ class SelectionTiles extends StatelessWidget {
 
   Widget NumeracyScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: pageColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
@@ -756,7 +758,7 @@ class SelectionTiles extends StatelessWidget {
             // ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: Colors.blue[200],
+              blurBackgroundColor: pageColor,
               openWithTap: true,
               duration: Duration(seconds: 0),
               animateMenuItems: false,
@@ -842,7 +844,7 @@ class SelectionTiles extends StatelessWidget {
             //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
           ],
         ),
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         elevation: 0.0,
         actions: [
           // Padding(

@@ -11,6 +11,7 @@ import 'package:like_button/like_button.dart';
 
 import '../../alert dialog/custom_dialog.dart';
 import '../../main.dart';
+import '../PageColor.dart';
 import '../play_page.dart';
 
 class AllTopics extends StatefulWidget {
@@ -316,10 +317,10 @@ class _AllTopicsState extends State<AllTopics> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.blue[200],
+          backgroundColor: pageColor,
           centerTitle: true,
           title: Text(
             "All $topicString Topics",

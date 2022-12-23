@@ -13,6 +13,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../database/database.dart';
 import '../../main.dart';
+import '../PageColor.dart';
 
 class HeartedTopics extends StatefulWidget {
   const HeartedTopics({Key? key}) : super(key: key);
@@ -155,9 +156,9 @@ class _HeartedTopicsState extends State<HeartedTopics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: pageColor,
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: pageColor,
         title: Text(
           "Your Favourite Topics",
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
