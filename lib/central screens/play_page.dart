@@ -70,7 +70,7 @@ class _PlayPageState extends State<PlayPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: GNav(

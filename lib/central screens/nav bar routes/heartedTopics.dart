@@ -156,9 +156,9 @@ class _HeartedTopicsState extends State<HeartedTopics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: pageColor,
+      backgroundColor: getPageColor(),
       appBar: AppBar(
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         title: Text(
           "Your Favourite Topics",
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),

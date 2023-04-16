@@ -317,10 +317,10 @@ class _AllTopicsState extends State<AllTopics> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: pageColor,
+          backgroundColor: getPageColor(),
           centerTitle: true,
           title: Text(
             "All $topicString Topics",

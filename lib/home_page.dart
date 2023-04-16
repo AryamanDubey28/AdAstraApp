@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
-  // ignore: non_constant_identifier_names
   String name = "";
 
   List<String> docIDs = [];
@@ -37,33 +36,11 @@ class _HomePageState extends State<HomePage> {
 
   PageController my_controller = PageController();
 
-  @override
-  // void initState() {
-  //   getUserName();
-  //   super.initState();
-  // }
-
   bool onLastPage = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.blue[900],
-      //   title: Text("Signed In as: " + user.email!,
-      //       style: TextStyle(
-      //         fontSize: 16.0,
-      //         fontWeight: FontWeight.bold,
-      //       )),
-      //   elevation: 0.0,
-      //   actions: [
-      //     GestureDetector(
-      //         onTap: () {
-      //           FirebaseAuth.instance.signOut();
-      //         },
-      //         child: Icon(Icons.logout))
-      //   ],
-      // ),
       body: Stack(
         children: [
           PageView(
@@ -96,10 +73,6 @@ class _HomePageState extends State<HomePage> {
                       //wrap this with the sliding thingy
                       GestureDetector(
                           onTap: () {
-                            // Navigator.push(context,
-                            //     MaterialPageRoute(builder: (context) {
-                            //   return PlayPage();
-                            // }));
                             Get.to(() => PlayPage(),
                                 transition: Transition.topLevel,
                                 duration: Duration(seconds: 2));
@@ -116,35 +89,6 @@ class _HomePageState extends State<HomePage> {
               )),
         ],
       ),
-      // body: Center(
-      //     child: SafeArea(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Expanded(
-      //         child: FutureBuilder(
-      //             future: getDocIDs(),
-      //             builder: (context, snapshot) {
-      //               return ListView.builder(
-      //                   itemCount: docIDs.length,
-      //                   itemBuilder: (context, index) {
-      //                     return Padding(
-      //                       padding: const EdgeInsets.all(8.0),
-      //                       child: ListTile(
-      //                         title: GetUserName(
-      //                           documentID: docIDs[index],
-      //                           desiredText: "Full Details",
-      //                         ),
-      //                         tileColor: Colors.grey[300],
-      //                       ),
-      //                     );
-      //                   });
-      //             }),
-      //       ),
-      //     ],
-      //   ),
-      // )
-      // ),
     );
   }
 }

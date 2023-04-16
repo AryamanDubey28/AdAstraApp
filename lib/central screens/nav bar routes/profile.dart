@@ -78,14 +78,10 @@ class ProfilePage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: pageColor,
+      backgroundColor: getPageColor(),
       appBar: AppBar(
-        // title: Text(
-        //   "Profile",
-        //   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        // ),
         automaticallyImplyLeading: false,
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         elevation: 0.0,
         actions: [
           Padding(

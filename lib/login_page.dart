@@ -1,6 +1,7 @@
 import 'package:firebase_attempt/error%20screens/no_found_user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'forgot_password_page.dart';
@@ -19,49 +20,40 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   Future signIn() async {
-    // showDialog(
-    //   context: context,
-    //   builder: (context) {
-    //     return Center(child: CircularProgressIndicator());
-    //   },
-    // );
-
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        //Navigator.pop(context);
-
-        print('No user found for that email.');
-
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => NoFoundUser()),
-        // );
+        print('No user found for that email. Please try again');
         showDialog(
             context: context,
             builder: (context) {
-              return AlertDialog(
+              return const AlertDialog(
                 content: Text("No user found for that email."),
               );
             });
       } else if (e.code == 'wrong-password') {
-        // Navigator.pop(context);
         print('Wrong password provided for that user.');
         showDialog(
             context: context,
             builder: (context) {
-              return AlertDialog(
+              return const AlertDialog(
                 content: Text("Incorrect Password provided"),
+              );
+            });
+      } else {
+        print(e);
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(e.toString()),
               );
             });
       }
     }
-    //navigatorKey.currentState!.popUntil( (route) => route.isFirst() );
-    //Navigator.pop(context);
-    //Navigator.of(context).pop();
   }
 
   @override
@@ -83,30 +75,28 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: AssetImage('lib/assets/adastralogo.jpg'),
                   radius: 85.0,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
-                Text(
-                  "Hello There",
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 56.0,
-                  ),
+                const Text(
+                  "Hello There!",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 52),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Welcome back",
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 32.0,
                   ),
                 ),
-                SizedBox(
-                  height: 65.0,
+                const SizedBox(
+                  height: 55.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -129,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -146,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         controller: passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Password',
                         ),
@@ -154,19 +144,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ForgotPasswordPage();
-                        },
-                      ),
-                    );
+                    Get.to(() => ForgotPasswordPage(),
+                        transition: Transition.native,
+                        duration: Duration(milliseconds: 750));
                   },
                   child: Text(
                     "Forgot Password?",
@@ -176,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
@@ -205,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.blue[900],
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Center(
+                      child: const Center(
                           child: Text(
                         "Sign In",
                         style: TextStyle(
@@ -217,14 +202,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Not a member?"),
-                    SizedBox(
+                    const Text("Not a member?"),
+                    const SizedBox(
                       width: 5.0,
                     ),
                     GestureDetector(

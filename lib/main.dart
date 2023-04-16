@@ -32,8 +32,6 @@ Future main() async {
   runApp(const MyApp());
 }
 
-//final navigatorKey = GlobalKey<NavigatorState>();
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -41,7 +39,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      //navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       home: MainPage(),
       routes: {

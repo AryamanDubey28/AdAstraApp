@@ -28,7 +28,7 @@ class SelectionTiles extends StatelessWidget {
   late String uid;
   static int index = 0;
   static String topic = "";
-  Color myPageCol = pageColor!;
+  Color myPageCol = getPageColor()!;
 
   SelectionTiles(int screenIndex) {
     index = screenIndex;
@@ -83,8 +83,7 @@ class SelectionTiles extends StatelessWidget {
     "True Statements",
     "Problem Solving Practice",
   ];
-  //final List routes = [HiddenDrawer(), null, null, null];
-  //final List routes = [MatchingTilesGame1(), null, null, null];
+
   final List vr_routes = [
     InformationSheet(),
     QuizScreen(),
@@ -164,10 +163,6 @@ class SelectionTiles extends StatelessWidget {
           Future.delayed(Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          // return AlertDialog(
-          //   backgroundColor: Colors.grey[200],
-          //   title: Center(child: Text("Added to Liked")),
-          // );
           return CustomAlertDialog(title: "Added to Liked");
         });
 
@@ -180,14 +175,12 @@ class SelectionTiles extends StatelessWidget {
 
   Widget VRScreen(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.blue[200],
       backgroundColor: myPageCol,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -206,7 +199,7 @@ class SelectionTiles extends StatelessWidget {
             ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: pageColor,
+              blurBackgroundColor: getPageColor(),
               openWithTap: true,
               duration: Duration(seconds: 0),
               animateMenuItems: false,
@@ -219,7 +212,6 @@ class SelectionTiles extends StatelessWidget {
                     ),
                     onPressed: () {
                       ExplorePage.index = 0;
-                      // Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -234,7 +226,6 @@ class SelectionTiles extends StatelessWidget {
                     title: Text("NVR", style: TextStyle(fontSize: 18)),
                     onPressed: () {
                       ExplorePage.index = 1;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -249,7 +240,6 @@ class SelectionTiles extends StatelessWidget {
                     title: Text("Numeracy", style: TextStyle(fontSize: 18)),
                     onPressed: () {
                       ExplorePage.index = 2;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -281,47 +271,10 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.list)),
             ),
-
-            // IconButton(
-            //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
           ],
         ),
-        // Text(
-        //   "VR Activities",
-        //   textAlign: TextAlign.center,
-        //   style: TextStyle(
-        //     color: Colors.white,
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 28,
-        //   ),
-        // ),
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         elevation: 0.0,
-        actions: [
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         Get.to(AllTopics());
-          //       },
-          //       child: Icon(Icons.list)),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         FirebaseAuth.instance.signOut();
-          //         Navigator.pushAndRemoveUntil(
-          //           context,
-          //           MaterialPageRoute(
-          //             builder: (BuildContext context) => MainPage(),
-          //           ),
-          //           (route) => false,
-          //         );
-          //       },
-          //       child: Icon(Icons.logout)),
-          // ),
-        ],
       ),
       body: CarouselSlider.builder(
         options: CarouselOptions(
@@ -329,12 +282,7 @@ class SelectionTiles extends StatelessWidget {
           viewportFraction: 0.8,
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
-          //enlargeStrategy: CenterPageEnlargeStrategy.height
         ),
-        //body: Swiper(
-        //body: ListView.builder(
-        //scrollDirection: Axis.horizontal,
-        //itemCount: vr_section.length,
         itemCount: vr_section.length,
         itemBuilder: ((context, index, realIndex) {
           return Column(
@@ -361,7 +309,6 @@ class SelectionTiles extends StatelessWidget {
                       }
 
                       Get.to(() => screen,
-                          //transition: Transition.topLevel,
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
                     },
@@ -408,8 +355,6 @@ class SelectionTiles extends StatelessWidget {
                             SizedBox(
                               height: 30,
                             ),
-
-                            //Image.asset('lib/assets/adastralogo.jpg'),
                           ],
                         ),
                       ),
@@ -417,57 +362,21 @@ class SelectionTiles extends StatelessWidget {
                   ),
                 ),
               ),
-              //SmoothPageIndicator(controller: controller, count: count)
-
-              //Icon(Icons.next_plan)
-              // ElevatedButton(
-              //     onPressed: () => Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => HiddenDrawer())),
-              //     child: Text("")),
             ],
           );
         }),
-
-        // body: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     Center(
-        //         child: Text(
-        //       "Currently being made...",
-        //       style: TextStyle(
-        //         fontSize: 26.0,
-        //       ),
-        //     )),
-        //     Center(
-        //       child: Lottie.network(
-        //           "https://assets8.lottiefiles.com/private_files/lf30_y9czxcb9.json"),
-        //     ),
-        //     SizedBox(
-        //       height: 150,
-        //     ),
-        //     ElevatedButton(
-        //         onPressed: () {
-        //           Navigator.push(context,
-        //               MaterialPageRoute(builder: (context) => HiddenDrawer()));
-        //         },
-        //         child: Text("Go To Content!"))
-        //   ],
-        // ),
       ),
     );
   }
 
   Widget NVRScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: pageColor,
+      backgroundColor: getPageColor(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -484,17 +393,9 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.logout)),
             ),
-            // Text(
-            //   "NVR Activities",
-            //   style: TextStyle(
-            //     color: Colors.white,
-            //     fontWeight: FontWeight.bold,
-            //     fontSize: 28,
-            //   ),
-            // ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: pageColor,
+              blurBackgroundColor: getPageColor(),
               openWithTap: true,
               duration: Duration(seconds: 0),
               animateMenuItems: false,
@@ -507,7 +408,6 @@ class SelectionTiles extends StatelessWidget {
                     ),
                     onPressed: () {
                       ExplorePage.index = 0;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -522,7 +422,6 @@ class SelectionTiles extends StatelessWidget {
                     title: Text("NVR", style: TextStyle(fontSize: 18)),
                     onPressed: () {
                       ExplorePage.index = 1;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -537,7 +436,6 @@ class SelectionTiles extends StatelessWidget {
                     title: Text("Numeracy", style: TextStyle(fontSize: 18)),
                     onPressed: () {
                       ExplorePage.index = 2;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -569,38 +467,10 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.list)),
             ),
-
-            // IconButton(
-            //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
           ],
         ),
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         elevation: 0.0,
-        actions: [
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         Get.to(AllTopics());
-          //       },
-          //       child: Icon(Icons.list)),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         FirebaseAuth.instance.signOut();
-          //         Navigator.pushAndRemoveUntil(
-          //           context,
-          //           MaterialPageRoute(
-          //             builder: (BuildContext context) => MainPage(),
-          //           ),
-          //           (route) => false,
-          //         );
-          //       },
-          //       child: Icon(Icons.logout)),
-          // ),
-        ],
       ),
       body: CarouselSlider.builder(
         options: CarouselOptions(
@@ -608,10 +478,7 @@ class SelectionTiles extends StatelessWidget {
           viewportFraction: 0.8,
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
-          //enlargeStrategy: CenterPageEnlargeStrategy.height
         ),
-        //scrollDirection: Axis.horizontal,
-        //itemCount: nvr_section.length,
         itemCount: 5,
         itemBuilder: ((context, index, realIndex) {
           return Column(
@@ -623,13 +490,9 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = nvr_section[index];
                       print(topic);
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => nvr_routes[index]));
+
                       Widget screen = nvr_routes[index];
                       Get.to(() => screen,
-                          //transition: Transition.topLevel,
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
                     },
@@ -675,8 +538,6 @@ class SelectionTiles extends StatelessWidget {
                             SizedBox(
                               height: 30,
                             ),
-
-                            //Image.asset('lib/assets/adastralogo.jpg'),
                           ],
                         ),
                       ),
@@ -684,54 +545,21 @@ class SelectionTiles extends StatelessWidget {
                   ),
                 ),
               ),
-              // ElevatedButton(
-              //     onPressed: () => Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => HiddenDrawer())),
-              //     child: Text("")),
             ],
           );
         }),
-
-        // body: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     Center(
-        //         child: Text(
-        //       "Currently being made...",
-        //       style: TextStyle(
-        //         fontSize: 26.0,
-        //       ),
-        //     )),
-        //     Center(
-        //       child: Lottie.network(
-        //           "https://assets8.lottiefiles.com/private_files/lf30_y9czxcb9.json"),
-        //     ),
-        //     SizedBox(
-        //       height: 150,
-        //     ),
-        //     ElevatedButton(
-        //         onPressed: () {
-        //           Navigator.push(context,
-        //               MaterialPageRoute(builder: (context) => HiddenDrawer()));
-        //         },
-        //         child: Text("Go To Content!"))
-        //   ],
-        // ),
       ),
     );
   }
 
   Widget NumeracyScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: pageColor,
+      backgroundColor: getPageColor(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -758,7 +586,7 @@ class SelectionTiles extends StatelessWidget {
             // ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: pageColor,
+              blurBackgroundColor: getPageColor(),
               openWithTap: true,
               duration: Duration(seconds: 0),
               animateMenuItems: false,
@@ -771,7 +599,6 @@ class SelectionTiles extends StatelessWidget {
                     ),
                     onPressed: () {
                       ExplorePage.index = 0;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -786,9 +613,6 @@ class SelectionTiles extends StatelessWidget {
                     title: Text("NVR", style: TextStyle(fontSize: 18)),
                     onPressed: () {
                       ExplorePage.index = 1;
-                      //Navigator.popAndPushNamed(context, '/playpage');
-                      //
-                      //
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -798,16 +622,11 @@ class SelectionTiles extends StatelessWidget {
                           reverseTransitionDuration: Duration.zero,
                         ),
                       );
-                      //
-                      //
-                      // Get.to(() => PlayPage(),
-                      //     transition: Transition.noTransition);
                     }),
                 FocusedMenuItem(
                     title: Text("Numeracy", style: TextStyle(fontSize: 18)),
                     onPressed: () {
                       ExplorePage.index = 2;
-                      //Navigator.popAndPushNamed(context, '/playpage');
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
@@ -839,38 +658,10 @@ class SelectionTiles extends StatelessWidget {
                   },
                   child: Icon(Icons.list)),
             ),
-
-            // IconButton(
-            //     icon: Icon(Icons.list), onPressed: () => Get.to(AllTopics())),
           ],
         ),
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         elevation: 0.0,
-        actions: [
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         Get.to(AllTopics());
-          //       },
-          //       child: Icon(Icons.list)),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: GestureDetector(
-          //       onTap: () {
-          //         FirebaseAuth.instance.signOut();
-          //         Navigator.pushAndRemoveUntil(
-          //           context,
-          //           MaterialPageRoute(
-          //             builder: (BuildContext context) => MainPage(),
-          //           ),
-          //           (route) => false,
-          //         );
-          //       },
-          //       child: Icon(Icons.logout)),
-          // ),
-        ],
       ),
       body: CarouselSlider.builder(
         options: CarouselOptions(
@@ -878,10 +669,7 @@ class SelectionTiles extends StatelessWidget {
           viewportFraction: 0.8,
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
-          //enlargeStrategy: CenterPageEnlargeStrategy.height
         ),
-        //scrollDirection: Axis.horizontal,
-        //itemCount: numeracy_section.length,
         itemCount: numeracy_section.length,
         itemBuilder: ((context, index, realIndex) {
           return Column(
@@ -893,13 +681,8 @@ class SelectionTiles extends StatelessWidget {
                     onTap: () {
                       topic = numeracy_section[index];
                       print(topic);
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => numeracy_routes[index]));
                       Widget screen = numeracy_routes[index];
                       Get.to(() => screen,
-                          //transition: Transition.topLevel,
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
                     },
@@ -926,7 +709,6 @@ class SelectionTiles extends StatelessWidget {
                             fit: BoxFit.fill,
                           ),
                         ),
-                        //height: 100,
                         width: 300,
                         child: Column(
                           children: [
@@ -945,8 +727,6 @@ class SelectionTiles extends StatelessWidget {
                             SizedBox(
                               height: 30,
                             ),
-
-                            //Image.asset('lib/assets/adastralogo.jpg'),
                           ],
                         ),
                       ),
@@ -954,49 +734,12 @@ class SelectionTiles extends StatelessWidget {
                   ),
                 ),
               ),
-              // ElevatedButton(
-              //     onPressed: () => Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => HiddenDrawer())),
-              //     child: Text("")),
             ],
           );
         }),
-
-        // body: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     Center(
-        //         child: Text(
-        //       "Currently being made...",
-        //       style: TextStyle(
-        //         fontSize: 26.0,
-        //       ),
-        //     )),
-        //     Center(
-        //       child: Lottie.network(
-        //           "https://assets8.lottiefiles.com/private_files/lf30_y9czxcb9.json"),
-        //     ),
-        //     SizedBox(
-        //       height: 150,
-        //     ),
-        //     ElevatedButton(
-        //         onPressed: () {
-        //           Navigator.push(context,
-        //               MaterialPageRoute(builder: (context) => HiddenDrawer()));
-        //         },
-        //         child: Text("Go To Content!"))
-        //   ],
-        // ),
       ),
     );
   }
-
-  // void showScreen(BuildContext context) async {
-  //   index = await Navigator.push(
-  //       context, MaterialPageRoute(builder: (context) => ExplorePage()));
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -1005,129 +748,6 @@ class SelectionTiles extends StatelessWidget {
       NVRScreen(context),
       NumeracyScreen(context)
     ];
-    //print("activity screen index $index");
     return activityScreen[ExplorePage.index];
-
-    // return Scaffold(
-    //   backgroundColor: Colors.blue[200],
-    //   appBar: AppBar(
-    //     automaticallyImplyLeading: false,
-    //     title: Text(
-    //       "VR Activities",
-    //       style: TextStyle(
-    //         color: Colors.white,
-    //         fontWeight: FontWeight.bold,
-    //         fontSize: 28,
-    //       ),
-    //     ),
-    //     backgroundColor: Colors.blue[200],
-    //     elevation: 0.0,
-    //     actions: [
-    //       Padding(
-    //         padding: const EdgeInsets.all(10.0),
-    //         child: GestureDetector(
-    //             onTap: () {
-    //               FirebaseAuth.instance.signOut();
-    //               Navigator.pushAndRemoveUntil(
-    //                 context,
-    //                 MaterialPageRoute(
-    //                   builder: (BuildContext context) => MainPage(),
-    //                 ),
-    //                 (route) => false,
-    //               );
-    //             },
-    //             child: Icon(Icons.logout)),
-    //       ),
-    //     ],
-    //   ),
-    //   body: ListView.builder(
-    //     scrollDirection: Axis.horizontal,
-    //     itemCount: section.length,
-    //     itemBuilder: ((context, index) {
-    //       return Column(
-    //         children: [
-    //           Expanded(
-    //             child: Padding(
-    //               padding: const EdgeInsets.fromLTRB(8, 25, 4, 10),
-    //               child: GestureDetector(
-    //                 onTap: () => Navigator.push(context,
-    //                     MaterialPageRoute(builder: (context) => routes[index])),
-    //                 child: Padding(
-    //                   padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
-    //                   child: Container(
-    //                     decoration: BoxDecoration(
-    //                       color: Colors.grey[300],
-    //                       border: Border.all(color: Colors.white10),
-    //                       borderRadius: BorderRadius.circular(30),
-    //                       image: DecorationImage(
-    //                         image: AssetImage('lib/assets/VR3.jpg'),
-    //                         fit: BoxFit.fill,
-    //                       ),
-    //                     ),
-    //                     //height: 100,
-    //                     width: 300,
-    //                     child: Column(
-    //                       children: [
-    //                         Padding(
-    //                           padding: const EdgeInsets.all(20.0),
-    //                           child: Text(
-    //                             section[index],
-    //                             textAlign: TextAlign.center,
-    //                             style: TextStyle(
-    //                               fontSize: 24.0,
-    //                               fontWeight: FontWeight.bold,
-    //                               color: Colors.black,
-    //                             ),
-    //                           ),
-    //                         ),
-    //                         SizedBox(
-    //                           height: 30,
-    //                         ),
-
-    //                         //Image.asset('lib/assets/adastralogo.jpg'),
-    //                       ],
-    //                     ),
-    //                   ),
-    //                 ),
-    //               ),
-    //             ),
-    //           ),
-    //           // ElevatedButton(
-    //           //     onPressed: () => Navigator.push(
-    //           //         context,
-    //           //         MaterialPageRoute(
-    //           //             builder: (context) => HiddenDrawer())),
-    //           //     child: Text("")),
-    //         ],
-    //       );
-    //     }),
-
-    //     // body: Column(
-    //     //   mainAxisAlignment: MainAxisAlignment.center,
-    //     //   children: [
-    //     //     Center(
-    //     //         child: Text(
-    //     //       "Currently being made...",
-    //     //       style: TextStyle(
-    //     //         fontSize: 26.0,
-    //     //       ),
-    //     //     )),
-    //     //     Center(
-    //     //       child: Lottie.network(
-    //     //           "https://assets8.lottiefiles.com/private_files/lf30_y9czxcb9.json"),
-    //     //     ),
-    //     //     SizedBox(
-    //     //       height: 150,
-    //     //     ),
-    //     //     ElevatedButton(
-    //     //         onPressed: () {
-    //     //           Navigator.push(context,
-    //     //               MaterialPageRoute(builder: (context) => HiddenDrawer()));
-    //     //         },
-    //     //         child: Text("Go To Content!"))
-    //     //   ],
-    //     // ),
-    //   ),
-    // );
   }
 }

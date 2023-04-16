@@ -15,12 +15,12 @@ class ExplorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         appBar: AppBar(
           title: Text("Browse All Videos!"),
           automaticallyImplyLeading: false,
           elevation: 0.0,
-          backgroundColor: pageColor,
+          backgroundColor: getPageColor(),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),

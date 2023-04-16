@@ -75,10 +75,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: pageColor,
+        backgroundColor: getPageColor(),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: pageColor,
+          backgroundColor: getPageColor(),
           elevation: 0.0,
         ),
         body: SingleChildScrollView(
