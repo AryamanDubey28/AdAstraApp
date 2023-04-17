@@ -28,13 +28,14 @@ class _PlayPageState extends State<PlayPage> {
     return false;
   }
 
+  //colour used for bottom tabs
   Color? mygrey = Colors.grey[500];
 
+  //all screens shown in the bottom tabs
   final screens = [
     SelectionTiles(ExplorePage.index),
-    //SelectionTiles(),
     ExplorePage(),
-    DiscoverPage(),
+    const DiscoverPage(),
     ProfilePage(),
   ];
 
@@ -54,19 +55,8 @@ class _PlayPageState extends State<PlayPage> {
     return screens[currentIndex];
   }
 
-  // Future addUserDetails(
-  //     String firstname, String surname, int age, String email) async {
-  //   await FirebaseFirestore.instance.collection('users').add({
-  //     'First Name': firstname,
-  //     'Last Name': surname,
-  //     'Age': age,
-  //     'Email': email,
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-    print(ExplorePage.index);
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -84,19 +74,9 @@ class _PlayPageState extends State<PlayPage> {
                 oldIndex = currentIndex;
                 currentIndex = value;
               });
-              // if (value == 1) {
-              //   showModalBottomSheet(
-              //       context: context, builder: ((context) => ExplorePage()));
-              // }
-
-              // if (value == 0) {
-              // } else if (value == 1) {
-              // } else if (value == 2) {
-              //   Navigator.pushNamed(context, '/settings');
-              // } else if (value == 3) {}
             },
-            padding: EdgeInsets.all(16),
-            tabs: [
+            padding: const EdgeInsets.all(16),
+            tabs: const [
               GButton(
                 icon: Iconsax.home1,
                 text: "Home",
@@ -116,103 +96,7 @@ class _PlayPageState extends State<PlayPage> {
             ],
           ),
         ),
-
-        //title: Text("Choose your section!"),
-
-        // actions: [
-        //   Padding(
-        //     padding: const EdgeInsets.all(10.0),
-        //     child: GestureDetector(
-        //         onTap: () {
-        //           FirebaseAuth.instance.signOut();
-        //           Navigator.pushAndRemoveUntil(
-        //             context,
-        //             MaterialPageRoute(
-        //               builder: (BuildContext context) => MainPage(),
-        //             ),
-        //             (route) => false,
-        //           );
-        //         },
-        //         child: Icon(Icons.logout)),
-        //   ),
-        // ],
-
         body: screens[currentIndex],
-        //showScreen()
-
-        // ListView.builder(
-        //   scrollDirection: Axis.horizontal,
-        //   itemCount: section.length,
-        //   itemBuilder: ((context, index) {
-        //     return Column(
-        //       children: [
-        //         Expanded(
-        //           child: Padding(
-        //             padding: const EdgeInsets.all(16.0),
-        //             child: GestureDetector(
-        //               onTap: () => Navigator.push(
-        //                   context,
-        //                   MaterialPageRoute(
-        //                       builder: (context) => routes[index])),
-        //               child: Padding(
-        //                 padding: const EdgeInsets.symmetric(
-        //                     horizontal: 15.0, vertical: 15.0),
-        //                 child: Container(
-        //                   decoration: BoxDecoration(
-        //                       color: Colors.grey[300],
-        //                       border: Border.all(color: Colors.white10),
-        //                       borderRadius: BorderRadius.circular(30)),
-        //                   height: 100,
-        //                   width: 375,
-        //                   child: Center(
-        //                       child: Text(
-        //                     section[index],
-        //                     style: TextStyle(
-        //                         fontSize: 24.0,
-        //                         fontWeight: FontWeight.bold,
-        //                         color: Colors.black),
-        //                   )),
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //         // ElevatedButton(
-        //         //     onPressed: () => Navigator.push(
-        //         //         context,
-        //         //         MaterialPageRoute(
-        //         //             builder: (context) => HiddenDrawer())),
-        //         //     child: Text("")),
-        //       ],
-        //     );
-        //   }),
-
-        //   // body: Column(
-        //   //   mainAxisAlignment: MainAxisAlignment.center,
-        //   //   children: [
-        //   //     Center(
-        //   //         child: Text(
-        //   //       "Currently being made...",
-        //   //       style: TextStyle(
-        //   //         fontSize: 26.0,
-        //   //       ),
-        //   //     )),
-        //   //     Center(
-        //   //       child: Lottie.network(
-        //   //           "https://assets8.lottiefiles.com/private_files/lf30_y9czxcb9.json"),
-        //   //     ),
-        //   //     SizedBox(
-        //   //       height: 150,
-        //   //     ),
-        //   //     ElevatedButton(
-        //   //         onPressed: () {
-        //   //           Navigator.push(context,
-        //   //               MaterialPageRoute(builder: (context) => HiddenDrawer()));
-        //   //         },
-        //   //         child: Text("Go To Content!"))
-        //   //   ],
-        //   // ),
-        // )
       ),
     );
   }

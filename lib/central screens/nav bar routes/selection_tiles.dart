@@ -84,40 +84,6 @@ class SelectionTiles extends StatelessWidget {
     "Problem Solving Practice",
   ];
 
-  final List vr_routes = [
-    InformationSheet(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-  ];
-
   static List nvr_section = [
     "Odd One Out",
     "Practice Quiz",
@@ -132,35 +98,20 @@ class SelectionTiles extends StatelessWidget {
     "Combined Shapes"
   ];
 
-  final List nvr_routes = [
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-    QuizScreen(),
-  ];
-
   static List numeracy_section = [
     "Fractions",
     "Quick Maths",
     "Algebra",
     "Shapes"
   ];
-  final List numeracy_routes = [null, QuizScreen(), null, null];
 
+  //called when tile is double tapped
   void showLike(BuildContext context) {
     showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          Future.delayed(Duration(seconds: 1), () {
+          Future.delayed(const Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
           return CustomAlertDialog(title: "Added to Liked");
@@ -173,110 +124,8 @@ class SelectionTiles extends StatelessWidget {
     print("Saved change to DB");
   }
 
-  Widget VRScreen(BuildContext context) {
-    return Scaffold(
-      backgroundColor: myPageCol,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        titleSpacing: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: GestureDetector(
-                  onTap: () {
-                    FirebaseAuth.instance.signOut();
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => MainPage(),
-                      ),
-                      (route) => false,
-                    );
-                  },
-                  child: Icon(Icons.logout)),
-            ),
-            FocusedMenuHolder(
-              menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: getPageColor(),
-              openWithTap: true,
-              duration: Duration(seconds: 0),
-              animateMenuItems: false,
-              onPressed: () {},
-              menuItems: [
-                FocusedMenuItem(
-                    title: Text(
-                      "VR",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    onPressed: () {
-                      ExplorePage.index = 0;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: Text("NVR", style: TextStyle(fontSize: 18)),
-                    onPressed: () {
-                      ExplorePage.index = 1;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
-                    onPressed: () {
-                      ExplorePage.index = 2;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-              ],
-              menuOffset: 10,
-              child: Text(
-                "VR Activities ",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.to(() => AllTopics(),
-                        transition: Transition.topLevel,
-                        duration: Duration(seconds: 1));
-                  },
-                  child: Icon(Icons.list)),
-            ),
-          ],
-        ),
-        backgroundColor: getPageColor(),
-        elevation: 0.0,
-      ),
-      body: CarouselSlider.builder(
+  Widget getVRScreen(BuildContext context) {
+    return CarouselSlider.builder(
         options: CarouselOptions(
           height: 800,
           viewportFraction: 0.8,
@@ -295,19 +144,12 @@ class SelectionTiles extends StatelessWidget {
                       topic = vr_section[index];
                       print(topic);
                       print("User id $uid");
-                      //old navigation below -> works perf
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => vr_routes[index]));
-                      Widget screen = vr_routes[index]; //allows for transitions
-
+                      Widget screen; //allows for transitions
                       if (topic == "Matching Tiles") {
                         screen = InformationSheet();
                       } else {
                         screen = QuizScreen();
                       }
-
                       Get.to(() => screen,
                           transition: Transition.upToDown,
                           duration: Duration(milliseconds: 750));
@@ -336,7 +178,6 @@ class SelectionTiles extends StatelessWidget {
                             fit: BoxFit.fill,
                           ),
                         ),
-                        //height: 100,
                         width: 600,
                         child: Column(
                           children: [
@@ -364,390 +205,290 @@ class SelectionTiles extends StatelessWidget {
               ),
             ],
           );
-        }),
-      ),
-    );
+        }));
   }
 
-  Widget NVRScreen(BuildContext context) {
-    return Scaffold(
-      backgroundColor: getPageColor(),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        titleSpacing: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: GestureDetector(
-                  onTap: () {
-                    FirebaseAuth.instance.signOut();
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => MainPage(),
-                      ),
-                      (route) => false,
-                    );
-                  },
-                  child: Icon(Icons.logout)),
-            ),
-            FocusedMenuHolder(
-              menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: getPageColor(),
-              openWithTap: true,
-              duration: Duration(seconds: 0),
-              animateMenuItems: false,
-              onPressed: () {},
-              menuItems: [
-                FocusedMenuItem(
-                    title: Text(
-                      "VR",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    onPressed: () {
-                      ExplorePage.index = 0;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: Text("NVR", style: TextStyle(fontSize: 18)),
-                    onPressed: () {
-                      ExplorePage.index = 1;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
-                    onPressed: () {
-                      ExplorePage.index = 2;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-              ],
-              menuOffset: 10,
-              child: Text(
-                "NVR Activities",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.to(() => AllTopics(),
-                        transition: Transition.topLevel,
-                        duration: Duration(seconds: 1));
-                  },
-                  child: Icon(Icons.list)),
-            ),
-          ],
-        ),
-        backgroundColor: getPageColor(),
-        elevation: 0.0,
+  Widget getNVRScreen(BuildContext context) {
+    return CarouselSlider.builder(
+      options: CarouselOptions(
+        height: 800,
+        viewportFraction: 0.8,
+        enlargeCenterPage: true,
+        enableInfiniteScroll: false,
       ),
-      body: CarouselSlider.builder(
-        options: CarouselOptions(
-          height: 800,
-          viewportFraction: 0.8,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: false,
-        ),
-        itemCount: 5,
-        itemBuilder: ((context, index, realIndex) {
-          return Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      topic = nvr_section[index];
-                      print(topic);
-
-                      Widget screen = nvr_routes[index];
-                      Get.to(() => screen,
-                          transition: Transition.upToDown,
-                          duration: Duration(milliseconds: 750));
-                    },
-                    onDoubleTap: () {
-                      topic = nvr_section[index];
-                      if (ExplorePage.index == 0) {
-                        SelectionTiles.likedTopics.add(topic + " - VR");
-                      } else if (ExplorePage.index == 1) {
-                        SelectionTiles.likedTopics.add(topic + " - NVR");
-                      } else if (ExplorePage.index == 2) {
-                        SelectionTiles.likedTopics.add(topic + " - Numeracy");
-                      }
-                      showLike(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          border: Border.all(color: Colors.white10),
-                          borderRadius: BorderRadius.circular(30),
-                          image: DecorationImage(
-                            image: AssetImage('lib/assets/NVR.jpg'),
-                            fit: BoxFit.fill,
-                          ),
+      itemCount: 5,
+      itemBuilder: ((context, index, realIndex) {
+        return Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
+                child: GestureDetector(
+                  onTap: () {
+                    topic = nvr_section[index];
+                    print(topic);
+                    Widget screen = QuizScreen();
+                    Get.to(() => screen,
+                        transition: Transition.upToDown,
+                        duration: Duration(milliseconds: 750));
+                  },
+                  onDoubleTap: () {
+                    topic = nvr_section[index];
+                    if (ExplorePage.index == 0) {
+                      SelectionTiles.likedTopics.add(topic + " - VR");
+                    } else if (ExplorePage.index == 1) {
+                      SelectionTiles.likedTopics.add(topic + " - NVR");
+                    } else if (ExplorePage.index == 2) {
+                      SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                    }
+                    showLike(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        border: Border.all(color: Colors.white10),
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                          image: AssetImage('lib/assets/NVR.jpg'),
+                          fit: BoxFit.fill,
                         ),
-                        //height: 100,
-                        width: 300,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Text(
-                                nvr_section[index],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
+                      ),
+                      width: 300,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text(
+                              nvr_section[index],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
                             ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
-            ],
-          );
-        }),
-      ),
+            ),
+          ],
+        );
+      }),
     );
   }
 
-  Widget NumeracyScreen(BuildContext context) {
-    return Scaffold(
-      backgroundColor: getPageColor(),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        titleSpacing: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: GestureDetector(
-                  onTap: () {
-                    FirebaseAuth.instance.signOut();
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => MainPage(),
-                      ),
-                      (route) => false,
-                    );
-                  },
-                  child: Icon(Icons.logout)),
-            ),
-            // Text(
-            //   "Numeracy Activities",
-            //   style: TextStyle(
-            //     color: Colors.white,
-            //     fontWeight: FontWeight.bold,
-            //     fontSize: 26,
-            //   ),
-            // ),
-            FocusedMenuHolder(
-              menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: getPageColor(),
-              openWithTap: true,
-              duration: Duration(seconds: 0),
-              animateMenuItems: false,
-              onPressed: () {},
-              menuItems: [
-                FocusedMenuItem(
-                    title: Text(
-                      "VR",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    onPressed: () {
-                      ExplorePage.index = 0;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: Text("NVR", style: TextStyle(fontSize: 18)),
-                    onPressed: () {
-                      ExplorePage.index = 1;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
-                    onPressed: () {
-                      ExplorePage.index = 2;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-              ],
-              menuOffset: 10,
-              child: Text(
-                "Numeracy",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.to(() => AllTopics(),
-                        transition: Transition.topLevel,
-                        duration: Duration(seconds: 1));
-                  },
-                  child: Icon(Icons.list)),
-            ),
-          ],
-        ),
-        backgroundColor: getPageColor(),
-        elevation: 0.0,
+  Widget getNumeracyScreen(BuildContext context) {
+    return CarouselSlider.builder(
+      options: CarouselOptions(
+        height: 800,
+        viewportFraction: 0.8,
+        enlargeCenterPage: true,
+        enableInfiniteScroll: false,
       ),
-      body: CarouselSlider.builder(
-        options: CarouselOptions(
-          height: 800,
-          viewportFraction: 0.8,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: false,
-        ),
-        itemCount: numeracy_section.length,
-        itemBuilder: ((context, index, realIndex) {
-          return Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      topic = numeracy_section[index];
-                      print(topic);
-                      Widget screen = numeracy_routes[index];
-                      Get.to(() => screen,
-                          transition: Transition.upToDown,
-                          duration: Duration(milliseconds: 750));
-                    },
-                    onDoubleTap: () {
-                      topic = numeracy_section[index];
-                      if (ExplorePage.index == 0) {
-                        SelectionTiles.likedTopics.add(topic + " - VR");
-                      } else if (ExplorePage.index == 1) {
-                        SelectionTiles.likedTopics.add(topic + " - NVR");
-                      } else if (ExplorePage.index == 2) {
-                        SelectionTiles.likedTopics.add(topic + " - Numeracy");
-                      }
-                      showLike(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          border: Border.all(color: Colors.white10),
-                          borderRadius: BorderRadius.circular(30),
-                          image: DecorationImage(
-                            image: AssetImage('lib/assets/numeracy2.jpg'),
-                            fit: BoxFit.fill,
-                          ),
+      itemCount: numeracy_section.length,
+      itemBuilder: ((context, index, realIndex) {
+        return Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
+                child: GestureDetector(
+                  onTap: () {
+                    topic = numeracy_section[index];
+                    print(topic);
+                    Widget screen = QuizScreen();
+                    Get.to(() => screen,
+                        transition: Transition.upToDown,
+                        duration: Duration(milliseconds: 750));
+                  },
+                  onDoubleTap: () {
+                    topic = numeracy_section[index];
+                    if (ExplorePage.index == 0) {
+                      SelectionTiles.likedTopics.add(topic + " - VR");
+                    } else if (ExplorePage.index == 1) {
+                      SelectionTiles.likedTopics.add(topic + " - NVR");
+                    } else if (ExplorePage.index == 2) {
+                      SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                    }
+                    showLike(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        border: Border.all(color: Colors.white10),
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                          image: AssetImage('lib/assets/numeracy2.jpg'),
+                          fit: BoxFit.fill,
                         ),
-                        width: 300,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Text(
-                                numeracy_section[index],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
+                      ),
+                      width: 300,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text(
+                              numeracy_section[index],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
                             ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
-            ],
-          );
-        }),
-      ),
+            ),
+          ],
+        );
+      }),
     );
+  }
+
+  Widget getScreen(BuildContext context) {
+    if (ExplorePage.index == 0) {
+      return getVRScreen(context);
+    } else if (ExplorePage.index == 1) {
+      return getNVRScreen(context);
+    } else {
+      return getNumeracyScreen(context);
+    }
+  }
+
+  String getTitle() {
+    if (ExplorePage.index == 0) {
+      return "Verbal Reasoning";
+    } else if (ExplorePage.index == 1) {
+      return "Non Verbal Reasoning";
+    } else {
+      return "Numeracy";
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final List activityScreen = [
-      VRScreen(context),
-      NVRScreen(context),
-      NumeracyScreen(context)
-    ];
-    return activityScreen[ExplorePage.index];
+    return Scaffold(
+      backgroundColor: getPageColor(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        titleSpacing: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => MainPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.logout)),
+            ),
+            FocusedMenuHolder(
+              menuWidth: MediaQuery.of(context).size.width * 0.5,
+              blurBackgroundColor: getPageColor(),
+              openWithTap: true,
+              duration: Duration(seconds: 0),
+              animateMenuItems: false,
+              onPressed: () {},
+              menuItems: [
+                FocusedMenuItem(
+                    title: Text(
+                      "VR",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {
+                      ExplorePage.index = 0;
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("NVR", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 1;
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+                FocusedMenuItem(
+                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
+                    onPressed: () {
+                      ExplorePage.index = 2;
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    }),
+              ],
+              menuOffset: 10,
+              child: Text(
+                getTitle(),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => AllTopics(),
+                        transition: Transition.topLevel,
+                        duration: Duration(seconds: 1));
+                  },
+                  child: Icon(Icons.list)),
+            ),
+          ],
+        ),
+        backgroundColor: getPageColor(),
+        elevation: 0.0,
+      ),
+      body: getScreen(context),
+    );
   }
 }
