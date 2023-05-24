@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_attempt/alert%20dialog/custom_dialog.dart';
 import 'package:firebase_attempt/central%20screens/PageColor.dart';
@@ -23,32 +25,15 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../main_page.dart';
 import '../game screens/matching tiles/matching_tiles_g1.dart';
 
-class SelectionTiles extends StatelessWidget {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  late String uid;
+class SelectionTiles extends StatefulWidget {
+  String uid = FirebaseAuth.instance.currentUser!.uid;
   static int index = 0;
   static String topic = "";
-  Color myPageCol = getPageColor()!;
 
   SelectionTiles(int screenIndex) {
     index = screenIndex;
-    final User user = auth.currentUser!;
-    final email = user.email!;
-    uid = user.uid;
-    print(uid);
   }
   static List likedTopics = [];
-
-  final _myBox = Hive.box('mybox');
-  SelectionTilesDB db = SelectionTilesDB();
-
-  void getLikedTopics() {
-    if (_myBox.get("LIKEDTOPICS_${uid}") == null) {
-      likedTopics = [];
-    } else {
-      likedTopics = db.loadDataList();
-    }
-  }
 
   static List vr_section = [
     "Matching Tiles",
@@ -105,6 +90,41 @@ class SelectionTiles extends StatelessWidget {
     "Shapes"
   ];
 
+  @override
+  State<SelectionTiles> createState() => _SelectionTilesState();
+}
+
+class _SelectionTilesState extends State<SelectionTiles> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late Timer timer;
+
+  Color myPageCol = getPageColor()!;
+
+  final _myBox = Hive.box('mybox');
+
+  SelectionTilesDB db = SelectionTilesDB();
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer.cancel();
+  }
+
+  void getLikedTopics() {
+    if (_myBox.get("LIKEDTOPICS_${widget.uid}") == null) {
+      SelectionTiles.likedTopics = [];
+    } else {
+      SelectionTiles.likedTopics = db.loadDataList();
+    }
+  }
+
   //called when tile is double tapped
   void showLike(BuildContext context) {
     showDialog(
@@ -118,9 +138,9 @@ class SelectionTiles extends StatelessWidget {
         });
 
     HeartedTopics ht = HeartedTopics();
-    print(uid);
+    print(widget.uid);
 
-    _myBox.put("LIKEDTOPICS_${uid}", likedTopics);
+    _myBox.put("LIKEDTOPICS_${widget.uid}", SelectionTiles.likedTopics);
     print("Saved change to DB");
   }
 
@@ -132,7 +152,7 @@ class SelectionTiles extends StatelessWidget {
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
         ),
-        itemCount: vr_section.length,
+        itemCount: SelectionTiles.vr_section.length,
         itemBuilder: ((context, index, realIndex) {
           return Column(
             children: [
@@ -141,27 +161,30 @@ class SelectionTiles extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                   child: GestureDetector(
                     onTap: () {
-                      topic = vr_section[index];
-                      print(topic);
-                      print("User id $uid");
+                      SelectionTiles.topic = SelectionTiles.vr_section[index];
+                      print(SelectionTiles.topic);
+                      print("User id ${widget.uid}");
                       Widget screen; //allows for transitions
-                      if (topic == "Matching Tiles") {
+                      if (SelectionTiles.topic == "Matching Tiles") {
                         screen = InformationSheet();
                       } else {
                         screen = QuizScreen();
                       }
                       Get.to(() => screen,
                           transition: Transition.upToDown,
-                          duration: Duration(milliseconds: 750));
+                          duration: const Duration(milliseconds: 750));
                     },
                     onDoubleTap: () {
-                      topic = vr_section[index];
+                      SelectionTiles.topic = SelectionTiles.vr_section[index];
                       if (ExplorePage.index == 0) {
-                        SelectionTiles.likedTopics.add(topic + " - VR");
+                        SelectionTiles.likedTopics
+                            .add(SelectionTiles.topic + " - VR");
                       } else if (ExplorePage.index == 1) {
-                        SelectionTiles.likedTopics.add(topic + " - NVR");
+                        SelectionTiles.likedTopics
+                            .add(SelectionTiles.topic + " - NVR");
                       } else if (ExplorePage.index == 2) {
-                        SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                        SelectionTiles.likedTopics
+                            .add(SelectionTiles.topic + " - Numeracy");
                       }
                       showLike(context);
                     },
@@ -172,7 +195,7 @@ class SelectionTiles extends StatelessWidget {
                           color: Colors.grey[300],
                           border: Border.all(color: Colors.white10),
                           borderRadius: BorderRadius.circular(30),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             image: AssetImage(
                                 'lib/assets/central_screen/numeracy_screen_gradient.JPG'),
                             fit: BoxFit.fill,
@@ -184,16 +207,16 @@ class SelectionTiles extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: Text(
-                                vr_section[index],
+                                SelectionTiles.vr_section[index],
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 24.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                           ],
@@ -225,21 +248,24 @@ class SelectionTiles extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                 child: GestureDetector(
                   onTap: () {
-                    topic = nvr_section[index];
-                    print(topic);
+                    SelectionTiles.topic = SelectionTiles.nvr_section[index];
+                    print(SelectionTiles.topic);
                     Widget screen = QuizScreen();
                     Get.to(() => screen,
                         transition: Transition.upToDown,
                         duration: Duration(milliseconds: 750));
                   },
                   onDoubleTap: () {
-                    topic = nvr_section[index];
+                    SelectionTiles.topic = SelectionTiles.nvr_section[index];
                     if (ExplorePage.index == 0) {
-                      SelectionTiles.likedTopics.add(topic + " - VR");
+                      SelectionTiles.likedTopics
+                          .add(SelectionTiles.topic + " - VR");
                     } else if (ExplorePage.index == 1) {
-                      SelectionTiles.likedTopics.add(topic + " - NVR");
+                      SelectionTiles.likedTopics
+                          .add(SelectionTiles.topic + " - NVR");
                     } else if (ExplorePage.index == 2) {
-                      SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                      SelectionTiles.likedTopics
+                          .add(SelectionTiles.topic + " - Numeracy");
                     }
                     showLike(context);
                   },
@@ -261,7 +287,7 @@ class SelectionTiles extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Text(
-                              nvr_section[index],
+                              SelectionTiles.nvr_section[index],
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 24.0,
@@ -294,7 +320,7 @@ class SelectionTiles extends StatelessWidget {
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
       ),
-      itemCount: numeracy_section.length,
+      itemCount: SelectionTiles.numeracy_section.length,
       itemBuilder: ((context, index, realIndex) {
         return Column(
           children: [
@@ -303,21 +329,26 @@ class SelectionTiles extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                 child: GestureDetector(
                   onTap: () {
-                    topic = numeracy_section[index];
-                    print(topic);
+                    SelectionTiles.topic =
+                        SelectionTiles.numeracy_section[index];
+                    print(SelectionTiles.topic);
                     Widget screen = QuizScreen();
                     Get.to(() => screen,
                         transition: Transition.upToDown,
                         duration: Duration(milliseconds: 750));
                   },
                   onDoubleTap: () {
-                    topic = numeracy_section[index];
+                    SelectionTiles.topic =
+                        SelectionTiles.numeracy_section[index];
                     if (ExplorePage.index == 0) {
-                      SelectionTiles.likedTopics.add(topic + " - VR");
+                      SelectionTiles.likedTopics
+                          .add(SelectionTiles.topic + " - VR");
                     } else if (ExplorePage.index == 1) {
-                      SelectionTiles.likedTopics.add(topic + " - NVR");
+                      SelectionTiles.likedTopics
+                          .add(SelectionTiles.topic + " - NVR");
                     } else if (ExplorePage.index == 2) {
-                      SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                      SelectionTiles.likedTopics
+                          .add(SelectionTiles.topic + " - Numeracy");
                     }
                     showLike(context);
                   },
@@ -340,7 +371,7 @@ class SelectionTiles extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Text(
-                              numeracy_section[index],
+                              SelectionTiles.numeracy_section[index],
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 24.0,
@@ -480,9 +511,9 @@ class SelectionTiles extends StatelessWidget {
                   onTap: () {
                     Get.to(() => AllTopics(),
                         transition: Transition.topLevel,
-                        duration: Duration(seconds: 1));
+                        duration: const Duration(seconds: 1));
                   },
-                  child: Icon(Icons.list)),
+                  child: const Icon(Icons.list)),
             ),
           ],
         ),
