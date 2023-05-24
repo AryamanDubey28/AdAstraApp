@@ -174,7 +174,7 @@ class SelectionTiles extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
                             image: AssetImage(
-                                'lib/assets/central_screen/new_numeracy_screen.png'),
+                                'lib/assets/central_screen/numeracy_screen_gradient.JPG'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -329,7 +329,8 @@ class SelectionTiles extends StatelessWidget {
                         border: Border.all(color: Colors.white10),
                         borderRadius: BorderRadius.circular(30),
                         image: DecorationImage(
-                          image: AssetImage('lib/assets/numeracy2.jpg'),
+                          image: AssetImage(
+                              'lib/assets/central_screen/numeracy_screen_gradient.JPG'),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -344,7 +345,7 @@ class SelectionTiles extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                             ),
                           ),

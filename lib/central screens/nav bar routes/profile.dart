@@ -22,12 +22,6 @@ class ProfilePage extends StatelessWidget {
   }
 
   Map<String, dynamic> data = {};
-  // Stream<List<User>> readUsers() => FirebaseFirestore.instance
-  //     .collection('users')
-  //     .snapshots()
-  //     .map((snapshot) => snapshot.docs.map((e) => doc.data()).toList());
-
-  //FutureBuilder<DocumentSnapshot>
 
   FutureBuilder<DocumentSnapshot> getUsers(String documentID) {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -43,16 +37,6 @@ class ProfilePage extends StatelessWidget {
         }));
   }
 
-  // String getCurrentUserName() {
-  //   for (int i = 0; i < ids.length; i++) {
-
-  //     if() {
-
-  //     }
-
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     buildUsers();
@@ -66,7 +50,7 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              uid,
+              user,
               style: TextStyle(
                   fontSize: 18.0,
                   color: Colors.white,
@@ -115,22 +99,6 @@ class ProfilePage extends StatelessWidget {
           Center(child: LogoutButton(context)),
         ],
       ),
-      // body: Column(
-      //   children: [
-      //     SizedBox(
-      //       height: 2.0,
-      //     ),
-      //     //getUsers(uid),
-      //     Text(email),
-      //     Center(
-      //       child: Lottie.network(
-      //           "https://assets1.lottiefiles.com/private_files/lf30_LOw4AL.json"),
-      //     ),
-      //     SizedBox(
-      //       height: 20.0,
-      //     ),
-      //   ],
-      // ),
     );
   }
 
@@ -232,7 +200,6 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     final color = Colors.blue[900];
     return Center(
       child: Stack(children: [
