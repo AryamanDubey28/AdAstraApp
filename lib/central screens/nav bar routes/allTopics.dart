@@ -31,7 +31,6 @@ class _AllTopicsState extends State<AllTopics> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final User user = auth.currentUser!;
     final email = user.email!;
@@ -59,30 +58,11 @@ class _AllTopicsState extends State<AllTopics> {
     }
   }
 
-  // static List allLikedTopics = [];
-
-  // List getAllLikedTopics() {
-  //   return allLikedTopics;
-  // }
-
   Icon getLikeButton() {
     return Icon(Icons.abc);
   }
 
   void showHeartedDialogue() {
-    // showDialog(
-    //     context: context,
-    //     barrierDismissible: false,
-    //     builder: (context) {
-    //       Future.delayed(Duration(seconds: 1), () {
-    //         Navigator.of(context).pop(true);
-    //       });
-    //       return AlertDialog(
-    //         backgroundColor: Colors.grey[200],
-    //         title: Center(child: Text("Added to Liked")),
-    //       );
-    //     });
-    //_openCustomDialog("Added to Liked");
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -90,29 +70,11 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          // return AlertDialog(
-          //   backgroundColor: Colors.grey[200],
-          //   title: Center(child: Text("Added to Liked")),
-          // );
           return CustomAlertDialog(title: "Added to Liked");
         });
   }
 
   void showDownDialogue() {
-    // showDialog(
-    //     context: context,
-    //     barrierDismissible: false,
-    //     builder: (context) {
-    //       Future.delayed(Duration(seconds: 1), () {
-    //         Navigator.of(context).pop(true);
-    //       });
-    //       return AlertDialog(
-    //         backgroundColor: Colors.grey[200],
-    //         title: Center(child: Text("Moved to Bottom")),
-    //       );
-    //     });
-    //_openCustomDialog("Moved to Bottom");
-
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -120,28 +82,11 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
-          // return AlertDialog(
-          //   backgroundColor: Colors.grey[200],
-          //   title: Center(child: Text("Added to Liked")),
-          // );
           return CustomAlertDialog(title: "Moved to Bottom");
         });
   }
 
   void showUpDialogue() {
-    // showDialog(
-    //     context: context,
-    //     barrierDismissible: false,
-    //     builder: (context) {
-    //       Future.delayed(Duration(seconds: 1), () {
-    //         Navigator.of(context).pop(true);
-    //       });
-    //       return AlertDialog(
-    //         backgroundColor: Colors.grey[200],
-    //         title: Center(child: Text("Moved to Top")),
-    //       );
-    //     });
-    //_openCustomDialog("Moved to Top");
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -149,10 +94,6 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
-          // return AlertDialog(
-          //   backgroundColor: Colors.grey[200],
-          //   title: Center(child: Text("Added to Liked")),
-          // );
           return CustomAlertDialog(title: "Moved to Top");
         });
   }
@@ -162,7 +103,6 @@ class _AllTopicsState extends State<AllTopics> {
       Navigator.of(context).pop(true);
     });
     showGeneralDialog(
-        //barrierColor: Colors.black.withOpacity(0.5),
         transitionBuilder: (context, a1, a2, widget) {
           return Transform.scale(
             scale: a1.value,
@@ -210,7 +150,6 @@ class _AllTopicsState extends State<AllTopics> {
             }),
             backgroundColor: Colors.red,
             icon: Iconsax.heart,
-            //icon: LikeButton()
           ),
           SlidableAction(
             onPressed: ((context) {
@@ -255,48 +194,30 @@ class _AllTopicsState extends State<AllTopics> {
         ],
       ),
       child: ListTile(
-        //key: ValueKey(topic),
-        trailing: Icon(Icons.menu),
+        trailing: Icon(
+          Icons.menu,
+          color: Colors.white,
+        ),
         title: Text(
           topic,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
     );
-
-    // return ListTile(
-    //   key: ValueKey(topic),
-    //   leading: Icon(Icons.square),
-    //   title: Text(
-    //     topic,
-    //     textAlign: TextAlign.center,
-    //     style: TextStyle(fontSize: 20),
-    //   ),
-    // );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
-
+    print("disposed");
     if (ExplorePage.index == 0) {
       SelectionTiles.vr_section = allTopics;
-      print("Disposeddddd");
     } else if (ExplorePage.index == 1) {
       SelectionTiles.nvr_section = allTopics;
-      print("Disposed");
     } else if (ExplorePage.index == 2) {
       SelectionTiles.numeracy_section = allTopics;
-      print("Disposed");
     }
-
-    //Navigator.popAndPushNamed(context, '/playpage');
-  }
-
-  Future<bool> _onWillPop() async {
-    return false;
   }
 
   String getTopic() {
@@ -314,62 +235,55 @@ class _AllTopicsState extends State<AllTopics> {
     String topicString = getTopic();
     allTopics = buildTopicsList();
     String state = getState();
-    return WillPopScope(
-      onWillPop: _onWillPop,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: getPageColor(),
+      appBar: AppBar(
         backgroundColor: getPageColor(),
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: getPageColor(),
-          centerTitle: true,
-          title: Text(
-            "All $topicString Topics",
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: GestureDetector(
-                  onTap: () {
-                    //Navigator.popAndPushNamed(context, '/playpage');
-                    Navigator.pushReplacement(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder: (context, animation1, animation2) =>
-                            PlayPage(),
-                        transitionDuration: Duration.zero,
-                        reverseTransitionDuration: Duration.zero,
-                      ),
-                    );
-                    //Get.back();
-                  },
-                  child: Icon(Iconsax.back_square)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      allTopics.shuffle();
-                    });
-                  },
-                  child: Icon(Icons.shuffle)),
-            ),
-          ],
+        centerTitle: true,
+        title: Text(
+          "All $topicString Topics",
+          textAlign: TextAlign.center,
         ),
-        body: ReorderableListView.builder(
-            itemCount: allTopics.length,
-            onReorder: (oldIndex, newIndex) => setState(() {
-                  final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
-                  final topic = allTopics.removeAt(oldIndex);
-                  allTopics.insert(index, topic);
-                }),
-            itemBuilder: (context, index) {
-              String topic = allTopics[index];
-
-              return buildTopicTile(index, topic);
-            }),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) =>
+                          PlayPage(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                    ),
+                  );
+                },
+                child: Icon(Iconsax.back_square)),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    allTopics.shuffle();
+                  });
+                },
+                child: Icon(Icons.shuffle)),
+          ),
+        ],
       ),
+      body: ReorderableListView.builder(
+          itemCount: allTopics.length,
+          onReorder: (oldIndex, newIndex) => setState(() {
+                final index = newIndex > oldIndex ? newIndex - 1 : newIndex;
+                final topic = allTopics.removeAt(oldIndex);
+                allTopics.insert(index, topic);
+              }),
+          itemBuilder: (context, index) {
+            String topic = allTopics[index];
+            return buildTopicTile(index, topic);
+          }),
     );
   }
 }
