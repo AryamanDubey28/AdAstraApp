@@ -112,7 +112,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     timer.cancel();
   }
@@ -127,6 +126,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
   //called when tile is double tapped
   void showLike(BuildContext context) {
+    Color? backgroundColor = getPageColor();
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -134,7 +134,10 @@ class _SelectionTilesState extends State<SelectionTiles> {
           Future.delayed(const Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(title: "Added to Liked");
+          return CustomAlertDialog(
+            title: "Added to Liked",
+            backgroundColor: backgroundColor!,
+          );
         });
 
     HeartedTopics ht = HeartedTopics();

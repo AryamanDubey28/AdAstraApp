@@ -1,3 +1,4 @@
+import 'package:firebase_attempt/central%20screens/PageColor.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/controllers/question_controller.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/progress_bar.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/question.dart';
@@ -26,18 +27,18 @@ class _BodyState extends State<Body> {
       ExplorePage.index,
     ));
     return Scaffold(
-        backgroundColor: Colors.blue[500],
+        backgroundColor: getPageColor(),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: ProgressBar(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Padding(
@@ -61,12 +62,12 @@ class _BodyState extends State<Body> {
                           ],
                         )),
                       )),
-                  Divider(
+                  const Divider(
                     thickness: 2,
                   ),
                   Expanded(
                     child: PageView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       controller: _questionController.pageController,
                       onPageChanged: _questionController.updateQuestion,
                       itemCount: _questionController.questions.length,

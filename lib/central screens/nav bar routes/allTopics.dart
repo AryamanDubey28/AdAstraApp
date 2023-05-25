@@ -28,6 +28,7 @@ class _AllTopicsState extends State<AllTopics> {
   final _myBox = Hive.box('mybox');
   final FirebaseAuth auth = FirebaseAuth.instance;
   late String uid;
+  final Color? backgroundColor = getPageColor();
 
   @override
   void initState() {
@@ -70,7 +71,10 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(title: "Added to Liked");
+          return CustomAlertDialog(
+            title: "Added to Liked",
+            backgroundColor: backgroundColor!,
+          );
         });
   }
 
@@ -82,7 +86,10 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(title: "Moved to Bottom");
+          return CustomAlertDialog(
+            title: "Moved to Bottom",
+            backgroundColor: backgroundColor!,
+          );
         });
   }
 
@@ -94,7 +101,10 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(title: "Moved to Top");
+          return CustomAlertDialog(
+            title: "Moved to Top",
+            backgroundColor: backgroundColor!,
+          );
         });
   }
 
@@ -245,22 +255,6 @@ class _AllTopicsState extends State<AllTopics> {
           textAlign: TextAlign.center,
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) =>
-                          PlayPage(),
-                      transitionDuration: Duration.zero,
-                      reverseTransitionDuration: Duration.zero,
-                    ),
-                  );
-                },
-                child: Icon(Iconsax.back_square)),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: GestureDetector(

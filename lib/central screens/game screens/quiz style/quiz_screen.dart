@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_attempt/central%20screens/PageColor.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/question.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
@@ -15,7 +16,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final Map descriptions = {
+  final Map<String, String> descriptions = {
     "Letter Codes":
         "Find the letters that will complete the sentence in the best way and select the correct answer from the options",
     "Word Codes":
@@ -34,15 +35,6 @@ class _QuizScreenState extends State<QuizScreen> {
   };
 
   String getText() {
-    // if (ExplorePage.index == 0) {
-    //   return "A VR Style Quiz";
-    // } else if (ExplorePage.index == 1) {
-    //   return "A NVR Style Quiz";
-    // } else if (ExplorePage.index == 2) {
-    //   return "A Numeracy Quiz";
-    // } else {
-    //   return "";
-    // }
     return "A '${SelectionTiles.topic}' game";
   }
 
@@ -59,40 +51,11 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   String getDescription() {
-    // for (int i = 0; i < descriptions.length; i++) {
-    //   // Map<String, String> map = descriptions[i];
-    //   // print("map key ----------- " + map.keys.elementAt(i));
-    //   // if (map.keys.elementAt(i) == SelectionTiles.topic) {
-    //   //   print("map val -------- " + map.values.elementAt(i));
-    //   //   return map.values.elementAt(i);
-    //   // }
-    //   String key = descriptions.keys.elementAt(i);
-    //   String val = descriptions.values.elementAt(i);
-    //   if (key == SelectionTiles.topic) {
-    //     return val;
-    //   }
-    // }
-    // return "No description found...";
     if (descriptions.containsKey(SelectionTiles.topic)) {
-      return descriptions[SelectionTiles.topic];
+      return descriptions[SelectionTiles.topic]!;
     }
     return "No description found...";
   }
-
-  // @override
-  // void initState() {
-  //   addQuestions();
-  // }
-
-  // Future addUserDetails(
-  //     String firstname, String surname, int age, String email) async {
-  //   await FirebaseFirestore.instance.collection('users').add({
-  //     'First Name': firstname,
-  //     'Last Name': surname,
-  //     'Age': age,
-  //     'Email': email,
-  //   });
-  // }
 
   Future addQuestions() async {
     for (int i = 0; i < sample_data_numeracy.length; i++) {
@@ -105,9 +68,9 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: getPageColor(),
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: getPageColor(),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -118,24 +81,24 @@ class _QuizScreenState extends State<QuizScreen> {
                 children: [
                   Center(
                     child: FadeIn(
-                      duration: Duration(milliseconds: 1400),
+                      duration: const Duration(milliseconds: 1400),
                       child: SizedBox(
                         height: 275,
                         width: 275,
                         child: Center(
-                          child: Lottie.network(getAnim()),
+                          child: Lottie.network(getAnim(),
+                              width: 400, height: 400),
                         ),
                       ),
                     ),
                   ),
-
                   Center(
                     child: Text(
                       "Lets Play",
                       style: GoogleFonts.bebasNeue(
-                        fontSize: 96.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 96.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ),
                   SizedBox(
@@ -146,60 +109,43 @@ class _QuizScreenState extends State<QuizScreen> {
                       getText(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.bebasNeue(
-                        fontSize: 30.0,
-                      ),
+                          fontSize: 30.0, color: Colors.white),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 2,
+                    color: Colors.white,
                   ),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        // getText(),
                         getDescription(),
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Cambria",
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: const TextStyle(
+                            fontFamily: "Cambria",
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: ElevatedButton(
                         onPressed: () {
                           Navigator.popAndPushNamed(context, "/game2");
                         },
-                        child: Text(
+                        child: const Text(
                           "Start",
                           style: TextStyle(
                             fontSize: 30,
                           ),
                         )),
                   ),
-
-                  // Padding(
-                  //   padding: const EdgeInsets.all(50.0),
-                  //   child: ElevatedButton(
-                  //       onPressed: () {
-                  //         // BuildQuizDB buildQuizDB = BuildQuizDB();
-                  //         // buildQuizDB.setData();
-                  //       },
-                  //       child: Text(
-                  //         "Set Data",
-                  //         style: TextStyle(
-                  //           fontSize: 30,
-                  //         ),
-                  //       )),
-                  // ),
                 ],
               ),
             ),

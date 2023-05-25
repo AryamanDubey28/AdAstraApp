@@ -1,3 +1,4 @@
+import 'package:firebase_attempt/central%20screens/PageColor.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/body.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/controllers/question_controller.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
@@ -18,7 +19,6 @@ class _QuizLayoutState extends State<QuizLayout> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     Get.delete<QuestionController>();
     super.dispose();
   }
@@ -31,9 +31,9 @@ class _QuizLayoutState extends State<QuizLayout> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          backgroundColor: Colors.blue[500],
+          backgroundColor: getPageColor(),
           appBar: AppBar(
-            backgroundColor: Colors.blue[500],
+            backgroundColor: getPageColor(),
             automaticallyImplyLeading: false,
             elevation: 0.0,
             actions: [

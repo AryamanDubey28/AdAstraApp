@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:firebase_attempt/central%20screens/game%20screens/maths_game.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/question_sheets.dart';
@@ -22,23 +21,13 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage> {
   late Future<Map> wordMap;
-  late Timer timer;
   late int randomNumber;
-
-  // late String uid;
-
-  // FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void initState() {
     super.initState();
-    //User? user = auth.currentUser;
-    //String uid = user!.uid;
-    //print("user id is: $uid");
-
     randomNumber = getRandomNum();
     wordMap = getWordOfDayMap(randomNumber);
-    //callMethod();
   }
 
   Future<Map> getWordOfDayMap(int x) async {
@@ -48,28 +37,12 @@ class _DiscoverPageState extends State<DiscoverPage> {
     String def = word.toJson()['definition'];
 
     return {"word": randWord, "definition": def};
-    //choices[word!.toJson()['word']] = word.toJson()['definition'];
   }
-
-  // Future callMethod() async {
-  //   timer = Timer.periodic(Duration(seconds: 5), (Timer t) {
-  //     //print("in timer");
-  //     randomNumber = getRandomNum();
-  //     wordMap = getWordOfDayMap(randomNumber);
-  //   });
-  // }
 
   int getRandomNum() {
     Random random = Random();
-    //646
     int r1 = random.nextInt(640) + 1;
-    int r2 = random.nextInt(640);
-    if (r1 == r2) {
-      r1 = random.nextInt(640) + 1;
-    }
-
-    //print(r2 + 1);
-    return r2 + 1;
+    return r1;
   }
 
   @override
@@ -92,9 +65,9 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     "Discover Page",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
-                      fontSize: 46.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 46.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ),
               ),
@@ -116,7 +89,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2.0,
             ),
             SizedBox(
@@ -127,7 +100,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     "https://assets5.lottiefiles.com/packages/lf20_ii6qdbgz.json"),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             FadeIn(
@@ -147,11 +120,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             FutureBuilder<Map>(
-                //future: getWordOfDayMap(),
                 future: wordMap,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
@@ -165,42 +137,37 @@ class _DiscoverPageState extends State<DiscoverPage> {
                       child: Text(
                         word + " - " + def,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontFamily: "Cambria",
                             fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                     );
                   } else {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   }
                 }),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
-                // IconButton(onPressed: () {}, icon: Icon(Icons.feed))
                 ButtonWidget(
-                    text: "Todays Maths Game!",
+                    text: "Play A Maths Game",
                     onClicked: () {
                       Get.to(() => MathsGame(),
                           transition: Transition.downToUp);
                     })
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // IconButton(onPressed: () {}, icon: Icon(Icons.play_arrow)),
-                // IconButton(onPressed: () {}, icon: Icon(Icons.feed))
-                ButtonWidget(text: "Latest News", onClicked: () {})
-              ],
+              children: [ButtonWidget(text: "Latest News", onClicked: () {})],
             ),
           ]),
         ));
