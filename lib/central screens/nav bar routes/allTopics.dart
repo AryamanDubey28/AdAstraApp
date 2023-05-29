@@ -60,7 +60,7 @@ class _AllTopicsState extends State<AllTopics> {
   }
 
   Icon getLikeButton() {
-    return Icon(Icons.abc);
+    return const Icon(Icons.abc);
   }
 
   void showHeartedDialogue() {
@@ -68,7 +68,7 @@ class _AllTopicsState extends State<AllTopics> {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          Future.delayed(Duration(seconds: 1), () {
+          Future.delayed(const Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
           return CustomAlertDialog(
@@ -83,7 +83,7 @@ class _AllTopicsState extends State<AllTopics> {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          Future.delayed(Duration(milliseconds: 1500), () {
+          Future.delayed(const Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
           return CustomAlertDialog(
@@ -98,41 +98,13 @@ class _AllTopicsState extends State<AllTopics> {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          Future.delayed(Duration(milliseconds: 1500), () {
+          Future.delayed(const Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
           return CustomAlertDialog(
             title: "Moved to Top",
             backgroundColor: backgroundColor!,
           );
-        });
-  }
-
-  void _openCustomDialog(String text) {
-    Future.delayed(Duration(milliseconds: 1500), () {
-      Navigator.of(context).pop(true);
-    });
-    showGeneralDialog(
-        transitionBuilder: (context, a1, a2, widget) {
-          return Transform.scale(
-            scale: a1.value,
-            child: Opacity(
-              opacity: a1.value,
-              child: AlertDialog(
-                backgroundColor: Colors.white.withOpacity(0.75),
-                shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0)),
-                title: Center(child: Text(text)),
-              ),
-            ),
-          );
-        },
-        transitionDuration: Duration(milliseconds: 200),
-        barrierDismissible: false,
-        barrierLabel: '',
-        context: context,
-        pageBuilder: (context, animation1, animation2) {
-          return Text('PAGE BUILDER');
         });
   }
 
@@ -204,14 +176,16 @@ class _AllTopicsState extends State<AllTopics> {
         ],
       ),
       child: ListTile(
-        trailing: Icon(
+        trailing: const Icon(
           Icons.menu,
-          color: Colors.white,
+          //color: Colors.white,
         ),
         title: Text(
           topic,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: const TextStyle(
+            fontSize: 20, //color: Colors.white
+          ),
         ),
       ),
     );
@@ -244,11 +218,10 @@ class _AllTopicsState extends State<AllTopics> {
   Widget build(BuildContext context) {
     String topicString = getTopic();
     allTopics = buildTopicsList();
-    String state = getState();
     return Scaffold(
-      backgroundColor: getPageColor(),
+      //backgroundColor: getPageColor(),
       appBar: AppBar(
-        backgroundColor: getPageColor(),
+        //backgroundColor: getPageColor(),
         centerTitle: true,
         title: Text(
           "All $topicString Topics",
@@ -263,7 +236,7 @@ class _AllTopicsState extends State<AllTopics> {
                     allTopics.shuffle();
                   });
                 },
-                child: Icon(Icons.shuffle)),
+                child: const Icon(Icons.shuffle)),
           ),
         ],
       ),

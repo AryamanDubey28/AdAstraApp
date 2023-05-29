@@ -51,7 +51,7 @@ class ProfilePage extends StatelessWidget {
           children: [
             Text(
               user,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 18.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
@@ -62,10 +62,10 @@ class ProfilePage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: getPageColor(),
+      //backgroundColor: getPageColor(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: getPageColor(),
+        //backgroundColor: getPageColor(),
         elevation: 0.0,
         actions: [
           Padding(
@@ -80,20 +80,20 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           ProfileWidget(
               imagePath: "lib/assets/adastralogo.jpg", onClicked: () async {}),
           buildName(email),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Center(child: buildUpgradeButton()),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Center(child: StatisticsWidget()),
-          SizedBox(
+          const SizedBox(
             height: 70,
           ),
           Center(child: LogoutButton(context)),

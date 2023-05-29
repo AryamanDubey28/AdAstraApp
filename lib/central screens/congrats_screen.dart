@@ -15,10 +15,8 @@ class CongratsScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.blue[200],
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.blue[200],
           elevation: 0.0,
         ),
         body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [

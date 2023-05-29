@@ -84,10 +84,10 @@ class _MatchingTilesGame1State extends State<MatchingTilesGame1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      //backgroundColor: Colors.blue[200],
       appBar: AppBar(
         title: Text('Score: ${score.length} / ${choices.length}'),
-        backgroundColor: Colors.blue[200],
+        //backgroundColor: Colors.blue[200],
         elevation: 1,
         actions: [
           Padding(

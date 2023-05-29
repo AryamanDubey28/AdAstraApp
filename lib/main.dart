@@ -10,12 +10,14 @@ import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
 import 'package:firebase_attempt/main_page.dart';
+import 'package:firebase_attempt/theme_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 import 'central screens/nav bar routes/settings_page.dart';
 import 'central screens/question_sheets.dart';
 import 'login_page.dart';
@@ -38,19 +40,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
-      routes: {
-        '/congrats': (context) => const CongratsScreen(),
-        '/mtsection': (context) => HiddenDrawer(),
-        '/playpage': (context) => PlayPage(),
-        '/settings': (context) => SettingsPage(),
-        '/info': (context) => InformationSheet(),
-        '/game1': (context) => MatchingTilesGame1(),
-        '/game2': (context) => QuizLayout(),
-        '/scoreScreen': (context) => ScoreScreen(),
-        '/nvrtiles': (context) => SelectionTilesNVR(),
+    return ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      builder: (context, child) {
+        final themeProvider = Provider.of<ThemeProvider>(context);
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: themeProvider.themeMode,
+          theme: MyThemes.lightTheme,
+          darkTheme: MyThemes.darkTheme,
+          home: MainPage(),
+          routes: {
+            '/congrats': (context) => const CongratsScreen(),
+            '/mtsection': (context) => HiddenDrawer(),
+            '/playpage': (context) => PlayPage(),
+            '/settings': (context) => SettingsPage(),
+            '/info': (context) => InformationSheet(),
+            '/game1': (context) => MatchingTilesGame1(),
+            '/game2': (context) => QuizLayout(),
+            '/scoreScreen': (context) => ScoreScreen(),
+            '/nvrtiles': (context) => SelectionTilesNVR(),
+          },
+        );
       },
     );
   }

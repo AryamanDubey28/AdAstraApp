@@ -279,7 +279,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         color: Colors.grey[300],
                         border: Border.all(color: Colors.white10),
                         borderRadius: BorderRadius.circular(30),
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage('lib/assets/NVR.jpg'),
                           fit: BoxFit.fill,
                         ),
@@ -292,14 +292,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
                             child: Text(
                               SelectionTiles.nvr_section[index],
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                         ],
@@ -362,7 +362,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         color: Colors.grey[300],
                         border: Border.all(color: Colors.white10),
                         borderRadius: BorderRadius.circular(30),
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage(
                               'lib/assets/central_screen/numeracy_screen_gradient.JPG'),
                           fit: BoxFit.fill,
@@ -376,14 +376,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
                             child: Text(
                               SelectionTiles.numeracy_section[index],
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                //color: Colors.white,
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                         ],
@@ -422,7 +422,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: getPageColor(),
+      //backgroundColor: getPageColor(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
@@ -442,20 +442,20 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       (route) => false,
                     );
                   },
-                  child: Icon(Icons.logout)),
+                  child: const Icon(Icons.logout)),
             ),
             FocusedMenuHolder(
               menuWidth: MediaQuery.of(context).size.width * 0.5,
               blurBackgroundColor: getPageColor(),
               openWithTap: true,
-              duration: Duration(seconds: 0),
+              duration: const Duration(seconds: 0),
               animateMenuItems: false,
               onPressed: () {},
               menuItems: [
                 FocusedMenuItem(
                     title: Text(
                       "VR",
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                     onPressed: () {
                       ExplorePage.index = 0;
@@ -470,7 +470,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       );
                     }),
                 FocusedMenuItem(
-                    title: Text("NVR", style: TextStyle(fontSize: 18)),
+                    title: const Text("NVR",
+                        style: TextStyle(fontSize: 18, color: Colors.black)),
                     onPressed: () {
                       ExplorePage.index = 1;
                       Navigator.pushReplacement(
@@ -484,7 +485,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       );
                     }),
                 FocusedMenuItem(
-                    title: Text("Numeracy", style: TextStyle(fontSize: 18)),
+                    title: const Text("Numeracy",
+                        style: TextStyle(fontSize: 18, color: Colors.black)),
                     onPressed: () {
                       ExplorePage.index = 2;
                       Navigator.pushReplacement(
@@ -501,8 +503,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
               menuOffset: 10,
               child: Text(
                 getTitle(),
-                style: TextStyle(
-                  color: Colors.white,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,
                 ),
@@ -520,7 +521,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
             ),
           ],
         ),
-        backgroundColor: getPageColor(),
+        //backgroundColor: getPageColor(),
         elevation: 0.0,
       ),
       body: getScreen(context),

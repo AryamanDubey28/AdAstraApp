@@ -15,12 +15,12 @@ class ExplorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: getPageColor(),
+        //backgroundColor: getPageColor(),
         appBar: AppBar(
-          title: Text("Browse All Videos!"),
+          title: const Text("Browse All Videos!"),
           automaticallyImplyLeading: false,
           elevation: 0.0,
-          backgroundColor: getPageColor(),
+          //backgroundColor: getPageColor(),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -35,79 +35,6 @@ class ExplorePage extends StatelessWidget {
           ],
         ),
         body: Lottie.network(
-            "https://assets10.lottiefiles.com/packages/lf20_ihspk1vg.json")
-        // ListView(
-        //   children: [
-        //     // Center(
-        //     //     child: Padding(
-        //     //   padding: const EdgeInsets.all(8.0),
-        //     //   child: GestureDetector(
-        //     //     onTap: () {
-        //     //       index = 0;
-        //     //       Navigator.popAndPushNamed(context, '/playpage');
-        //     //     },
-        //     //     child: Text(
-        //     //       "VR",
-        //     //       style: TextStyle(fontSize: 24.0),
-        //     //     ),
-        //     //   ),
-        //     // )),
-        //     // Center(
-        //     //     child: Padding(
-        //     //   padding: const EdgeInsets.all(8.0),
-        //     //   child: GestureDetector(
-        //     //     onTap: () {
-        //     //       //Navigator.popAndPushNamed(context, '/nvrtiles');
-        //     //       index = 1;
-        //     //       print("index now 1");
-        //     //       //Navigator.pop(context, index);
-        //     //       Navigator.popAndPushNamed(context, '/playpage');
-        //     //     },
-        //     //     child: Text(
-        //     //       "NVR",
-        //     //       style: TextStyle(fontSize: 24.0),
-        //     //     ),
-        //     //   ),
-        //     // )),
-        //     // Center(
-        //     //     child: Padding(
-        //     //   padding: const EdgeInsets.all(8.0),
-        //     //   child: GestureDetector(
-        //     //     onTap: () {
-        //     //       index = 2;
-        //     //       Navigator.popAndPushNamed(context, '/playpage');
-        //     //     },
-        //     //     child: Text(
-        //     //       "Numeracy",
-        //     //       style: TextStyle(fontSize: 24.0),
-        //     //     ),
-        //     //   ),
-        //     // )
-        //     //),
-        //     GestureDetector(
-        //         onTap: () {
-        //           index = 0;
-        //           Navigator.popAndPushNamed(context, '/playpage');
-        //         },
-        //         child: MySquare(text: "VR ")),
-
-        //     GestureDetector(
-        //         onTap: () {
-        //           index = 1;
-        //           print("index now 1");
-        //           //       //Navigator.pop(context, index);
-        //           Navigator.popAndPushNamed(context, '/playpage');
-        //         },
-        //         child: MySquare(text: "NVR ")),
-
-        //     GestureDetector(
-        //         onTap: () {
-        //           index = 2;
-        //           Navigator.popAndPushNamed(context, '/playpage');
-        //         },
-        //         child: MySquare(text: "Numeracy ")),
-        //   ],
-        // )
-        );
+            "https://assets10.lottiefiles.com/packages/lf20_ihspk1vg.json"));
   }
 }

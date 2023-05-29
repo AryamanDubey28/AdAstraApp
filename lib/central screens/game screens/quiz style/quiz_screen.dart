@@ -68,9 +68,9 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: getPageColor(),
+      //backgroundColor: getPageColor(),
       appBar: AppBar(
-        backgroundColor: getPageColor(),
+        //backgroundColor: getPageColor(),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -96,12 +96,13 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: Text(
                       "Lets Play",
                       style: GoogleFonts.bebasNeue(
-                          fontSize: 96.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                        fontSize: 96.0,
+                        fontWeight: FontWeight.bold,
+                        //color: Colors.white
+                      ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Center(
@@ -109,7 +110,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       getText(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.bebasNeue(
-                          fontSize: 30.0, color: Colors.white),
+                        fontSize: 30.0,
+                        //color: Colors.white
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -117,7 +120,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                   const Divider(
                     thickness: 2,
-                    color: Colors.white,
+                    //color: Colors.white,
                   ),
                   Center(
                     child: Padding(
@@ -126,10 +129,11 @@ class _QuizScreenState extends State<QuizScreen> {
                         getDescription(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontFamily: "Cambria",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                          fontFamily: "Cambria",
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          //color: Colors.white
+                        ),
                       ),
                     ),
                   ),

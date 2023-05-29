@@ -131,15 +131,7 @@ class _HeartedTopicsState extends State<HeartedTopics> {
                         ),
                       ],
                     ),
-                    child: MySquare(text: SelectionTiles.likedTopics[index])
-                    // child: Container(
-                    //   color: Colors.grey[200],
-                    //   child: ListTile(
-                    //     leading: Icon(Icons.gamepad),
-                    //     title: Text(heartedTopics[index]),
-                    //   ),
-                    // )
-                    ));
+                    child: MySquare(text: SelectionTiles.likedTopics[index])));
           }));
     }
   }
@@ -156,26 +148,16 @@ class _HeartedTopicsState extends State<HeartedTopics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: getPageColor(),
+      //backgroundColor: getPageColor(),
       appBar: AppBar(
-        backgroundColor: getPageColor(),
-        title: Text(
+        //backgroundColor: getPageColor(),
+        title: const Text(
           "Your Favourite Topics",
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
         ),
         elevation: 0.0,
       ),
       body: screenContent(),
-      // body: ListView.builder(
-      //     itemCount: heartedTopics.length,
-      //     itemBuilder: ((context, index) {
-      //       return GestureDetector(
-      //           onTap: () {
-      //             print("hi");
-      //             goToQuizPage(index);
-      //           },
-      //           child: MySquare(text: heartedTopics[index]));
-      //     })),
     );
   }
 }

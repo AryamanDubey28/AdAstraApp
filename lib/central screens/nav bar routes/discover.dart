@@ -48,16 +48,16 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: getPageColor(),
+        // backgroundColor: getPageColor(),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: getPageColor(),
+          // backgroundColor: getPageColor(),
           elevation: 0.0,
         ),
         body: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             FadeIn(
-              duration: Duration(milliseconds: 1800),
+              duration: const Duration(milliseconds: 1800),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -65,9 +65,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     "Discover Page",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
-                        fontSize: 46.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 46.0,
+                      fontWeight: FontWeight.bold,
+                      //color: Colors.white
+                    ),
                   ),
                 ),
               ),
@@ -83,7 +84,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     style: GoogleFonts.ubuntu(
                       fontSize: 26.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white60,
+                      //color: Colors.white60,
                     ),
                   ),
                 ),
@@ -104,7 +105,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               height: 10.0,
             ),
             FadeIn(
-              duration: Duration(milliseconds: 1800),
+              duration: const Duration(milliseconds: 1800),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -114,7 +115,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     style: GoogleFonts.ubuntu(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white60,
+                      //color: Colors.white60,
                     ),
                   ),
                 ),
@@ -138,10 +139,11 @@ class _DiscoverPageState extends State<DiscoverPage> {
                         word + " - " + def,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontFamily: "Cambria",
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                          fontFamily: "Cambria",
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          //color: Colors.white
+                        ),
                       ),
                     );
                   } else {

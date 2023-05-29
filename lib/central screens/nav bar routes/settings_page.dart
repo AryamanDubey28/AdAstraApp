@@ -1,4 +1,6 @@
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
+import 'package:firebase_attempt/change_theme_button_widget.dart';
+import 'package:firebase_attempt/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../PageColor.dart';
@@ -15,26 +17,25 @@ class _SettingsState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
-        backgroundColor: getPageColor(),
+        title: const Text("Settings"),
+        //backgroundColor: getPageColor(),
         elevation: 0.0,
       ),
-      backgroundColor: getPageColor(),
+      //backgroundColor: getPageColor(),
       body: Column(
         children: [
-          Center(
+          const Center(
               child: Text(
             "Settings page",
-            style: TextStyle(fontSize: 32.0, color: Colors.grey[200]),
+            style: TextStyle(
+              fontSize: 32.0, //color: Colors.grey[200]
+            ),
           )),
-          ButtonWidget(
-              text: "Change Screen colour",
-              onClicked: () {
-                print("darkmode = $darkmode");
-                darkmode = !darkmode;
-                print(
-                    "darkmode now = $darkmode . page colour = ${getPageColor()}");
-              })
+          ButtonWidget(text: "Change Screen colour", onClicked: () {}),
+          const SizedBox(
+            height: 200,
+          ),
+          const ChangeThemeButtonWidget()
         ],
       ),
     );
