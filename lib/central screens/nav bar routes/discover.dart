@@ -136,7 +136,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
-                        word + " - " + def,
+                        "$word - $def",
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontFamily: "Cambria",

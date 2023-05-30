@@ -68,9 +68,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: getPageColor(),
       appBar: AppBar(
-        //backgroundColor: getPageColor(),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -98,7 +96,6 @@ class _QuizScreenState extends State<QuizScreen> {
                       style: GoogleFonts.bebasNeue(
                         fontSize: 96.0,
                         fontWeight: FontWeight.bold,
-                        //color: Colors.white
                       ),
                     ),
                   ),
@@ -111,7 +108,6 @@ class _QuizScreenState extends State<QuizScreen> {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.bebasNeue(
                         fontSize: 30.0,
-                        //color: Colors.white
                       ),
                     ),
                   ),
@@ -120,7 +116,6 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                   const Divider(
                     thickness: 2,
-                    //color: Colors.white,
                   ),
                   Center(
                     child: Padding(
@@ -132,7 +127,6 @@ class _QuizScreenState extends State<QuizScreen> {
                           fontFamily: "Cambria",
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          //color: Colors.white
                         ),
                       ),
                     ),
