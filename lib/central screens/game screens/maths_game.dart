@@ -83,10 +83,8 @@ class _MathsGameState extends State<MathsGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: getPageColor(),
       appBar: AppBar(
         title: Text('Maths Game'),
-        //backgroundColor: getPageColor(),
       ),
       body: Center(
         child: Padding(
@@ -97,15 +95,11 @@ class _MathsGameState extends State<MathsGame> {
               Text(
                 question,
                 style: const TextStyle(
-                    fontSize: 44.0,
-                    //color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 44.0, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20.0),
               TextField(
-                style: const TextStyle(
-                    //color: Colors.white,
-                    ),
+                style: const TextStyle(),
                 controller: answerController,
                 onChanged: (value) {
                   userAnswer = value;
@@ -113,7 +107,6 @@ class _MathsGameState extends State<MathsGame> {
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   hintText: 'Enter your answer',
-                  //hintStyle: TextStyle(color: Colors.white70)
                 ),
               ),
               const SizedBox(height: 40.0),

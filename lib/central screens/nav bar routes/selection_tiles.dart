@@ -521,7 +521,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
             ),
           ],
         ),
-        //backgroundColor: getPageColor(),
         elevation: 0.0,
       ),
       body: getScreen(context),

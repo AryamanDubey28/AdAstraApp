@@ -31,9 +31,7 @@ class _QuizLayoutState extends State<QuizLayout> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          //backgroundColor: getPageColor(),
           appBar: AppBar(
-            //backgroundColor: getPageColor(),
             automaticallyImplyLeading: false,
             elevation: 0.0,
             actions: [

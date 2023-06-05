@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
     // TODO: implement build
     var image;
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      //backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -104,14 +104,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: emailController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email address',
                         ),
@@ -128,8 +128,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
@@ -149,9 +149,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => ForgotPasswordPage(),
+                    Get.to(() => const ForgotPasswordPage(),
                         transition: Transition.native,
-                        duration: Duration(milliseconds: 750));
+                        duration: const Duration(milliseconds: 750));
                   },
                   child: Text(
                     "Forgot Password?",
@@ -185,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                       signIn();
                     },
                     child: Container(
-                      padding: EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
                         color: Colors.blue[900],
                         borderRadius: BorderRadius.circular(12),

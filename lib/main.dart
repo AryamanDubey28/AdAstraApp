@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           themeMode: themeProvider.themeMode,
           theme: MyThemes.lightTheme,
           darkTheme: MyThemes.darkTheme,
-          home: MainPage(),
+          home: const MainPage(),
           routes: {
             '/congrats': (context) => const CongratsScreen(),
             '/mtsection': (context) => HiddenDrawer(),
