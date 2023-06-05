@@ -22,8 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final lastNameController = TextEditingController();
   final ageController = TextEditingController();
 
-  //String errorText = "";
-
+  @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
@@ -68,11 +67,10 @@ class _RegisterPageState extends State<RegisterPage> {
         confirmPasswordController.text.trim()) {
       return true;
     } else {
-      //failedPass();
       showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog(
+            return const AlertDialog(
               content: Text("The passwords do not match"),
             );
           });
@@ -80,45 +78,39 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  // void failedPass() {
-  //   setState(() {
-  //     errorText = "Error! Passwords must match";
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: AssetImage('lib/assets/adastralogo.jpg'),
                   radius: 85.0,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
-                Text(
-                  "Nice To Meet You",
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 56.0,
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Text(
+                    "Nice To Meet You",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 48),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 7.0,
                 ),
-                Text(
+                const Text(
                   "Register Below",
                   style: TextStyle(
                     fontSize: 20.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15.0,
                 ),
                 Padding(
@@ -127,14 +119,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: emailController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email address',
                         ),
@@ -142,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -151,15 +143,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Password',
                         ),
@@ -167,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
@@ -176,15 +168,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: confirmPasswordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Confirm Password',
                         ),
@@ -192,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
@@ -201,14 +193,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: firstNameController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'First Name',
                         ),
@@ -216,7 +208,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
@@ -225,14 +217,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: lastNameController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Last Name',
                         ),
@@ -240,7 +232,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
@@ -249,14 +241,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        border:
+                            Border.all(color: Theme.of(context).dividerColor),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: ageController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Age',
                         ),
@@ -264,8 +256,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                //Text(errorText),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
@@ -273,12 +264,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: GestureDetector(
                     onTap: signUp,
                     child: Container(
-                      padding: EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
                         color: Colors.blue[900],
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Center(
+                      child: const Center(
                           child: Text(
                         "Sign Up",
                         style: TextStyle(
@@ -290,14 +281,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already a member?"),
-                    SizedBox(
+                    const Text("Already a member?"),
+                    const SizedBox(
                       width: 5.0,
                     ),
                     GestureDetector(
