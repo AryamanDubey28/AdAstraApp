@@ -107,7 +107,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => setState(() {}));
+    timer = Timer.periodic(
+        const Duration(seconds: 1), (Timer t) => setState(() {}));
   }
 
   @override
@@ -169,9 +170,9 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       print("User id ${widget.uid}");
                       Widget screen; //allows for transitions
                       if (SelectionTiles.topic == "Matching Tiles") {
-                        screen = InformationSheet();
+                        screen = const InformationSheet();
                       } else {
-                        screen = QuizScreen();
+                        screen = const QuizScreen();
                       }
                       Get.to(() => screen,
                           transition: Transition.upToDown,

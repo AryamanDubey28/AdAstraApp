@@ -27,59 +27,57 @@ class _BodyState extends State<Body> {
       ExplorePage.index,
     ));
     return Scaffold(
-        backgroundColor: getPageColor(),
+        //backgroundColor: getPageColor(),
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ProgressBar(),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Obx(
-                        () => Text.rich(TextSpan(
-                          text:
-                              "Question ${_questionController.questionNumber.value}",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4
-                              ?.copyWith(color: Colors.grey[200]),
-                          children: [
-                            TextSpan(
-                                text:
-                                    "/${_questionController.questions.length}",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline5
-                                    ?.copyWith(color: Colors.grey[200])),
-                          ],
-                        )),
-                      )),
-                  const Divider(
-                    thickness: 2,
-                  ),
-                  Expanded(
-                    child: PageView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: _questionController.pageController,
-                      onPageChanged: _questionController.updateQuestion,
-                      itemCount: _questionController.questions.length,
-                      itemBuilder: (context, index) => QuestionCard(
-                        question: _questionController.questions[index],
-                      ),
-                    ),
-                  ),
-                ],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: ProgressBar(),
               ),
-            ),
-          ],
-        ));
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Obx(
+                    () => Text.rich(TextSpan(
+                      text:
+                          "Question ${_questionController.questionNumber.value}",
+                      style: Theme.of(context).textTheme.headline4?.copyWith(
+                          //color: Colors.grey[200]
+                          ),
+                      children: [
+                        TextSpan(
+                            text: "/${_questionController.questions.length}",
+                            style:
+                                Theme.of(context).textTheme.headline5?.copyWith(
+                                    //color: Colors.grey[200]
+                                    )),
+                      ],
+                    )),
+                  )),
+              const Divider(
+                thickness: 2,
+              ),
+              Expanded(
+                child: PageView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: _questionController.pageController,
+                  onPageChanged: _questionController.updateQuestion,
+                  itemCount: _questionController.questions.length,
+                  itemBuilder: (context, index) => QuestionCard(
+                    question: _questionController.questions[index],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ));
   }
 }

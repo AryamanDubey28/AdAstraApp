@@ -63,7 +63,7 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Priority (1-5), 5 = Very high priority',
+                  labelText: 'Priority (1-5), 5 = Very very high priority',
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -115,12 +115,11 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Additional processing or submission logic...
+      // Additional processing or submission logic
       print("Name: $_name, Comment: $_comment, Priority: $_priority");
 
       // Clear form fields
       _formKey.currentState!.reset();
-
       setState(() {
         _isSubmitted = true;
       });
