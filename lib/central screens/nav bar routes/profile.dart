@@ -51,10 +51,8 @@ class ProfilePage extends StatelessWidget {
           children: [
             Text(
               user,
-              style: const TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+              style:
+                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -62,10 +60,8 @@ class ProfilePage extends StatelessWidget {
     }
 
     return Scaffold(
-      //backgroundColor: getPageColor(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        //backgroundColor: getPageColor(),
         elevation: 0.0,
         actions: [
           Padding(
@@ -74,7 +70,7 @@ class ProfilePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/settings');
               },
-              child: Icon(Icons.settings),
+              child: const Icon(Icons.settings),
             ),
           )
         ],

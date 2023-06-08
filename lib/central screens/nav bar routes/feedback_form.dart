@@ -151,22 +151,17 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
 
   void writeToSheet(String name, String comment, int priority) async {
     int rowCount = workSheet.rowCount; //num of current entries
-    print("Num of rows: $rowCount");
     rowCount++;
     await workSheet.values.insertValue(name, column: 1, row: rowCount);
     await workSheet.values.insertValue(comment, column: 2, row: rowCount);
     await workSheet.values.insertValue(priority, column: 3, row: rowCount);
-    print("Wrote values to row: $rowCount");
   }
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Additional processing or submission logic
-      print("There are currently: ${workSheet.rowCount} rows");
-      print("Name: $_name, Comment: $_comment, Priority: $_priority");
       writeToSheet(_name, _comment, _priority);
-      print("Wrote values to sheet");
       // Clear form fields
       _formKey.currentState!.reset();
       setState(() {
