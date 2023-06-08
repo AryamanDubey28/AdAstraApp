@@ -61,7 +61,6 @@ class _QuizLayoutState extends State<QuizLayout> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     QuestionController _controller =
         Get.put(QuestionController(ExplorePage.index));
-
     return WillPopScope(
       onWillPop: _showExitConfirmationDialog,
       child: Scaffold(
