@@ -73,7 +73,7 @@ class _AllTopicsState extends State<AllTopics> {
           });
           return CustomAlertDialog(
             title: "Added to Liked",
-            backgroundColor: backgroundColor!,
+            //backgroundColor: backgroundColor!,
           );
         });
   }
@@ -88,7 +88,6 @@ class _AllTopicsState extends State<AllTopics> {
           });
           return CustomAlertDialog(
             title: "Moved to Bottom",
-            backgroundColor: backgroundColor!,
           );
         });
   }
@@ -103,7 +102,6 @@ class _AllTopicsState extends State<AllTopics> {
           });
           return CustomAlertDialog(
             title: "Moved to Top",
-            backgroundColor: backgroundColor!,
           );
         });
   }
@@ -112,23 +110,23 @@ class _AllTopicsState extends State<AllTopics> {
     return Slidable(
       key: ValueKey(topic),
       startActionPane: ActionPane(
-        motion: StretchMotion(),
+        motion: const StretchMotion(),
         children: [
           SlidableAction(
             onPressed: ((context) {
               //do something
               if (ExplorePage.index == 0) {
-                SelectionTiles.likedTopics.add(topic + " - VR");
+                SelectionTiles.likedTopics.add("$topic - VR");
               } else if (ExplorePage.index == 1) {
-                SelectionTiles.likedTopics.add(topic + " - NVR");
+                SelectionTiles.likedTopics.add("$topic - NVR");
               } else if (ExplorePage.index == 2) {
-                SelectionTiles.likedTopics.add(topic + " - Numeracy");
+                SelectionTiles.likedTopics.add("$topic - Numeracy");
               }
 
               showHeartedDialogue();
 
               print("added $topic");
-              _myBox.put("LIKEDTOPICS_${uid}", SelectionTiles.likedTopics);
+              _myBox.put("LIKEDTOPICS_$uid", SelectionTiles.likedTopics);
             }),
             backgroundColor: Colors.red,
             icon: Iconsax.heart,
@@ -160,15 +158,15 @@ class _AllTopicsState extends State<AllTopics> {
         ],
       ),
       endActionPane: ActionPane(
-        motion: StretchMotion(),
+        motion: const StretchMotion(),
         children: [
           SlidableAction(
             onPressed: ((context) {
               //do something
               SelectionTiles.topic = topic;
-              Get.to(() => QuizScreen(),
+              Get.to(() => const QuizScreen(),
                   transition: Transition.topLevel,
-                  duration: Duration(seconds: 1));
+                  duration: const Duration(seconds: 1));
             }),
             backgroundColor: Colors.deepPurple,
             icon: Icons.rocket_launch,
@@ -219,9 +217,7 @@ class _AllTopicsState extends State<AllTopics> {
     String topicString = getTopic();
     allTopics = buildTopicsList();
     return Scaffold(
-      //backgroundColor: getPageColor(),
       appBar: AppBar(
-        //backgroundColor: getPageColor(),
         centerTitle: true,
         title: Text(
           "All $topicString Topics",

@@ -3,9 +3,12 @@ import 'package:lottie/lottie.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   final String title;
-  final Color backgroundColor;
+  //final Color backgroundColor;
 
-  CustomAlertDialog({required this.title, required this.backgroundColor});
+  CustomAlertDialog({
+    required this.title,
+    //required this.backgroundColor
+  });
 
   String correctAnimation() {
     if (title == "Added to Liked") {
@@ -28,7 +31,7 @@ class CustomAlertDialog extends StatelessWidget {
         height: 250,
         // color: backgroundColor,
         decoration: BoxDecoration(
-          color: backgroundColor, // Background color of the container
+          //color: backgroundColor, // Background color of the container
           borderRadius: BorderRadius.circular(25.0), // Border radius value
         ),
         child: Column(
@@ -39,9 +42,9 @@ class CustomAlertDialog extends StatelessWidget {
                 //text here
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
               ),

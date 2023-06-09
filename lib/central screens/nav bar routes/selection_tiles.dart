@@ -127,7 +127,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
   //called when tile is double tapped
   void showLike(BuildContext context) {
-    Color? backgroundColor = getPageColor();
+    //Color? backgroundColor = getPageColor();
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -137,7 +137,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
           });
           return CustomAlertDialog(
             title: "Added to Liked",
-            backgroundColor: backgroundColor!,
+            //backgroundColor: backgroundColor!,
           );
         });
 
@@ -182,13 +182,13 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       SelectionTiles.topic = SelectionTiles.vr_section[index];
                       if (ExplorePage.index == 0) {
                         SelectionTiles.likedTopics
-                            .add(SelectionTiles.topic + " - VR");
+                            .add("${SelectionTiles.topic} - VR");
                       } else if (ExplorePage.index == 1) {
                         SelectionTiles.likedTopics
-                            .add(SelectionTiles.topic + " - NVR");
+                            .add("${SelectionTiles.topic} - NVR");
                       } else if (ExplorePage.index == 2) {
                         SelectionTiles.likedTopics
-                            .add(SelectionTiles.topic + " - Numeracy");
+                            .add("${SelectionTiles.topic} - Numeracy");
                       }
                       showLike(context);
                     },
