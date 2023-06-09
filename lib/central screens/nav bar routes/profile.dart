@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_attempt/payment/upgrade_membership_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../main_page.dart';
@@ -114,7 +116,11 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget buildUpgradeButton() {
-    return ButtonWidget(text: "Upgrade Membership Now", onClicked: () {});
+    return ButtonWidget(
+        text: "Upgrade Membership Now",
+        onClicked: () {
+          Get.to(() => const MembershipUpgradePage());
+        });
   }
 
   Widget StatisticsWidget() {
@@ -123,11 +129,10 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(
+          const Text(
             "Your statistics: ",
             style: TextStyle(
               fontSize: 35,
-              color: Colors.grey[700],
               fontWeight: FontWeight.bold,
             ),
           ),
