@@ -1,6 +1,8 @@
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/change_theme_button_widget.dart';
+import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:firebase_attempt/theme_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +26,8 @@ class _SettingsState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final FirebaseFunctions firebaseFunctions = FirebaseFunctions();
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +47,20 @@ class _SettingsState extends State<SettingsPage> {
                 const ChangeThemeButtonWidget(),
               ],
             ),
-          )
+          ),
+          const SizedBox(
+            height: 75,
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "User id = ${firebaseAuth.currentUser!.uid}",
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+            ),
+          ),
         ],
       ),
     );
