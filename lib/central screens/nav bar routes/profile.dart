@@ -128,11 +128,11 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FutureBuilder<String>(
-              future: firebaseFunctions.getMembershipType(),
+              future: firebaseFunctions.getName(),
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.hasData) {
                   return Text(
-                    "Membership Type: ${snapshot.data}",
+                    "Name: ${snapshot.data}",
                     style: getTextStyle(),
                   );
                 } else if (snapshot.hasError) {
@@ -146,11 +146,11 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FutureBuilder<String>(
-              future: firebaseFunctions.getName(),
+              future: firebaseFunctions.getMembershipType(),
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.hasData) {
                   return Text(
-                    "Name: ${snapshot.data}",
+                    "Membership Type: ${snapshot.data}",
                     style: getTextStyle(),
                   );
                 } else if (snapshot.hasError) {
