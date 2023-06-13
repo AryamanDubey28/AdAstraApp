@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:firebase_attempt/payment/upgrade_membership_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,18 +11,7 @@ import '../PageColor.dart';
 
 class ProfilePage extends StatelessWidget {
   final FirebaseAuth auth = FirebaseAuth.instance;
-
-  void buildUsers() {}
-  List<String> ids = [];
-
-  Future getDocId() async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .get()
-        .then((snapshot) => snapshot.docs.forEach((element) {
-              ids.add(element.reference.id);
-            }));
-  }
+  final FirebaseFunctions firebaseFunctions = FirebaseFunctions();
 
   Map<String, dynamic> data = {};
 
@@ -41,7 +31,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    buildUsers();
     final User user = auth.currentUser!;
     final email = user.email!;
     String uid = user.uid;
@@ -138,16 +127,58 @@ class ProfilePage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Since: 28/07/22", style: getTextStyle()),
+            child: FutureBuilder<String>(
+              future: firebaseFunctions.getMembershipType(),
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    "Membership Type: ${snapshot.data}",
+                    style: getTextStyle(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("Error: ${snapshot.error}");
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("XP: 10,000", style: getTextStyle()),
+            child: FutureBuilder<String>(
+              future: firebaseFunctions.getName(),
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    "Name: ${snapshot.data}",
+                    style: getTextStyle(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("Error: ${snapshot.error}");
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Games Played: 42", style: getTextStyle()),
-          )
+            child: FutureBuilder<String>(
+              future: firebaseFunctions.getUserXP(),
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    "XP: ${snapshot.data}",
+                    style: getTextStyle(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("Error: ${snapshot.error}");
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
+          ),
         ],
       ),
     );

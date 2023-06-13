@@ -1,3 +1,4 @@
+import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:flutter/material.dart';
 
 class MembershipUpgradePage extends StatefulWidget {
@@ -9,6 +10,21 @@ class MembershipUpgradePage extends StatefulWidget {
 
 class _MembershipUpgradePageState extends State<MembershipUpgradePage> {
   String _selectedMembership = '';
+  bool _showDoneButton = false;
+  final FirebaseFunctions firebaseFunctions = FirebaseFunctions();
+
+  void showUpdatedMembershipDialog(String result) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text(result),
+          );
+        });
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.of(context).pop();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +50,7 @@ class _MembershipUpgradePageState extends State<MembershipUpgradePage> {
               onTap: () {
                 setState(() {
                   _selectedMembership = 'Basic';
+                  _showDoneButton = true;
                 });
               },
             ),
@@ -46,6 +63,7 @@ class _MembershipUpgradePageState extends State<MembershipUpgradePage> {
               onTap: () {
                 setState(() {
                   _selectedMembership = 'Middle Tier';
+                  _showDoneButton = true;
                 });
               },
             ),
@@ -58,33 +76,20 @@ class _MembershipUpgradePageState extends State<MembershipUpgradePage> {
               onTap: () {
                 setState(() {
                   _selectedMembership = 'Premium';
+                  _showDoneButton = true;
                 });
               },
             ),
             const SizedBox(height: 50),
-            Expanded(
-              child: FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Column(
-                  children: [
-                    _buildPaymentIcon(
-                        icon: Icons.payment,
-                        paymentMethod: 'Apple Pay',
-                        backgroundColor: Colors.black),
-                    const SizedBox(height: 15),
-                    _buildPaymentIcon(
-                        icon: Icons.payment,
-                        paymentMethod: 'PayPal',
-                        backgroundColor: Colors.blue),
-                    const SizedBox(height: 15),
-                    _buildPaymentIcon(
-                        icon: Icons.payment,
-                        paymentMethod: 'Google Pay',
-                        backgroundColor: Colors.grey[400]!),
-                  ],
-                ),
+            if (_showDoneButton)
+              ElevatedButton(
+                onPressed: () async {
+                  final result = await firebaseFunctions
+                      .updateMembershipType(_selectedMembership);
+                  showUpdatedMembershipDialog(result);
+                },
+                child: const Text('Done'),
               ),
-            ),
           ],
         ),
       ),

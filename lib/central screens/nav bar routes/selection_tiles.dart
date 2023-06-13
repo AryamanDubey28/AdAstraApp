@@ -127,7 +127,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
   //called when tile is double tapped
   void showLike(BuildContext context) {
-    //Color? backgroundColor = getPageColor();
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -137,7 +136,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
           });
           return CustomAlertDialog(
             title: "Added to Liked",
-            //backgroundColor: backgroundColor!,
           );
         });
 
@@ -423,7 +421,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: getPageColor(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 0,
@@ -438,75 +435,77 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => MainPage(),
+                        builder: (BuildContext context) => const MainPage(),
                       ),
                       (route) => false,
                     );
                   },
                   child: const Icon(Icons.logout)),
             ),
-            FocusedMenuHolder(
-              menuWidth: MediaQuery.of(context).size.width * 0.5,
-              blurBackgroundColor: getPageColor(),
-              openWithTap: true,
-              duration: const Duration(seconds: 0),
-              animateMenuItems: false,
-              onPressed: () {},
-              menuItems: [
-                FocusedMenuItem(
-                    title: Text(
-                      "VR",
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                    ),
-                    onPressed: () {
-                      ExplorePage.index = 0;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: const Text("NVR",
-                        style: TextStyle(fontSize: 18, color: Colors.black)),
-                    onPressed: () {
-                      ExplorePage.index = 1;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-                FocusedMenuItem(
-                    title: const Text("Numeracy",
-                        style: TextStyle(fontSize: 18, color: Colors.black)),
-                    onPressed: () {
-                      ExplorePage.index = 2;
-                      Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              PlayPage(),
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero,
-                        ),
-                      );
-                    }),
-              ],
-              menuOffset: 10,
-              child: Text(
-                getTitle(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
+            Center(
+              child: FocusedMenuHolder(
+                menuWidth: MediaQuery.of(context).size.width * 0.5,
+                blurBackgroundColor: getPageColor(),
+                openWithTap: true,
+                duration: const Duration(seconds: 0),
+                animateMenuItems: false,
+                onPressed: () {},
+                menuItems: [
+                  FocusedMenuItem(
+                      title: const Text(
+                        "VR",
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
+                      onPressed: () {
+                        ExplorePage.index = 0;
+                        Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                PlayPage(),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
+                          ),
+                        );
+                      }),
+                  FocusedMenuItem(
+                      title: const Text("NVR",
+                          style: TextStyle(fontSize: 18, color: Colors.black)),
+                      onPressed: () {
+                        ExplorePage.index = 1;
+                        Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                PlayPage(),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
+                          ),
+                        );
+                      }),
+                  FocusedMenuItem(
+                      title: const Text("Numeracy",
+                          style: TextStyle(fontSize: 18, color: Colors.black)),
+                      onPressed: () {
+                        ExplorePage.index = 2;
+                        Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                PlayPage(),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
+                          ),
+                        );
+                      }),
+                ],
+                menuOffset: 10,
+                child: Text(
+                  getTitle(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 28,
+                  ),
                 ),
               ),
             ),

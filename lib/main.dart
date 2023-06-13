@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
             '/info': (context) => const InformationSheet(),
             '/game1': (context) => const MatchingTilesGame1(),
             '/game2': (context) => const QuizLayout(),
-            '/scoreScreen': (context) => const ScoreScreen(),
+            '/scoreScreen': (context) => ScoreScreen(),
             '/nvrtiles': (context) => SelectionTilesNVR(),
           },
         );

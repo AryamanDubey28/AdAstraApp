@@ -21,7 +21,7 @@ class CongratsScreen extends StatelessWidget {
         ),
         body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           FadeIn(
-            duration: Duration(milliseconds: 1800),
+            duration: const Duration(milliseconds: 1800),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -36,18 +36,18 @@ class CongratsScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 2.0,
           ),
           Center(
             child: Lottie.network(
                 "https://assets2.lottiefiles.com/packages/lf20_pJo4Hp.json"),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
           FadeIn(
-            duration: Duration(milliseconds: 1800),
+            duration: const Duration(milliseconds: 1800),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -66,11 +66,11 @@ class CongratsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Back to home screen"),
+              const Text("Back to home screen"),
               IconButton(
                   onPressed: () =>
                       Navigator.popAndPushNamed(context, '/playpage'),
-                  icon: Icon(Icons.exit_to_app)),
+                  icon: const Icon(Icons.exit_to_app)),
             ],
           )
         ]),
