@@ -26,7 +26,6 @@ class _SettingsState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    final FirebaseFunctions firebaseFunctions = FirebaseFunctions();
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
     return Scaffold(

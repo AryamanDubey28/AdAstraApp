@@ -67,7 +67,7 @@ class FirebaseFunctions {
         String lastName = map['Last Name'];
         return "$firstName $lastName";
       } else {
-        return "First Name does not exist";
+        return "Name does not exist";
       }
     } catch (e) {
       return e.toString();
