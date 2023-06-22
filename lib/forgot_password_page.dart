@@ -17,25 +17,29 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 
+  void showPasswordResetDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content:
+                Text("Password reset link sent to ${emailController.text}"),
+          );
+        });
+  }
+
   Future passwordReset() async {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailController.text.trim());
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content:
-                  Text("Password reset link sent to ${emailController.text}"),
-            );
-          });
+      showPasswordResetDialog();
     } on FirebaseAuthException catch (e) {
-      print(e);
+      String outputString = e.toString().replaceAll(RegExp(r'\[.*?\]\s*'), '');
       showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Text(e.message.toString()),
+              content: Text(outputString),
             );
           });
     }
@@ -45,26 +49,24 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Password Reset Page",
           style: TextStyle(
             fontSize: 24.0,
-            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.blue[900],
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text(
                   "Enter the email you would like the password reset link to be sent to",
                   style: TextStyle(
@@ -73,7 +75,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
             Padding(
@@ -89,7 +91,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   padding: const EdgeInsets.only(left: 20.0),
                   child: TextField(
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Email address',
                     ),
@@ -97,26 +99,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10.0,
+            const SizedBox(
+              height: 15.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.keyboard_arrow_right_outlined,
-                  size: 40.0,
-                  color: Colors.blue[900],
-                ),
                 MaterialButton(
                   onPressed: () {
                     passwordReset();
                   },
-                  child: Text("Reset Password",
+                  color: Colors.blue[900],
+                  child: const Text("Reset Password",
                       style: TextStyle(
                         color: Colors.white,
                       )),
-                  color: Colors.blue[900],
                 ),
               ],
             ),

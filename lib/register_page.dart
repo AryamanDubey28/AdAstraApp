@@ -37,18 +37,30 @@ class _RegisterPageState extends State<RegisterPage> {
     // Authentication
     if (passwordConfirmed()) {
       //create the user with entered email and password
-      UserCredential userCred = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController.text.trim(),
-              password: passwordController.text.trim());
+      try {
+        UserCredential userCred = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text.trim(),
+                password: passwordController.text.trim());
 
-      //add user details
-      addUserDetails(
-          firstNameController.text.trim(),
-          lastNameController.text.trim(),
-          int.parse(ageController.text.trim()),
-          emailController.text.trim(),
-          userCred.user!.uid);
+        //add user details
+        addUserDetails(
+            firstNameController.text.trim(),
+            lastNameController.text.trim(),
+            int.parse(ageController.text.trim()),
+            emailController.text.trim(),
+            userCred.user!.uid);
+      } catch (e) {
+        String outputString =
+            e.toString().replaceAll(RegExp(r'\[.*?\]\s*'), '');
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(outputString),
+              );
+            });
+      }
     }
   }
 

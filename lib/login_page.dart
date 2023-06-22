@@ -26,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
           password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email. Please try again');
         showDialog(
             context: context,
             builder: (context) {
@@ -35,7 +34,6 @@ class _LoginPageState extends State<LoginPage> {
               );
             });
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
         showDialog(
             context: context,
             builder: (context) {
@@ -44,12 +42,13 @@ class _LoginPageState extends State<LoginPage> {
               );
             });
       } else {
-        print(e);
         showDialog(
             context: context,
             builder: (context) {
+              String outputString =
+                  e.toString().replaceAll(RegExp(r'\[.*?\]\s*'), '');
               return AlertDialog(
-                content: Text(e.toString()),
+                content: Text(outputString),
               );
             });
       }
@@ -65,10 +64,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    var image;
     return Scaffold(
-      //backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

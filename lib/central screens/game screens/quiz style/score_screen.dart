@@ -70,7 +70,6 @@ class ScoreScreen extends StatelessWidget {
                     style: GoogleFonts.ubuntu(
                       fontSize: 38.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white60,
                     ),
                   ),
                 ),

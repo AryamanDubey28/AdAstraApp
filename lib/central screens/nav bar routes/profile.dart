@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
             return Text("${data['First Name']}" +
                 " ${data['Last Name']}, ${data['Age']}");
           }
-          return Text('Loading...');
+          return const Text('Loading...');
         }));
   }
 
@@ -97,7 +97,7 @@ class ProfilePage extends StatelessWidget {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => MainPage(),
+              builder: (BuildContext context) => const MainPage(),
             ),
             (route) => false,
           );
@@ -121,9 +121,12 @@ class ProfilePage extends StatelessWidget {
           const Text(
             "Your statistics: ",
             style: TextStyle(
-              fontSize: 35,
+              fontSize: 38,
               fontWeight: FontWeight.bold,
             ),
+          ),
+          const SizedBox(
+            height: 15,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -185,8 +188,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   TextStyle getTextStyle() {
-    return TextStyle(
-        fontSize: 18.0, color: Colors.grey[700], fontWeight: FontWeight.bold);
+    return const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);
   }
 }
 
@@ -197,7 +199,7 @@ class ProfileWidget extends StatelessWidget {
   ProfileWidget({required this.imagePath, required this.onClicked});
 
   Widget buildImage() {
-    final image = AssetImage("lib/assets/adastralogo.jpg");
+    const image = AssetImage("lib/assets/adastralogo.jpg");
     return ClipOval(
       child: Material(
         color: Colors.transparent,
@@ -221,7 +223,7 @@ class ProfileWidget extends StatelessWidget {
       child: buildCircle(
         color: color,
         all: 8,
-        child: Icon(
+        child: const Icon(
           Icons.edit,
           color: Colors.white,
           size: 20,
@@ -267,8 +269,8 @@ class ButtonWidget extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           onPrimary: Colors.white,
-          shape: StadiumBorder(),
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
+          shape: const StadiumBorder(),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
       child: Text(text),
       onPressed: onClicked,
     );
