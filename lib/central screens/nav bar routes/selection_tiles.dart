@@ -20,9 +20,12 @@ import 'package:focused_menu/modals.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
 import 'package:hive/hive.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../main_page.dart';
+import '../../theme_provider.dart';
 import '../game screens/matching tiles/matching_tiles_g1.dart';
 
 class SelectionTiles extends StatefulWidget {
@@ -96,7 +99,7 @@ class SelectionTiles extends StatefulWidget {
 
 class _SelectionTilesState extends State<SelectionTiles> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  late Timer timer;
+  //late Timer timer;
 
   Color myPageCol = getPageColor()!;
 
@@ -107,14 +110,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(
-        const Duration(seconds: 1), (Timer t) => setState(() {}));
+    // timer = Timer.periodic(
+    //     const Duration(seconds: 1), (Timer t) => setState(() {}));
   }
 
   @override
   void dispose() {
     super.dispose();
-    timer.cancel();
+    //timer.cancel();
   }
 
   void getLikedTopics() {
@@ -139,14 +142,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
           );
         });
 
-    HeartedTopics ht = HeartedTopics();
+    HeartedTopics ht = const HeartedTopics();
     print(widget.uid);
 
     _myBox.put("LIKEDTOPICS_${widget.uid}", SelectionTiles.likedTopics);
     print("Saved change to DB");
   }
 
-  Widget getVRScreen(BuildContext context) {
+  Widget getVRScreen(BuildContext context, bool isDarkMode) {
     return CarouselSlider.builder(
         options: CarouselOptions(
           height: 800,
@@ -197,9 +200,13 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           color: Colors.grey[300],
                           border: Border.all(color: Colors.white10),
                           borderRadius: BorderRadius.circular(30),
-                          image: const DecorationImage(
-                            image: AssetImage(
-                                'lib/assets/central_screen/numeracy_screen_gradient.JPG'),
+                          image: DecorationImage(
+                            //TODO:Change to VR screen
+                            image: isDarkMode
+                                ? const AssetImage(
+                                    'lib/assets/central_screen/numeracy_screen_gradient.JPG')
+                                : const AssetImage(
+                                    'lib/assets/Numeracy_LM.png'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -233,7 +240,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
         }));
   }
 
-  Widget getNVRScreen(BuildContext context) {
+  Widget getNVRScreen(BuildContext context, bool isDarkMode) {
     return CarouselSlider.builder(
       options: CarouselOptions(
         height: 800,
@@ -314,7 +321,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
     );
   }
 
-  Widget getNumeracyScreen(BuildContext context) {
+  Widget getNumeracyScreen(BuildContext context, bool isDarkMode) {
     return CarouselSlider.builder(
       options: CarouselOptions(
         height: 800,
@@ -398,13 +405,13 @@ class _SelectionTilesState extends State<SelectionTiles> {
     );
   }
 
-  Widget getScreen(BuildContext context) {
+  Widget getScreen(BuildContext context, bool isDarkMode) {
     if (ExplorePage.index == 0) {
-      return getVRScreen(context);
+      return getVRScreen(context, isDarkMode);
     } else if (ExplorePage.index == 1) {
-      return getNVRScreen(context);
+      return getNVRScreen(context, isDarkMode);
     } else {
-      return getNumeracyScreen(context);
+      return getNumeracyScreen(context, isDarkMode);
     }
   }
 
@@ -418,8 +425,16 @@ class _SelectionTilesState extends State<SelectionTiles> {
     }
   }
 
+  Future _refresh() async {
+    print("in refresh");
+    setState(() {
+      print("refreshed");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -523,7 +538,13 @@ class _SelectionTilesState extends State<SelectionTiles> {
         ),
         elevation: 0.0,
       ),
-      body: getScreen(context),
+      body: GestureDetector(
+          onVerticalDragDown: (details) {
+            setState(() {
+              print("refreshed");
+            });
+          },
+          child: getScreen(context, themeProvider.isDarkMode)),
     );
   }
 }

@@ -49,10 +49,8 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: getPageColor(),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          // backgroundColor: getPageColor(),
           elevation: 0.0,
         ),
         body: SingleChildScrollView(
@@ -75,7 +73,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               ),
             ),
             FadeIn(
-              duration: Duration(milliseconds: 1800),
+              duration: const Duration(milliseconds: 1800),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -85,7 +83,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     style: GoogleFonts.ubuntu(
                       fontSize: 26.0,
                       fontWeight: FontWeight.bold,
-                      //color: Colors.white60,
                     ),
                   ),
                 ),
@@ -116,7 +113,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     style: GoogleFonts.ubuntu(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
-                      //color: Colors.white60,
                     ),
                   ),
                 ),
@@ -129,7 +125,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 future: wordMap,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    return Text("Unable to show word");
+                    return const Text("Unable to show word");
                   } else if (snapshot.hasData) {
                     Map<dynamic, dynamic>? map = snapshot.data;
                     String word = map?["word"];
@@ -143,7 +139,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
                           fontFamily: "Cambria",
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          //color: Colors.white
                         ),
                       ),
                     );

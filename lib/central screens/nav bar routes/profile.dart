@@ -4,13 +4,20 @@ import 'package:firebase_attempt/payment/upgrade_membership_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../main_page.dart';
 import '../PageColor.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
+
   final FirebaseFunctions firebaseFunctions = FirebaseFunctions();
 
   Map<String, dynamic> data = {};
@@ -29,11 +36,15 @@ class ProfilePage extends StatelessWidget {
         }));
   }
 
+  Future<void> _refresh() {
+    setState(() {});
+    return Future.delayed(Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
     final User user = auth.currentUser!;
     final email = user.email!;
-    String uid = user.uid;
 
     Widget buildName(String user) {
       return Padding(
@@ -66,25 +77,30 @@ class ProfilePage extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          ProfileWidget(
-              imagePath: "lib/assets/adastralogo.jpg", onClicked: () async {}),
-          buildName(email),
-          const SizedBox(
-            height: 20,
-          ),
-          Center(child: buildUpgradeButton()),
-          const SizedBox(
-            height: 20,
-          ),
-          Center(child: StatisticsWidget()),
-          const SizedBox(
-            height: 70,
-          ),
-          Center(child: LogoutButton(context)),
-        ],
+      body: RefreshIndicator(
+        onRefresh: _refresh,
+        color: Colors.deepPurple,
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            ProfileWidget(
+                imagePath: "lib/assets/adastralogo.jpg",
+                onClicked: () async {}),
+            buildName(email),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(child: buildUpgradeButton()),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(child: StatisticsWidget()),
+            const SizedBox(
+              height: 70,
+            ),
+            Center(child: LogoutButton(context)),
+          ],
+        ),
       ),
     );
   }
@@ -247,9 +263,9 @@ class ProfileWidget extends StatelessWidget {
       {required Color color, required double all, required Widget child}) {
     return ClipOval(
       child: Container(
-        child: child,
         color: color,
         padding: EdgeInsets.all(all),
+        child: child,
       ),
     );
   }
@@ -271,8 +287,11 @@ class ButtonWidget extends StatelessWidget {
           onPrimary: Colors.white,
           shape: const StadiumBorder(),
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
-      child: Text(text),
       onPressed: onClicked,
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 18),
+      ),
     );
   }
 }
