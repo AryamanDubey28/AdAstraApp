@@ -32,10 +32,12 @@ class _QuizScreenState extends State<QuizScreen> {
     "Make A Word From Another Word":
         "These questions contain three pairs of words. Find the word that completes the last pair in the same way as the other two pairs",
     "Nets of Cubes": "Pain",
+    "Quick Maths": "Do some mental maths questions before the time runs out!",
+    "Practice Quiz": "A sample NVR question",
   };
 
   String getText() {
-    return "A '${SelectionTiles.topic}' game";
+    return "${SelectionTiles.topic}";
   }
 
   String getAnim() {
@@ -62,6 +64,59 @@ class _QuizScreenState extends State<QuizScreen> {
       Map<String, dynamic> question = sample_data_numeracy[i];
       print(question);
       await FirebaseFirestore.instance.collection('maths').add(question);
+    }
+  }
+
+  void _showUnavailableDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Game Unavailable'),
+          content: const Text(
+              'Sorry, as this is a beta release, this game has not been made yet'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget getStartButton() {
+    if (getDescription() == "No description found...") {
+      return Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: ElevatedButton(
+            onPressed: () {
+              _showUnavailableDialog(context);
+            },
+            child: const Text(
+              "Start",
+              style: TextStyle(
+                fontSize: 30,
+              ),
+            )),
+      );
+    } else {
+      return Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.popAndPushNamed(context, "/game2");
+            },
+            child: const Text(
+              "Start",
+              style: TextStyle(
+                fontSize: 30,
+              ),
+            )),
+      );
     }
   }
 
@@ -131,19 +186,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.popAndPushNamed(context, "/game2");
-                        },
-                        child: const Text(
-                          "Start",
-                          style: TextStyle(
-                            fontSize: 30,
-                          ),
-                        )),
-                  ),
+                  getStartButton()
                 ],
               ),
             ),
