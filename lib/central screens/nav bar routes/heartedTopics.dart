@@ -1,5 +1,4 @@
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:firebase_attempt/central%20screens/square_temp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,10 +9,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
-
-import '../../database/database.dart';
-import '../../main.dart';
-import '../PageColor.dart';
 
 class HeartedTopics extends StatefulWidget {
   const HeartedTopics({Key? key}) : super(key: key);

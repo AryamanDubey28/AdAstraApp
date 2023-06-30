@@ -1,12 +1,8 @@
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/change_theme_button_widget.dart';
-import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:firebase_attempt/theme_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../PageColor.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);

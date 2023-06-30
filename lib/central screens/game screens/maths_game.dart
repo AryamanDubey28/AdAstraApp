@@ -1,10 +1,5 @@
 import 'dart:math';
-import 'package:firebase_attempt/central%20screens/PageColor.dart';
-import 'package:firebase_attempt/central%20screens/congrats_screen.dart';
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 
 class MathsGame extends StatefulWidget {
   @override

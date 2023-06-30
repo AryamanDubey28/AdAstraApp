@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import '../../main_page.dart';

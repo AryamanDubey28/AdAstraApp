@@ -1,5 +1,4 @@
 import 'package:firebase_attempt/central%20screens/play_page.dart';
-import 'package:firebase_attempt/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'auth_page.dart';

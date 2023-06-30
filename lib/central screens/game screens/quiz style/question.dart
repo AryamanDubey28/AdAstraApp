@@ -1,5 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
-
 class Question {
   late final int? id, answer;
   late final String question;

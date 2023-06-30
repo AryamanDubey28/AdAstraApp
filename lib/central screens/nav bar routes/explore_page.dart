@@ -1,11 +1,8 @@
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/heartedTopics.dart';
-import 'package:firebase_attempt/central%20screens/square_temp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
-
-import '../PageColor.dart';
 
 class ExplorePage extends StatelessWidget {
   //const ExplorePage({Key? key}) : super(key: key);

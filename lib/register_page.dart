@@ -64,6 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  //initial user deatils
   Future addUserDetails(String firstname, String surname, int age, String email,
       String uid) async {
     await FirebaseFirestore.instance.collection('users').doc(uid).set({
@@ -113,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                   child: Text(
                     "Nice To Meet You",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 48),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 44),
                   ),
                 ),
                 const SizedBox(

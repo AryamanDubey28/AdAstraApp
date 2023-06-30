@@ -4,7 +4,6 @@ import 'package:firebase_attempt/intro%20screens/screen_2.dart';
 import 'package:firebase_attempt/intro%20screens/screen_3.dart';
 import 'package:firebase_attempt/intro%20screens/screen_4.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
-import 'package:firebase_attempt/read%20data/get_user_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

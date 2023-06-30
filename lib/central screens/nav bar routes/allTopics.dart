@@ -7,12 +7,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:like_button/like_button.dart';
 
 import '../../alert dialog/custom_dialog.dart';
-import '../../main.dart';
 import '../PageColor.dart';
-import '../play_page.dart';
 
 class AllTopics extends StatefulWidget {
   //const AllTopics({Key? key}) : super(key: key);

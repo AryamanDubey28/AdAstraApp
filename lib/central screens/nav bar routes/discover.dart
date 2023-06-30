@@ -4,14 +4,11 @@ import 'package:firebase_attempt/central%20screens/game%20screens/maths_game.dar
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/feedback_form.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/question_sheets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-
-import '../PageColor.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key? key}) : super(key: key);

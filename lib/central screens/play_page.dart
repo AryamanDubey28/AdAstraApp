@@ -1,20 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_g1.dart';
-import 'package:firebase_attempt/central%20screens/hidden_drawer.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/discover.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
-import 'package:firebase_attempt/main_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:lottie/lottie.dart';
-
-import '../login_page.dart';
-import 'PageColor.dart';
 
 class PlayPage extends StatefulWidget {
   @override

@@ -1,8 +1,5 @@
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive/hive.dart';
-
-import '../main.dart';
 
 class SelectionTilesDB {
   final FirebaseAuth auth = FirebaseAuth.instance;
