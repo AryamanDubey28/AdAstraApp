@@ -18,17 +18,13 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'central screens/nav bar routes/settings_page.dart';
 import 'central screens/question_sheets.dart';
-import 'login_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await QuestionSheets.init();
-
-  await Hive.initFlutter();
-
+  await Hive.initFlutter(); //init local storage
   var box = await Hive.openBox('mybox');
 
   runApp(const MyApp());

@@ -54,7 +54,7 @@ class _SettingsState extends State<SettingsPage> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                "User id = ${firebaseAuth.currentUser!.uid}",
+                "Your user id = ${firebaseAuth.currentUser!.uid}",
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),

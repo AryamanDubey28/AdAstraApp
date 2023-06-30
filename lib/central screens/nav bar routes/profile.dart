@@ -35,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> _refresh() {
     setState(() {});
-    return Future.delayed(const Duration(seconds: 2));
+    return Future.delayed(const Duration(seconds: 1));
   }
 
   @override

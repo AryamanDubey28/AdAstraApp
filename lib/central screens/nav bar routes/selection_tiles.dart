@@ -412,6 +412,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
   Future _refresh() async {
     setState(() {});
+    return Future.delayed(const Duration(seconds: 1));
   }
 
   @override
