@@ -1,32 +1,24 @@
 import 'dart:async';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_attempt/alert%20dialog/custom_dialog.dart';
 import 'package:firebase_attempt/central%20screens/PageColor.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
-import 'package:firebase_attempt/central%20screens/game%20screens/nvr%20draggable%20qs/nvr_draggable.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/heartedTopics.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/database/database.dart';
-import 'package:firebase_attempt/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
-
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
 import 'package:hive/hive.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../main_page.dart';
 import '../../theme_provider.dart';
-import '../game screens/matching tiles/matching_tiles_g1.dart';
 
 class SelectionTiles extends StatefulWidget {
   String uid = FirebaseAuth.instance.currentUser!.uid;
@@ -99,10 +91,7 @@ class SelectionTiles extends StatefulWidget {
 
 class _SelectionTilesState extends State<SelectionTiles> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  //late Timer timer;
-
   Color myPageCol = getPageColor()!;
-
   final _myBox = Hive.box('mybox');
 
   SelectionTilesDB db = SelectionTilesDB();
@@ -110,14 +99,11 @@ class _SelectionTilesState extends State<SelectionTiles> {
   @override
   void initState() {
     super.initState();
-    // timer = Timer.periodic(
-    //     const Duration(seconds: 1), (Timer t) => setState(() {}));
   }
 
   @override
   void dispose() {
     super.dispose();
-    //timer.cancel();
   }
 
   void getLikedTopics() {
@@ -144,7 +130,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
     HeartedTopics ht = const HeartedTopics();
     print(widget.uid);
-
     _myBox.put("LIKEDTOPICS_${widget.uid}", SelectionTiles.likedTopics);
     print("Saved change to DB");
   }
@@ -152,7 +137,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
   Widget getVRScreen(BuildContext context, bool isDarkMode) {
     return CarouselSlider.builder(
         options: CarouselOptions(
-          height: 800,
+          height: 750,
           viewportFraction: 0.8,
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
@@ -167,8 +152,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   child: GestureDetector(
                     onTap: () {
                       SelectionTiles.topic = SelectionTiles.vr_section[index];
-                      print(SelectionTiles.topic);
-                      print("User id ${widget.uid}");
                       Widget screen; //allows for transitions
                       if (SelectionTiles.topic == "Matching Tiles") {
                         screen = const InformationSheet();
@@ -243,7 +226,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
   Widget getNVRScreen(BuildContext context, bool isDarkMode) {
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: 800,
+        height: 750,
         viewportFraction: 0.8,
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
@@ -259,22 +242,22 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   onTap: () {
                     SelectionTiles.topic = SelectionTiles.nvr_section[index];
                     print(SelectionTiles.topic);
-                    Widget screen = QuizScreen();
+                    Widget screen = const QuizScreen();
                     Get.to(() => screen,
                         transition: Transition.upToDown,
-                        duration: Duration(milliseconds: 750));
+                        duration: const Duration(milliseconds: 750));
                   },
                   onDoubleTap: () {
                     SelectionTiles.topic = SelectionTiles.nvr_section[index];
                     if (ExplorePage.index == 0) {
                       SelectionTiles.likedTopics
-                          .add(SelectionTiles.topic + " - VR");
+                          .add("${SelectionTiles.topic} - VR");
                     } else if (ExplorePage.index == 1) {
                       SelectionTiles.likedTopics
-                          .add(SelectionTiles.topic + " - NVR");
+                          .add("${SelectionTiles.topic} - NVR");
                     } else if (ExplorePage.index == 2) {
                       SelectionTiles.likedTopics
-                          .add(SelectionTiles.topic + " - Numeracy");
+                          .add("${SelectionTiles.topic} - Numeracy");
                     }
                     showLike(context);
                   },
@@ -285,8 +268,10 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         color: Colors.grey[300],
                         border: Border.all(color: Colors.white10),
                         borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
-                          image: AssetImage('lib/assets/NVR.jpg'),
+                        image: DecorationImage(
+                          image: isDarkMode
+                              ? const AssetImage('lib/assets/NVR_DM.png')
+                              : const AssetImage('lib/assets/NVR_LM.png'),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -301,7 +286,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
                               style: const TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
                               ),
                             ),
                           ),
@@ -324,7 +308,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
   Widget getNumeracyScreen(BuildContext context, bool isDarkMode) {
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: 800,
+        height: 750,
         viewportFraction: 0.8,
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
@@ -341,23 +325,23 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     SelectionTiles.topic =
                         SelectionTiles.numeracy_section[index];
                     print(SelectionTiles.topic);
-                    Widget screen = QuizScreen();
+                    Widget screen = const QuizScreen();
                     Get.to(() => screen,
                         transition: Transition.upToDown,
-                        duration: Duration(milliseconds: 750));
+                        duration: const Duration(milliseconds: 750));
                   },
                   onDoubleTap: () {
                     SelectionTiles.topic =
                         SelectionTiles.numeracy_section[index];
                     if (ExplorePage.index == 0) {
                       SelectionTiles.likedTopics
-                          .add(SelectionTiles.topic + " - VR");
+                          .add("${SelectionTiles.topic} - VR");
                     } else if (ExplorePage.index == 1) {
                       SelectionTiles.likedTopics
-                          .add(SelectionTiles.topic + " - NVR");
+                          .add("${SelectionTiles.topic} - NVR");
                     } else if (ExplorePage.index == 2) {
                       SelectionTiles.likedTopics
-                          .add(SelectionTiles.topic + " - Numeracy");
+                          .add("${SelectionTiles.topic} - Numeracy");
                     }
                     showLike(context);
                   },
@@ -368,9 +352,11 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         color: Colors.grey[300],
                         border: Border.all(color: Colors.white10),
                         borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
-                          image: AssetImage(
-                              'lib/assets/central_screen/numeracy_screen_gradient.JPG'),
+                        image: DecorationImage(
+                          image: isDarkMode
+                              ? const AssetImage(
+                                  'lib/assets/central_screen/numeracy_screen_gradient.JPG')
+                              : const AssetImage('lib/assets/Numeracy_LM.png'),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -385,7 +371,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
                               style: const TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                //color: Colors.white,
                               ),
                             ),
                           ),
@@ -426,10 +411,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
   }
 
   Future _refresh() async {
-    print("in refresh");
-    setState(() {
-      print("refreshed");
-    });
+    setState(() {});
   }
 
   @override
@@ -538,13 +520,13 @@ class _SelectionTilesState extends State<SelectionTiles> {
         ),
         elevation: 0.0,
       ),
-      body: GestureDetector(
-          onVerticalDragDown: (details) {
-            setState(() {
-              print("refreshed");
-            });
-          },
-          child: getScreen(context, themeProvider.isDarkMode)),
+      body: RefreshIndicator(
+          onRefresh: _refresh,
+          color: Colors.deepPurple,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [getScreen(context, themeProvider.isDarkMode)],
+          )),
     );
   }
 }

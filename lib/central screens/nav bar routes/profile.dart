@@ -5,10 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:lottie/lottie.dart';
-
 import '../../main_page.dart';
-import '../PageColor.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -29,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             data = snapshot.data!.data() as Map<String, dynamic>;
-            return Text("${data['First Name']}" +
+            return Text("${data['First Name']}"
                 " ${data['Last Name']}, ${data['Age']}");
           }
           return const Text('Loading...');
@@ -38,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> _refresh() {
     setState(() {});
-    return Future.delayed(Duration(seconds: 2));
+    return Future.delayed(const Duration(seconds: 2));
   }
 
   @override
@@ -81,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
         onRefresh: _refresh,
         color: Colors.deepPurple,
         child: ListView(
-          physics: const BouncingScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           children: [
             ProfileWidget(
                 imagePath: "lib/assets/adastralogo.jpg",
