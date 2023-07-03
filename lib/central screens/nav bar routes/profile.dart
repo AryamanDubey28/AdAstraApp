@@ -103,19 +103,44 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  Future<void> _showLogoutConfirmationDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Logout Confirmation',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: const Text('Are you sure you want to log out?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const MainPage(),
+                  ),
+                  (route) => false,
+                );
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget LogoutButton(BuildContext context) {
     return ButtonWidget(
         text: "Sign Out",
-        onClicked: () {
-          FirebaseAuth.instance.signOut();
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const MainPage(),
-            ),
-            (route) => false,
-          );
-        });
+        onClicked: () => _showLogoutConfirmationDialog(context));
   }
 
   Widget buildUpgradeButton() {

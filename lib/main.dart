@@ -42,12 +42,11 @@ class MyApp extends StatelessWidget {
           home: const MainPage(),
           routes: {
             '/congrats': (context) => const CongratsScreen(),
-            '/playpage': (context) => PlayPage(),
+            '/playpage': (context) => const PlayPage(),
             '/settings': (context) => const SettingsPage(),
             '/info': (context) => const InformationSheet(),
             '/game2': (context) => const QuizLayout(),
             '/scoreScreen': (context) => ScoreScreen(),
-            // '/nvrtiles': (context) => SelectionTilesNVR(),
           },
         );
       },
