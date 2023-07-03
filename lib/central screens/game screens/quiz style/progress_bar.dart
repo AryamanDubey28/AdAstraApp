@@ -16,12 +16,11 @@ class ProgressBar extends StatelessWidget {
       height: 35,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade200, width: 1),
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: GetBuilder<QuestionController>(
           init: QuestionController(ExplorePage.index),
           builder: (controller) {
-            //print(controller.animation.value);
             return Stack(
               children: [
                 LayoutBuilder(
@@ -29,7 +28,7 @@ class ProgressBar extends StatelessWidget {
                           width:
                               constraints.maxWidth * controller.animation.value,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               begin: Alignment.topRight,
                               end: Alignment.bottomLeft,
                               colors: [
@@ -37,14 +36,14 @@ class ProgressBar extends StatelessWidget {
                                 Color.fromARGB(255, 4, 250, 225),
                               ],
                             ),
-                            borderRadius: BorderRadius.circular(50),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                         ))),
                 Positioned.fill(
                   child: Row(
-                    children: [
+                    children: const [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Icon(Iconsax.clock),
                       ),
                     ],

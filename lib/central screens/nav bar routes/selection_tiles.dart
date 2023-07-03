@@ -30,7 +30,7 @@ class SelectionTiles extends StatefulWidget {
   static List likedTopics = [];
 
   static List vr_section = [
-    "Matching Tiles",
+    // "Matching Tiles",
     "Letter Codes",
     "Word Codes",
     "Number Sequences",
@@ -151,12 +151,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   child: GestureDetector(
                     onTap: () {
                       SelectionTiles.topic = SelectionTiles.vr_section[index];
-                      Widget screen; //allows for transitions
-                      if (SelectionTiles.topic == "Matching Tiles") {
-                        screen = const InformationSheet();
-                      } else {
-                        screen = const QuizScreen();
-                      }
+                      Widget screen = const QuizScreen();
                       Get.to(() => screen,
                           transition: Transition.upToDown,
                           duration: const Duration(milliseconds: 750));

@@ -36,7 +36,7 @@ class _QuizScreenState extends State<QuizScreen> {
   };
 
   String getText() {
-    return "${SelectionTiles.topic}";
+    return SelectionTiles.topic;
   }
 
   String getAnim() {

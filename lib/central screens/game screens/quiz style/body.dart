@@ -24,7 +24,6 @@ class _BodyState extends State<Body> {
       ExplorePage.index,
     ));
     return Scaffold(
-        //backgroundColor: getPageColor(),
         body: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
