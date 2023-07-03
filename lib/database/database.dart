@@ -8,7 +8,7 @@ class SelectionTilesDB {
 
   SelectionTilesDB() {
     final User user = auth.currentUser!;
-    final email = user.email!;
+
     uid = user.uid;
     print(uid);
   }
@@ -20,7 +20,7 @@ class SelectionTilesDB {
   }
 
   void loadData() {
-    heartedTopics = _myBox.get("LIKEDTOPICS_${uid}");
+    heartedTopics = _myBox.get("LIKEDTOPICS_$uid");
   }
 
   List loadDataList() {
@@ -28,7 +28,7 @@ class SelectionTilesDB {
   }
 
   void updateDataBase() {
-    _myBox.put("LIKEDTOPICS_${uid}", heartedTopics);
+    _myBox.put("LIKEDTOPICS_$uid", heartedTopics);
   }
 
   List getHeartedTopics() {

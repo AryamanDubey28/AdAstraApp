@@ -7,13 +7,13 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconsax/iconsax.dart';
 
 class PlayPage extends StatefulWidget {
+  const PlayPage({super.key});
+
   @override
   _PlayPageState createState() => _PlayPageState();
 }
 
 class _PlayPageState extends State<PlayPage> {
-  static int tilesScreenIndex = 0;
-
   Future<bool> _onWillPop() async {
     return false;
   }
@@ -24,9 +24,9 @@ class _PlayPageState extends State<PlayPage> {
   //all screens shown in the bottom tabs
   final screens = [
     SelectionTiles(ExplorePage.index),
-    ExplorePage(),
+    const ExplorePage(),
     const DiscoverPage(),
-    ProfilePage(),
+    const ProfilePage(),
   ];
 
   int currentIndex = 0;

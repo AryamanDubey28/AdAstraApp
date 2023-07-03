@@ -16,7 +16,7 @@ class IntroPage2 extends StatelessWidget {
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         FadeIn(
-          duration: Duration(milliseconds: 1800),
+          duration: const Duration(milliseconds: 1800),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -31,18 +31,18 @@ class IntroPage2 extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8.0,
         ),
         Center(
           child: Lottie.network(
               "https://assets9.lottiefiles.com/packages/lf20_7htpyk2w.json"),
         ),
-        SizedBox(
+        const SizedBox(
           height: 14.0,
         ),
         FadeIn(
-          duration: Duration(milliseconds: 1800),
+          duration: const Duration(milliseconds: 1800),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),

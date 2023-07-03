@@ -26,11 +26,11 @@ class ScoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    QuestionController _controller =
+    QuestionController controller =
         Get.put(QuestionController(ExplorePage.index));
-    double score = double.parse(_controller.getPercentage().toString());
+    double score = double.parse(controller.getPercentage().toString());
     firebaseFunctions.updateUserXP(score);
-    print("Updated XP with $score");
+    //print("Updated XP with $score");
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -64,7 +64,7 @@ class ScoreScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "${_controller.getPercentage()}%",
+                    "${controller.getPercentage()}%",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
                       fontSize: 38.0,
@@ -75,15 +75,18 @@ class ScoreScreen extends StatelessWidget {
               ),
             ),
             Center(
-              child: Lottie.network(getAnimation(_controller.getPercentage())),
+              child: Lottie.network(getAnimation(controller.getPercentage())),
             ),
             const SizedBox(
-              height: 15.0,
+              height: 35.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Back to home screen"),
+                const Text(
+                  "Back to home screen",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
                 IconButton(
                     onPressed: () => Navigator.pushNamedAndRemoveUntil(
                         context, "/playpage", (r) => false),

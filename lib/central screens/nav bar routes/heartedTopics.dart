@@ -20,30 +20,21 @@ class HeartedTopics extends StatefulWidget {
 class _HeartedTopicsState extends State<HeartedTopics> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   late String uid;
-  //List heartedTopics = SelectionTiles.likedTopics;
 
   final _myBox = Hive.box('mybox');
-  //SelectionTilesDB db = SelectionTilesDB();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final User user = auth.currentUser!;
-    final email = user.email!;
-    uid = user.uid;
-    print(uid);
 
-    //print(heartedTopics);
-    //heartedTopics = heartedTopics.toSet().toList();
+    uid = user.uid;
+
     SelectionTiles.likedTopics = SelectionTiles.likedTopics.toSet().toList();
 
-    //print(heartedTopics);
-    if (_myBox.get("LIKEDTOPICS_${uid}") == null) {
-      print("DB is empty");
+    if (_myBox.get("LIKEDTOPICS_$uid") == null) {
     } else {
-      //heartedTopics = _myBox.get("LIKEDTOPICS");
-      SelectionTiles.likedTopics = _myBox.get("LIKEDTOPICS_${uid}");
+      SelectionTiles.likedTopics = _myBox.get("LIKEDTOPICS_$uid");
     }
     SelectionTiles.likedTopics = SelectionTiles.likedTopics.toSet().toList();
   }
@@ -53,18 +44,18 @@ class _HeartedTopicsState extends State<HeartedTopics> {
     String s = SelectionTiles.likedTopics[index];
     s = s.substring(0, s.indexOf("-") - 1);
     SelectionTiles.topic = s;
-    Get.to(() => QuizScreen(),
-        transition: Transition.topLevel, duration: Duration(seconds: 1));
+    Get.to(() => const QuizScreen(),
+        transition: Transition.topLevel, duration: const Duration(seconds: 1));
   }
 
   Widget emptyListScreen() {
     return Column(
       children: [
-        Spacer(),
+        const Spacer(),
         Lottie.network(
             "https://assets10.lottiefiles.com/packages/lf20_AcjHPq.json"),
         FadeIn(
-          duration: Duration(milliseconds: 1800),
+          duration: const Duration(milliseconds: 1800),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -80,7 +71,7 @@ class _HeartedTopicsState extends State<HeartedTopics> {
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
       ],
     );
   }
@@ -95,12 +86,11 @@ class _HeartedTopicsState extends State<HeartedTopics> {
           itemBuilder: ((context, index) {
             return GestureDetector(
                 onTap: () {
-                  print("hi");
                   goToQuizPage(index);
                 },
                 child: Slidable(
                     startActionPane: ActionPane(
-                      motion: StretchMotion(),
+                      motion: const StretchMotion(),
                       children: [
                         SlidableAction(
                           onPressed: ((context) {
@@ -113,12 +103,11 @@ class _HeartedTopicsState extends State<HeartedTopics> {
                       ],
                     ),
                     endActionPane: ActionPane(
-                      motion: StretchMotion(),
+                      motion: const StretchMotion(),
                       children: [
                         SlidableAction(
                           onPressed: ((context) {
                             deleteTopic(index);
-                            //setState(() {});
                           }),
                           icon: Icons.delete,
                           backgroundColor: Colors.red,
@@ -135,17 +124,14 @@ class _HeartedTopicsState extends State<HeartedTopics> {
     setState(() {
       SelectionTiles.likedTopics.removeAt(index);
     });
-    //updateDataBase();
-    _myBox.put("LIKEDTOPICS_${uid}", SelectionTiles.likedTopics);
-    print("Saved delete change to DB");
+
+    _myBox.put("LIKEDTOPICS_$uid", SelectionTiles.likedTopics);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: getPageColor(),
       appBar: AppBar(
-        //backgroundColor: getPageColor(),
         title: const Text(
           "Your Favourite Topics",
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),

@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class MathsGame extends StatefulWidget {
+  const MathsGame({super.key});
+
   @override
   _MathsGameState createState() => _MathsGameState();
 }
@@ -79,11 +81,11 @@ class _MathsGameState extends State<MathsGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Maths Game'),
+        title: const Text('Maths Game'),
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -126,7 +128,7 @@ class _MathsGameState extends State<MathsGame> {
                 onPressed: () {
                   nextQuestion();
                 },
-                child: Text('Next Question'),
+                child: const Text('Next Question'),
               ),
             ],
           ),

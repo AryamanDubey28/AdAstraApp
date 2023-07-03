@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_attempt/alert%20dialog/custom_dialog.dart';
-import 'package:firebase_attempt/central%20screens/PageColor.dart';
-import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
+
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
@@ -24,13 +23,12 @@ class SelectionTiles extends StatefulWidget {
   static int index = 0;
   static String topic = "";
 
-  SelectionTiles(int screenIndex) {
+  SelectionTiles(int screenIndex, {super.key}) {
     index = screenIndex;
   }
   static List likedTopics = [];
 
   static List vr_section = [
-    // "Matching Tiles",
     "Letter Codes",
     "Word Codes",
     "Number Sequences",
@@ -90,7 +88,7 @@ class SelectionTiles extends StatefulWidget {
 
 class _SelectionTilesState extends State<SelectionTiles> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  Color myPageCol = getPageColor()!;
+
   final _myBox = Hive.box('mybox');
 
   SelectionTilesDB db = SelectionTilesDB();
@@ -122,15 +120,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
           Future.delayed(const Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(
+          return const CustomAlertDialog(
             title: "Added to Liked",
           );
         });
 
     HeartedTopics ht = const HeartedTopics();
-    print(widget.uid);
+
     _myBox.put("LIKEDTOPICS_${widget.uid}", SelectionTiles.likedTopics);
-    print("Saved change to DB");
   }
 
   Widget getVRScreen(BuildContext context, bool isDarkMode) {
@@ -235,7 +232,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                 child: GestureDetector(
                   onTap: () {
                     SelectionTiles.topic = SelectionTiles.nvr_section[index];
-                    print(SelectionTiles.topic);
+
                     Widget screen = const QuizScreen();
                     Get.to(() => screen,
                         transition: Transition.upToDown,
@@ -318,7 +315,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   onTap: () {
                     SelectionTiles.topic =
                         SelectionTiles.numeracy_section[index];
-                    print(SelectionTiles.topic);
+
                     Widget screen = const QuizScreen();
                     Get.to(() => screen,
                         transition: Transition.upToDown,
@@ -437,7 +434,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
             Center(
               child: FocusedMenuHolder(
                 menuWidth: MediaQuery.of(context).size.width * 0.5,
-                blurBackgroundColor: getPageColor(),
+                blurBackgroundColor: Colors.grey,
                 openWithTap: true,
                 duration: const Duration(seconds: 0),
                 animateMenuItems: false,

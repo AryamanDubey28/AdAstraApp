@@ -7,14 +7,16 @@ import 'package:lottie/lottie.dart';
 class IntroPage4 extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
 
+  IntroPage4({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[200],
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
-        title: Text("Signed in as: " + user.email!,
-            style: TextStyle(
+        title: Text("Signed in as: ${user.email!}",
+            style: const TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
             )),
@@ -26,7 +28,7 @@ class IntroPage4 extends StatelessWidget {
                 onTap: () {
                   FirebaseAuth.instance.signOut();
                 },
-                child: Icon(Icons.logout)),
+                child: const Icon(Icons.logout)),
           )
         ],
       ),
@@ -42,18 +44,18 @@ class IntroPage4 extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Center(
           child: Lottie.network(
               "https://assets3.lottiefiles.com/packages/lf20_dT1E1P.json"),
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         FadeIn(
-          duration: Duration(milliseconds: 2000),
+          duration: const Duration(milliseconds: 2000),
           child: Text(
             "For a tailored service, Click 'Done' below",
             textAlign: TextAlign.center,

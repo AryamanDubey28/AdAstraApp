@@ -58,7 +58,7 @@ class _QuizLayoutState extends State<QuizLayout> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    QuestionController _controller =
+    QuestionController controller =
         Get.put(QuestionController(ExplorePage.index));
     return WillPopScope(
       onWillPop: _showExitConfirmationDialog,
@@ -77,7 +77,7 @@ class _QuizLayoutState extends State<QuizLayout> {
                           color: getSkipColour(themeProvider.isDarkMode)),
                     ),
                     onTap: () {
-                      _controller.nextQuestion();
+                      controller.nextQuestion();
                     },
                   ),
                 ),

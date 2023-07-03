@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_attempt/intro%20screens/screen_1.dart';
 import 'package:firebase_attempt/intro%20screens/screen_2.dart';
 import 'package:firebase_attempt/intro%20screens/screen_3.dart';
@@ -22,17 +21,6 @@ class _HomePageState extends State<HomePage> {
 
   List<String> docIDs = [];
 
-  Future getDocIDs() async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .orderBy('Age', descending: false)
-        .get()
-        .then((value) => value.docs.forEach((element) {
-              print(element.reference);
-              docIDs.add(element.reference.id);
-            }));
-  }
-
   PageController my_controller = PageController();
 
   bool onLastPage = false;
@@ -50,14 +38,14 @@ class _HomePageState extends State<HomePage> {
               });
             },
             children: [
-              IntroPage1(),
-              IntroPage2(),
-              IntroPage3(),
+              const IntroPage1(),
+              const IntroPage2(),
+              const IntroPage3(),
               IntroPage4(),
             ],
           ),
           Container(
-              alignment: Alignment(0, 0.85),
+              alignment: const Alignment(0, 0.85),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -65,25 +53,23 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         my_controller.jumpToPage(3);
                       },
-                      child: Text("Skip")),
+                      child: const Text("Skip")),
                   SmoothPageIndicator(controller: my_controller, count: 4),
                   onLastPage
-                      ?
-                      //wrap this with the sliding thingy
-                      GestureDetector(
+                      ? GestureDetector(
                           onTap: () {
-                            Get.to(() => PlayPage(),
+                            Get.to(() => const PlayPage(),
                                 transition: Transition.topLevel,
-                                duration: Duration(seconds: 2));
+                                duration: const Duration(seconds: 2));
                           },
-                          child: Text("Done"))
+                          child: const Text("Done"))
                       : GestureDetector(
                           onTap: () {
                             my_controller.nextPage(
-                                duration: Duration(milliseconds: 500),
+                                duration: const Duration(milliseconds: 500),
                                 curve: Curves.easeIn);
                           },
-                          child: Text("Next")),
+                          child: const Text("Next")),
                 ],
               )),
         ],

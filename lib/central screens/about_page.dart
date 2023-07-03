@@ -12,7 +12,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.pink[100],
-      body: Center(
+      body: const Center(
           child: Text("About page...", style: TextStyle(fontSize: 30.0))),
     );
   }

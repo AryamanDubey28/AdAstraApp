@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import '../../main_page.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -208,7 +210,8 @@ class ProfileWidget extends StatelessWidget {
   final String imagePath;
   final VoidCallback onClicked;
 
-  ProfileWidget({required this.imagePath, required this.onClicked});
+  const ProfileWidget(
+      {super.key, required this.imagePath, required this.onClicked});
 
   Widget buildImage() {
     const image = AssetImage("lib/assets/adastralogo.jpg");
@@ -271,7 +274,8 @@ class ButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
 
-  ButtonWidget({
+  const ButtonWidget({
+    super.key,
     required this.text,
     required this.onClicked,
   });
@@ -280,7 +284,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          onPrimary: Colors.white,
+          foregroundColor: Colors.white,
           shape: const StadiumBorder(),
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
       onPressed: onClicked,

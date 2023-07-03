@@ -9,11 +9,8 @@ import 'package:hive/hive.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../alert dialog/custom_dialog.dart';
-import '../PageColor.dart';
 
 class AllTopics extends StatefulWidget {
-  //const AllTopics({Key? key}) : super(key: key);
-
   late final List allTopics;
 
   @override
@@ -25,15 +22,13 @@ class _AllTopicsState extends State<AllTopics> {
   final _myBox = Hive.box('mybox');
   final FirebaseAuth auth = FirebaseAuth.instance;
   late String uid;
-  final Color? backgroundColor = getPageColor();
 
   @override
   void initState() {
     super.initState();
     final User user = auth.currentUser!;
-    final email = user.email!;
+
     uid = user.uid;
-    print(uid);
   }
 
   String getState() {
@@ -68,9 +63,8 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(const Duration(seconds: 1), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(
+          return const CustomAlertDialog(
             title: "Added to Liked",
-            //backgroundColor: backgroundColor!,
           );
         });
   }
@@ -83,7 +77,7 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(const Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(
+          return const CustomAlertDialog(
             title: "Moved to Bottom",
           );
         });
@@ -97,7 +91,7 @@ class _AllTopicsState extends State<AllTopics> {
           Future.delayed(const Duration(milliseconds: 1500), () {
             Navigator.of(context).pop(true);
           });
-          return CustomAlertDialog(
+          return const CustomAlertDialog(
             title: "Moved to Top",
           );
         });
@@ -111,7 +105,6 @@ class _AllTopicsState extends State<AllTopics> {
         children: [
           SlidableAction(
             onPressed: ((context) {
-              //do something
               if (ExplorePage.index == 0) {
                 SelectionTiles.likedTopics.add("$topic - VR");
               } else if (ExplorePage.index == 1) {
@@ -122,7 +115,6 @@ class _AllTopicsState extends State<AllTopics> {
 
               showHeartedDialogue();
 
-              print("added $topic");
               _myBox.put("LIKEDTOPICS_$uid", SelectionTiles.likedTopics);
             }),
             backgroundColor: Colors.red,
@@ -130,7 +122,6 @@ class _AllTopicsState extends State<AllTopics> {
           ),
           SlidableAction(
             onPressed: ((context) {
-              //do something
               setState(() {
                 allTopics.remove(topic);
                 allTopics.add(topic);
@@ -150,7 +141,7 @@ class _AllTopicsState extends State<AllTopics> {
                 });
                 showUpDialogue();
               }),
-              backgroundColor: Color.fromARGB(255, 244, 165, 6),
+              backgroundColor: const Color.fromARGB(255, 244, 165, 6),
               icon: Icons.move_up),
         ],
       ),
@@ -189,7 +180,7 @@ class _AllTopicsState extends State<AllTopics> {
   @override
   void dispose() {
     super.dispose();
-    print("disposed");
+
     if (ExplorePage.index == 0) {
       SelectionTiles.vr_section = allTopics;
     } else if (ExplorePage.index == 1) {

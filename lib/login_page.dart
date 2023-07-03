@@ -1,4 +1,3 @@
-import 'package:firebase_attempt/error%20screens/no_found_user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

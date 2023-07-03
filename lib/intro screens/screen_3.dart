@@ -16,7 +16,7 @@ class IntroPage3 extends StatelessWidget {
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         FadeIn(
-          duration: Duration(milliseconds: 1800),
+          duration: const Duration(milliseconds: 1800),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(12.0),

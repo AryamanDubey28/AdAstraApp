@@ -20,7 +20,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    QuestionController _questionController = Get.put(QuestionController(
+    QuestionController questionController = Get.put(QuestionController(
       ExplorePage.index,
     ));
     return Scaffold(
@@ -42,17 +42,12 @@ class _BodyState extends State<Body> {
                   child: Obx(
                     () => Text.rich(TextSpan(
                       text:
-                          "Question ${_questionController.questionNumber.value}",
-                      style: Theme.of(context).textTheme.headline4?.copyWith(
-                          //color: Colors.grey[200]
-                          ),
+                          "Question ${questionController.questionNumber.value}",
+                      style: Theme.of(context).textTheme.headlineMedium,
                       children: [
                         TextSpan(
-                            text: "/${_questionController.questions.length}",
-                            style:
-                                Theme.of(context).textTheme.headline5?.copyWith(
-                                    //color: Colors.grey[200]
-                                    )),
+                            text: "/${questionController.questions.length}",
+                            style: Theme.of(context).textTheme.headlineSmall),
                       ],
                     )),
                   )),
@@ -62,11 +57,11 @@ class _BodyState extends State<Body> {
               Expanded(
                 child: PageView.builder(
                   physics: const NeverScrollableScrollPhysics(),
-                  controller: _questionController.pageController,
-                  onPageChanged: _questionController.updateQuestion,
-                  itemCount: _questionController.questions.length,
+                  controller: questionController.pageController,
+                  onPageChanged: questionController.updateQuestion,
+                  itemCount: questionController.questions.length,
                   itemBuilder: (context, index) => QuestionCard(
-                    question: _questionController.questions[index],
+                    question: questionController.questions[index],
                   ),
                 ),
               ),

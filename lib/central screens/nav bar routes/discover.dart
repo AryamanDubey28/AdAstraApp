@@ -152,7 +152,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                 ButtonWidget(
                     text: "Play A Maths Game",
                     onClicked: () {
-                      Get.to(() => MathsGame(),
+                      Get.to(() => const MathsGame(),
                           transition: Transition.downToUp);
                     })
               ],

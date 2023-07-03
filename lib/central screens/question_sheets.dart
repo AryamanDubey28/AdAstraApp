@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:googleapis/sheets/v4.dart';
 import 'package:gsheets/gsheets.dart';
 
 class QuestionSheets {
@@ -19,7 +16,7 @@ class QuestionSheets {
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gsheets%40setup-11fc6.iam.gserviceaccount.com"
 }
 ''';
-  static final _spreadsheetId = '1Sajl_F7HEsRHrpUb8_ME8VaCzMKUFXQAMSncwTQNQrU';
+  static const _spreadsheetId = '1Sajl_F7HEsRHrpUb8_ME8VaCzMKUFXQAMSncwTQNQrU';
 
   static final GSheets _gsheets = GSheets(_credentials);
 
@@ -56,10 +53,10 @@ class QuestionSheets {
 }
 
 class WordFields {
-  static final String id = 'id';
-  static final String word = 'word';
-  static final String definition = 'definition';
-  static final String difficulty = 'difficulty';
+  static const String id = 'id';
+  static const String word = 'word';
+  static const String definition = 'definition';
+  static const String difficulty = 'difficulty';
 
   static List<String> getFields() => [id, word, definition, difficulty];
 }

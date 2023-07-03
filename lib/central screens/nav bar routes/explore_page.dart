@@ -5,29 +5,27 @@ import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
 class ExplorePage extends StatelessWidget {
-  //const ExplorePage({Key? key}) : super(key: key);
-
   static int index = 0;
+
+  const ExplorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //backgroundColor: getPageColor(),
         appBar: AppBar(
           title: const Text("Browse All Videos!"),
           automaticallyImplyLeading: false,
           elevation: 0.0,
-          //backgroundColor: getPageColor(),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: IconButton(
                   onPressed: () {
-                    Get.to(() => HeartedTopics(),
+                    Get.to(() => const HeartedTopics(),
                         transition: Transition.topLevel,
-                        duration: Duration(seconds: 1));
+                        duration: const Duration(seconds: 1));
                   },
-                  icon: Icon(Iconsax.heart)),
+                  icon: const Icon(Iconsax.heart)),
             )
           ],
         ),

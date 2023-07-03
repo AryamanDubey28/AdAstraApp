@@ -9,12 +9,11 @@ class Option extends StatefulWidget {
     required this.text,
     required this.index,
     required this.press,
-    //required this.image,
   }) : super(key: key);
 
   final String text;
   final int index;
-  //final String image;
+
   final VoidCallback press;
 
   @override
@@ -26,7 +25,7 @@ class _OptionState extends State<Option> {
     if (text.startsWith("lib/assets")) {
       return Image.asset(text);
     } else {
-      return SizedBox();
+      return const SizedBox();
     }
   }
 
@@ -53,11 +52,11 @@ class _OptionState extends State<Option> {
 
           Widget getOptionImage(String text) {
             if (text.startsWith("lib/assets")) {
-              return Container(
+              return SizedBox(
                   height: 200, width: 200, child: Image.asset(text));
             } else {
               return Text(
-                "${widget.index + 1}) ${text}",
+                "${widget.index + 1}) $text",
                 style: TextStyle(color: getRightColor(), fontSize: 18),
               );
             }
@@ -66,8 +65,8 @@ class _OptionState extends State<Option> {
           return InkWell(
             onTap: widget.press,
             child: Container(
-              margin: EdgeInsets.only(top: 15),
-              padding: EdgeInsets.all(25),
+              margin: const EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.all(25),
               decoration: BoxDecoration(
                 border: Border.all(color: getRightColor()),
                 borderRadius: BorderRadius.circular(15),
@@ -75,12 +74,7 @@ class _OptionState extends State<Option> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Text(
-                  //   "${widget.index + 1}) ${widget.text}",
-                  //   style: TextStyle(color: getRightColor(), fontSize: 18),
-                  // ),
                   getOptionImage(widget.text),
-
                   Container(
                       height: 26,
                       width: 26,
