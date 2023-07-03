@@ -31,37 +31,6 @@ class QuestionController extends GetxController
         .toList();
   }
 
-  // if (index == 0) {
-  //   _questions = sample_data_vr
-  //       .map((question) => Question(
-  //             id: question["id"],
-  //             question: question["question"],
-  //             image: question["image"],
-  //             options: question["options"],
-  //             answer: question["answer_index"],
-  //           ))
-  //       .toList();
-  // } else if (index == 1) {
-  //   _questions = sample_data_nvr
-  //       .map((question) => Question(
-  //             id: question["id"],
-  //             question: question["question"],
-  //             image: question["image"],
-  //             options: question["options"],
-  //             answer: question["answer_index"],
-  //           ))
-  //       .toList();
-  // } else if (index == 2) {
-  //   _questions = sample_data_numeracy
-  //       .map((question) => Question(
-  //             id: question["id"],
-  //             question: question["question"],
-  //             image: question["image"],
-  //             options: question["options"],
-  //             answer: question["answer_index"],
-  //           ))
-  //       .toList();
-
   List buildQuestionList(int index, String topic) {
     List topicList = [];
     if (index == 0) {
@@ -164,7 +133,10 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(nextQuestion);
     } else {
       //Navigate to score screen
-      Get.to(() => ScoreScreen());
+      double percentage = getPercentage();
+      Get.to(() => ScoreScreen(
+            percentage: percentage,
+          ));
     }
   }
 
@@ -172,10 +144,10 @@ class QuestionController extends GetxController
     _questionNumber.value = index + 1;
   }
 
-  int getPercentage() {
+  double getPercentage() {
     double p = _numOfCorrectAns / questions.length;
     double x = p * 100;
-    int y = x.round();
-    return y;
+    double roundedAns = double.parse(x.toStringAsFixed(2));
+    return roundedAns;
   }
 }

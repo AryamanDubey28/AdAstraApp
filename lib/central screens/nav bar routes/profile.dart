@@ -68,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.all(15.0),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/settings');
+                Get.to(() => const MembershipUpgradePage());
               },
               child: const Icon(Icons.settings),
             ),
@@ -210,7 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.hasData) {
                   return Text(
-                    "XP: ${snapshot.data}",
+                    "XP: ${double.parse(snapshot.data!).toStringAsFixed(2)}",
                     style: getTextStyle(),
                   );
                 } else if (snapshot.hasError) {

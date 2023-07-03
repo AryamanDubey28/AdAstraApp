@@ -8,7 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class ScoreScreen extends StatelessWidget {
-  ScoreScreen({Key? key}) : super(key: key);
+  final double percentage;
+  ScoreScreen({
+    Key? key,
+    required this.percentage,
+  }) : super(key: key);
 
   final FirebaseFunctions firebaseFunctions = FirebaseFunctions();
 
@@ -16,7 +20,7 @@ class ScoreScreen extends StatelessWidget {
     return false;
   }
 
-  String getAnimation(int score) {
+  String getAnimation(double score) {
     if (score >= 60) {
       return "https://assets3.lottiefiles.com/packages/lf20_5zYhWw.json"; //good
     } else {
@@ -26,10 +30,10 @@ class ScoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    QuestionController controller =
-        Get.put(QuestionController(ExplorePage.index));
-    double score = double.parse(controller.getPercentage().toString());
-    firebaseFunctions.updateUserXP(score);
+    // QuestionController controller =
+    //     Get.put(QuestionController(ExplorePage.index));
+    //double score = double.parse(controller.getPercentage().toString());
+    firebaseFunctions.updateUserXP(percentage);
     //print("Updated XP with $score");
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -64,7 +68,7 @@ class ScoreScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "${controller.getPercentage()}%",
+                    "$percentage%",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
                       fontSize: 38.0,
@@ -75,7 +79,7 @@ class ScoreScreen extends StatelessWidget {
               ),
             ),
             Center(
-              child: Lottie.network(getAnimation(controller.getPercentage())),
+              child: Lottie.network(getAnimation(percentage)),
             ),
             const SizedBox(
               height: 35.0,

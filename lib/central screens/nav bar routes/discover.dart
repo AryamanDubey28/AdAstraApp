@@ -63,7 +63,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     style: GoogleFonts.ubuntu(
                       fontSize: 46.0,
                       fontWeight: FontWeight.bold,
-                      //color: Colors.white
                     ),
                   ),
                 ),
