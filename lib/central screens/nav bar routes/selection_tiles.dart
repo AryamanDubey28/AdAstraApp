@@ -155,8 +155,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       Widget screen = const QuizScreen();
                       Get.to(
                         () => screen,
-                        transition: Transition.zoom,
-                        // duration: const Duration(milliseconds: 750)
+                        transition: Transition.upToDown,
                       );
                     },
                     onDoubleTap: () {
@@ -181,12 +180,11 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           border: Border.all(color: Colors.white10),
                           borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
-                            //TODO:Change to VR screen
                             image: isDarkMode
                                 ? const AssetImage(
-                                    'lib/assets/central_screen/numeracy_screen_gradient.JPG')
+                                    'lib/assets/tile_images/VR_DM.JPEG')
                                 : const AssetImage(
-                                    'lib/assets/Numeracy_LM.png'),
+                                    'lib/assets/tile_images/VR_LM.JPEG'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -246,7 +244,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     Get.to(
                       () => screen,
                       transition: Transition.zoom,
-                      // duration: const Duration(milliseconds: 750)
                     );
                   },
                   onDoubleTap: () {
@@ -272,8 +269,10 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         borderRadius: BorderRadius.circular(30),
                         image: DecorationImage(
                           image: isDarkMode
-                              ? const AssetImage('lib/assets/NVR_DM.png')
-                              : const AssetImage('lib/assets/NVR_LM.png'),
+                              ? const AssetImage(
+                                  'lib/assets/tile_images/NVR_DM.JPEG')
+                              : const AssetImage(
+                                  'lib/assets/tile_images/NVR_LM.JPEG'),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -288,6 +287,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                               style: TextStyle(
                                 fontSize: tilesText,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -334,7 +334,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     Get.to(
                       () => screen,
                       transition: Transition.zoom,
-                      // duration: const Duration(milliseconds: 750)
                     );
                   },
                   onDoubleTap: () {
@@ -362,8 +361,9 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         image: DecorationImage(
                           image: isDarkMode
                               ? const AssetImage(
-                                  'lib/assets/central_screen/numeracy_screen_gradient.JPG')
-                              : const AssetImage('lib/assets/Numeracy_LM.png'),
+                                  'lib/assets/tile_images/Numeracy_DM.JPEG')
+                              : const AssetImage(
+                                  'lib/assets/tile_images/Numeracy_LM.JPEG'),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -378,6 +378,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                               style: TextStyle(
                                 fontSize: tilesText,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
                             ),
                           ),

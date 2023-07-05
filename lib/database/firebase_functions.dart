@@ -13,7 +13,7 @@ class FirebaseFunctions {
     try {
       final docUser = firebaseFirestore.collection('users').doc(getUid());
       docUser.update({'Membership Type': newMembershipType});
-      return "Your Membership type was successfully updated to $newMembershipType";
+      return "Your Membership type was successfully updated to $newMembershipType.\n\nAs this is a beta release, currently $newMembershipType has no extra functionality";
     } catch (e) {
       return "There was an error updating your Membership type.\n$e";
     }

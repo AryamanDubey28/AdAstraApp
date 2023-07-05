@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
 import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:firebase_attempt/payment/upgrade_membership_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -71,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.all(15.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => const MembershipUpgradePage());
+                Get.to(() => const SettingsPage());
               },
               child: const Icon(Icons.settings),
             ),
