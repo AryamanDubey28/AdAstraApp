@@ -243,7 +243,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     Widget screen = const QuizScreen();
                     Get.to(
                       () => screen,
-                      transition: Transition.zoom,
+                      transition: Transition.upToDown,
                     );
                   },
                   onDoubleTap: () {
@@ -333,7 +333,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     Widget screen = const QuizScreen();
                     Get.to(
                       () => screen,
-                      transition: Transition.zoom,
+                      transition: Transition.upToDown,
                     );
                   },
                   onDoubleTap: () {
@@ -546,7 +546,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   onTap: () {
                     Get.to(
                       () => AllTopics(),
-                      transition: Transition.zoom,
+                      transition: Transition.upToDown,
                     );
                   },
                   child: const Icon(Icons.list)),
