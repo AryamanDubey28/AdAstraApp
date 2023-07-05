@@ -63,8 +63,10 @@ dependencies:
   liquid_pull_to_refresh: ^3.0.1
   flutter_launcher_icons: ^0.13.1
 
-  
-  
+flutter_icons:
+  image_path: "icon/launcher_icon.JPEG"  
+  android: true
+  ios: true
   
 
 dev_dependencies:

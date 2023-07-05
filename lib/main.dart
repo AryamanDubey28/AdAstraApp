@@ -48,7 +48,6 @@ class MyApp extends StatelessWidget {
             '/settings': (context) => const SettingsPage(),
             '/info': (context) => const InformationSheet(),
             '/game2': (context) => const QuizLayout(),
-            //'/scoreScreen': (context) => ScoreScreen(),
           },
         );
       },
