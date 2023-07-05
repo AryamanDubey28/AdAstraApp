@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Get.to(() => const PlayPage(),
                                 transition: Transition.topLevel,
-                                duration: const Duration(seconds: 2));
+                                duration: const Duration(seconds: 1));
                           },
                           child: const Text("Done"))
                       : GestureDetector(

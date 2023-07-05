@@ -8,6 +8,7 @@ import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_pa
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/heartedTopics.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/database/database.dart';
+import 'package:firebase_attempt/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
@@ -131,9 +132,12 @@ class _SelectionTilesState extends State<SelectionTiles> {
   }
 
   Widget getVRScreen(BuildContext context, bool isDarkMode) {
+    double tilesHeight = 0.78 * logicalHeight;
+    double tilesWidth = 0.75 * logicalWidth;
+    double tilesText = 0.0825 * tilesWidth;
     return CarouselSlider.builder(
         options: CarouselOptions(
-          height: 750,
+          height: tilesHeight,
           viewportFraction: 0.8,
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
@@ -149,9 +153,11 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     onTap: () {
                       SelectionTiles.topic = SelectionTiles.vr_section[index];
                       Widget screen = const QuizScreen();
-                      Get.to(() => screen,
-                          transition: Transition.upToDown,
-                          duration: const Duration(milliseconds: 750));
+                      Get.to(
+                        () => screen,
+                        transition: Transition.zoom,
+                        // duration: const Duration(milliseconds: 750)
+                      );
                     },
                     onDoubleTap: () {
                       SelectionTiles.topic = SelectionTiles.vr_section[index];
@@ -184,7 +190,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                             fit: BoxFit.fill,
                           ),
                         ),
-                        width: 600,
+                        width: tilesWidth,
                         child: Column(
                           children: [
                             Padding(
@@ -192,8 +198,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
                               child: Text(
                                 SelectionTiles.vr_section[index],
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 24.0,
+                                style: TextStyle(
+                                  fontSize: tilesText,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -215,9 +221,12 @@ class _SelectionTilesState extends State<SelectionTiles> {
   }
 
   Widget getNVRScreen(BuildContext context, bool isDarkMode) {
+    double tilesHeight = 0.78 * logicalHeight;
+    double tilesWidth = 0.75 * logicalWidth;
+    double tilesText = 0.0825 * tilesWidth;
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: 750,
+        height: tilesHeight,
         viewportFraction: 0.8,
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
@@ -234,9 +243,11 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     SelectionTiles.topic = SelectionTiles.nvr_section[index];
 
                     Widget screen = const QuizScreen();
-                    Get.to(() => screen,
-                        transition: Transition.upToDown,
-                        duration: const Duration(milliseconds: 750));
+                    Get.to(
+                      () => screen,
+                      transition: Transition.zoom,
+                      // duration: const Duration(milliseconds: 750)
+                    );
                   },
                   onDoubleTap: () {
                     SelectionTiles.topic = SelectionTiles.nvr_section[index];
@@ -266,7 +277,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           fit: BoxFit.fill,
                         ),
                       ),
-                      width: 300,
+                      width: tilesWidth,
                       child: Column(
                         children: [
                           Padding(
@@ -274,8 +285,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
                             child: Text(
                               SelectionTiles.nvr_section[index],
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 24.0,
+                              style: TextStyle(
+                                fontSize: tilesText,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -297,9 +308,12 @@ class _SelectionTilesState extends State<SelectionTiles> {
   }
 
   Widget getNumeracyScreen(BuildContext context, bool isDarkMode) {
+    double tilesHeight = 0.78 * logicalHeight;
+    double tilesWidth = 0.75 * logicalWidth;
+    double tilesText = 0.0825 * tilesWidth;
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: 750,
+        height: tilesHeight,
         viewportFraction: 0.8,
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
@@ -317,9 +331,11 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         SelectionTiles.numeracy_section[index];
 
                     Widget screen = const QuizScreen();
-                    Get.to(() => screen,
-                        transition: Transition.upToDown,
-                        duration: const Duration(milliseconds: 750));
+                    Get.to(
+                      () => screen,
+                      transition: Transition.zoom,
+                      // duration: const Duration(milliseconds: 750)
+                    );
                   },
                   onDoubleTap: () {
                     SelectionTiles.topic =
@@ -351,7 +367,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           fit: BoxFit.fill,
                         ),
                       ),
-                      width: 300,
+                      width: tilesWidth,
                       child: Column(
                         children: [
                           Padding(
@@ -359,8 +375,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
                             child: Text(
                               SelectionTiles.numeracy_section[index],
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 24.0,
+                              style: TextStyle(
+                                fontSize: tilesText,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -395,7 +411,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
     if (ExplorePage.index == 0) {
       return "Verbal Reasoning";
     } else if (ExplorePage.index == 1) {
-      return "Non Verbal Reasoning";
+      return "NVR";
     } else {
       return "Numeracy";
     }
@@ -491,7 +507,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           context,
                           PageRouteBuilder(
                             pageBuilder: (context, animation1, animation2) =>
-                                PlayPage(),
+                                const PlayPage(),
                             transitionDuration: Duration.zero,
                             reverseTransitionDuration: Duration.zero,
                           ),
@@ -506,7 +522,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           context,
                           PageRouteBuilder(
                             pageBuilder: (context, animation1, animation2) =>
-                                PlayPage(),
+                                const PlayPage(),
                             transitionDuration: Duration.zero,
                             reverseTransitionDuration: Duration.zero,
                           ),
@@ -527,9 +543,10 @@ class _SelectionTilesState extends State<SelectionTiles> {
               padding: const EdgeInsets.all(10.0),
               child: GestureDetector(
                   onTap: () {
-                    Get.to(() => AllTopics(),
-                        transition: Transition.topLevel,
-                        duration: const Duration(seconds: 1));
+                    Get.to(
+                      () => AllTopics(),
+                      transition: Transition.zoom,
+                    );
                   },
                   child: const Icon(Icons.list)),
             ),

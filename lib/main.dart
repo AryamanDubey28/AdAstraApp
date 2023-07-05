@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_attempt/central%20screens/congrats_screen.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_layout.dart';
@@ -53,3 +55,15 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+var pixelRatio = window.devicePixelRatio;
+
+//Size in physical pixels
+var physicalScreenSize = window.physicalSize;
+var physicalWidth = physicalScreenSize.width;
+var physicalHeight = physicalScreenSize.height;
+
+//Size in logical pixels
+var logicalScreenSize = window.physicalSize / pixelRatio;
+double logicalWidth = logicalScreenSize.width;
+double logicalHeight = logicalScreenSize.height;

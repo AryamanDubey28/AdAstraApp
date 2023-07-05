@@ -44,8 +44,11 @@ class _HeartedTopicsState extends State<HeartedTopics> {
     String s = SelectionTiles.likedTopics[index];
     s = s.substring(0, s.indexOf("-") - 1);
     SelectionTiles.topic = s;
-    Get.to(() => const QuizScreen(),
-        transition: Transition.topLevel, duration: const Duration(seconds: 1));
+    Get.to(
+      () => const QuizScreen(),
+      transition: Transition.topLevel,
+      //  duration: const Duration(seconds: 1)
+    );
   }
 
   Widget emptyListScreen() {

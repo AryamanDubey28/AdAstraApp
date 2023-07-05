@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: () {
                     Get.to(() => const ForgotPasswordPage(),
                         transition: Transition.native,
-                        duration: const Duration(milliseconds: 750));
+                        duration: const Duration(milliseconds: 250));
                   },
                   child: Text(
                     "Forgot Password?",

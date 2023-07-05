@@ -4,6 +4,7 @@ import 'package:firebase_attempt/payment/upgrade_membership_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../main.dart';
 import '../../main_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -43,6 +44,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final User user = auth.currentUser!;
     final email = user.email!;
+
+    double heightRatio = 0.075 * logicalHeight;
 
     Widget buildName(String user) {
       return Padding(
@@ -93,8 +96,8 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 20,
             ),
             Center(child: StatisticsWidget()),
-            const SizedBox(
-              height: 70,
+            SizedBox(
+              height: heightRatio,
             ),
             Center(child: LogoutButton(context)),
           ],

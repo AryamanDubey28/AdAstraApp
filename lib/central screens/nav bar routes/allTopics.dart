@@ -152,9 +152,10 @@ class _AllTopicsState extends State<AllTopics> {
             onPressed: ((context) {
               //do something
               SelectionTiles.topic = topic;
-              Get.to(() => const QuizScreen(),
-                  transition: Transition.topLevel,
-                  duration: const Duration(seconds: 1));
+              Get.to(
+                () => const QuizScreen(),
+                transition: Transition.topLevel,
+              );
             }),
             backgroundColor: Colors.deepPurple,
             icon: Icons.rocket_launch,

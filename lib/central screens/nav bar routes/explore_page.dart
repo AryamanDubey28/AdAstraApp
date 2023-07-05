@@ -21,9 +21,11 @@ class ExplorePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: IconButton(
                   onPressed: () {
-                    Get.to(() => const HeartedTopics(),
-                        transition: Transition.topLevel,
-                        duration: const Duration(seconds: 1));
+                    Get.to(
+                      () => const HeartedTopics(),
+                      transition: Transition.topLevel,
+                      // duration: const Duration(seconds: 1)
+                    );
                   },
                   icon: const Icon(Iconsax.heart)),
             )
