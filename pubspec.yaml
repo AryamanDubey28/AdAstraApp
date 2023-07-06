@@ -101,7 +101,6 @@ flutter:
     - lib/assets/
     - lib/assets/nvr_images/
     - lib/assets/animations/
-    - lib/assets/central_screen/
     - lib/assets/tile_images/
 
 
