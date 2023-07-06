@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
 import 'package:firebase_attempt/database/firebase_functions.dart';

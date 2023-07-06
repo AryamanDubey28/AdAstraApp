@@ -1,11 +1,11 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names
+
 import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_attempt/alert%20dialog/custom_dialog.dart';
-
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_screen.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/allTopics.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/heartedTopics.dart';
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/database/database.dart';
 import 'package:firebase_attempt/main.dart';
@@ -125,8 +125,6 @@ class _SelectionTilesState extends State<SelectionTiles> {
             title: "Added to Liked",
           );
         });
-
-    HeartedTopics ht = const HeartedTopics();
 
     _myBox.put("LIKEDTOPICS_${widget.uid}", SelectionTiles.likedTopics);
   }

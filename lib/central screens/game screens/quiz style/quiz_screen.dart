@@ -61,7 +61,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Future addQuestions() async {
     for (int i = 0; i < sample_data_numeracy.length; i++) {
       Map<String, dynamic> question = sample_data_numeracy[i];
-      //print(question);
+
       await FirebaseFirestore.instance.collection('maths').add(question);
     }
   }

@@ -1,9 +1,6 @@
-import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/controllers/question_controller.dart';
-import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -30,11 +27,8 @@ class ScoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // QuestionController controller =
-    //     Get.put(QuestionController(ExplorePage.index));
-    //double score = double.parse(controller.getPercentage().toString());
     firebaseFunctions.updateUserXP(percentage);
-    //print("Updated XP with $score");
+
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(

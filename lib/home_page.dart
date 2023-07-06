@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:firebase_attempt/intro%20screens/screen_1.dart';
 import 'package:firebase_attempt/intro%20screens/screen_2.dart';
 import 'package:firebase_attempt/intro%20screens/screen_3.dart';

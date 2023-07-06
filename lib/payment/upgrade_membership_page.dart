@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:firebase_attempt/database/firebase_functions.dart';
 import 'package:flutter/material.dart';
 

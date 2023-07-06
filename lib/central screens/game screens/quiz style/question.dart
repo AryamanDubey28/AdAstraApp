@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Question {
   late final int? id, answer;
   late final String question;

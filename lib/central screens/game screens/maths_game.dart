@@ -1,8 +1,9 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:math';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/score_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class MathsGame extends StatefulWidget {
   const MathsGame({Key? key}) : super(key: key);

@@ -3,8 +3,6 @@ import 'dart:ui';
 import 'package:firebase_attempt/central%20screens/congrats_screen.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_layout.dart';
-import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/score_screen.dart';
-
 import 'package:firebase_attempt/central%20screens/play_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/settings_page.dart';
 import 'package:firebase_attempt/main_page.dart';

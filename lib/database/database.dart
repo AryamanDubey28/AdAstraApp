@@ -10,7 +10,6 @@ class SelectionTilesDB {
     final User user = auth.currentUser!;
 
     uid = user.uid;
-    print(uid);
   }
 
   final _myBox = Hive.box('mybox');
