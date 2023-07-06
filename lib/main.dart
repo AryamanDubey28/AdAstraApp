@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:firebase_attempt/central%20screens/congrats_screen.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/matching%20tiles/matching_tiles_info.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/quiz_layout.dart';
@@ -28,6 +27,7 @@ Future main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   // This widget is the root of the application.
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

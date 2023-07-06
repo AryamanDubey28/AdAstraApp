@@ -1,4 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+// class SharedPreferencesHelper {
+//   //returns isDark if there is a value saved, otherwise returns true
+
+//   Future<bool> getDarkModeFromSharedPref() async {
+//     final prefs = await SharedPreferences.getInstance();
+//     bool? isDark = prefs.getBool("isDarkMode");
+//     print("------> shared prefs returning ${isDark ?? true}");
+//     return isDark ?? true;
+//   }
+
+//   Future setDarkModeInSharedPref(bool newVal) async {
+//     final prefs = await SharedPreferences.getInstance();
+//     await prefs.setBool("isDarkMode", newVal);
+//     print("Wrote new value to shared preferences. $newVal");
+//   }
+// }
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;

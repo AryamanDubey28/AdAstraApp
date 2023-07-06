@@ -167,13 +167,12 @@ class _AllTopicsState extends State<AllTopics> {
       child: ListTile(
         trailing: const Icon(
           Icons.menu,
-          //color: Colors.white,
         ),
         title: Text(
           topic,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            fontSize: 20, //color: Colors.white
+            fontSize: 20,
           ),
         ),
       ),
@@ -213,6 +212,7 @@ class _AllTopicsState extends State<AllTopics> {
         title: Text(
           "All $topicString Topics",
           textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(

@@ -31,6 +31,9 @@ class _SettingsState extends State<SettingsPage> {
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 75,
+          ),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
