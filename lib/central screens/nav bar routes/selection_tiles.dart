@@ -268,9 +268,9 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         image: DecorationImage(
                           image: isDarkMode
                               ? const AssetImage(
-                                  'lib/assets/tile_images/NVR_DM.JPEG')
+                                  'lib/assets/tile_images/NonVerbalR_DM.png')
                               : const AssetImage(
-                                  'lib/assets/tile_images/NVR_LM.JPEG'),
+                                  'lib/assets/tile_images/NVR_LM.png'),
                           fit: BoxFit.fill,
                         ),
                       ),
