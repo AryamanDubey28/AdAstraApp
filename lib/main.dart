@@ -31,7 +31,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+      create: (context) {
+        final themeProvider = ThemeProvider();
+        themeProvider.loadThemeMode(); // Call loadThemeMode here
+        return themeProvider;
+      },
       builder: (context, child) {
         final themeProvider = Provider.of<ThemeProvider>(context);
         return GetMaterialApp(

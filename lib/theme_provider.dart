@@ -1,29 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// class SharedPreferencesHelper {
-//   //returns isDark if there is a value saved, otherwise returns true
+class SharedPreferencesHelper {
+  //returns isDark if there is a value saved, otherwise returns true
 
-//   Future<bool> getDarkModeFromSharedPref() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     bool? isDark = prefs.getBool("isDarkMode");
-//     print("------> shared prefs returning ${isDark ?? true}");
-//     return isDark ?? true;
-//   }
+  Future<bool> getDarkModeFromSharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool? isDark = prefs.getBool("isDarkMode");
+    return isDark ?? true;
+  }
 
-//   Future setDarkModeInSharedPref(bool newVal) async {
-//     final prefs = await SharedPreferences.getInstance();
-//     await prefs.setBool("isDarkMode", newVal);
-//     print("Wrote new value to shared preferences. $newVal");
-//   }
-// }
+  Future setDarkModeInSharedPref(bool newVal) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool("isDarkMode", newVal);
+  }
+}
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;
+
   bool get isDarkMode => themeMode == ThemeMode.dark;
+  final SharedPreferencesHelper sharedPreferencesHelper =
+      SharedPreferencesHelper();
+  Future<void> _saveThemeMode(bool isOn) async {
+    await sharedPreferencesHelper.setDarkModeInSharedPref(isOn);
+  }
+
+  Future<void> loadThemeMode() async {
+    bool isDark = await sharedPreferencesHelper.getDarkModeFromSharedPref();
+    themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
 
   void toggleTheme(bool isOn) {
     themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+    _saveThemeMode(isOn);
     notifyListeners();
   }
 }
