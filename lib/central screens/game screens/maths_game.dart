@@ -52,9 +52,15 @@ class _MathsGameState extends State<MathsGame> {
       case 1: // Subtraction
         operator = '-';
         result = number1 - number2;
+        while (result < 0) {
+          number1 = random.nextInt(90) + 10;
+          number2 = random.nextInt(90) + 10;
+          result = number1 - number2;
+        }
         break;
       case 2: // Multiplication
         operator = '×';
+        number2 = random.nextInt(9) + 1;
         result = number1 * number2;
         break;
       default:
