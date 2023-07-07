@@ -153,77 +153,79 @@ class _MathsGameState extends State<MathsGame> {
         appBar: AppBar(
           title: const Text('Maths Game'),
         ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  question,
-                  style: const TextStyle(
-                    fontSize: 44.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                TextField(
-                  style: const TextStyle(),
-                  controller: answerController,
-                  onChanged: (value) {
-                    userAnswer = value;
-                  },
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your answer',
-                  ),
-                ),
-                const SizedBox(height: 40.0),
-                ElevatedButton(
-                  onPressed: () {
-                    checkAnswer();
-                  },
-                  child: const Text('Check Answer'),
-                ),
-                const SizedBox(height: 5.0),
-                if (userAnswer.isNotEmpty)
+        body: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   Text(
-                    isCorrect
-                        ? 'Correct!'
-                        : 'Incorrect! The answer is $answer.',
-                    style: TextStyle(
-                      color: isCorrect ? Colors.green : Colors.red,
-                      fontSize: 18.0,
+                    question,
+                    style: const TextStyle(
+                      fontSize: 44.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                const SizedBox(height: 5.0),
-                ElevatedButton(
-                  onPressed: () {
-                    nextQuestion();
-                  },
-                  child: const Text('Next Question'),
-                ),
-                const SizedBox(height: 75.0),
-                Text(
-                  'Correct answers: $correctCount/$questionCount',
-                  style: const TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(height: 20.0),
+                  TextField(
+                    style: const TextStyle(),
+                    controller: answerController,
+                    onChanged: (value) {
+                      userAnswer = value;
+                    },
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      hintText: 'Enter your answer',
+                    ),
                   ),
-                ),
-                const SizedBox(height: 75.0),
-                !isGameCompleted
-                    ? const SizedBox(
-                        height: 15,
-                      )
-                    : ElevatedButton(
-                        onPressed: saveScore,
-                        child: const Text(
-                          "Finish Game",
-                          style: TextStyle(fontSize: 18),
-                        )),
-              ],
+                  const SizedBox(height: 40.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      checkAnswer();
+                    },
+                    child: const Text('Check Answer'),
+                  ),
+                  const SizedBox(height: 5.0),
+                  if (userAnswer.isNotEmpty)
+                    Text(
+                      isCorrect
+                          ? 'Correct!'
+                          : 'Incorrect! The answer is $answer.',
+                      style: TextStyle(
+                        color: isCorrect ? Colors.green : Colors.red,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  const SizedBox(height: 5.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      nextQuestion();
+                    },
+                    child: const Text('Next Question'),
+                  ),
+                  const SizedBox(height: 75.0),
+                  Text(
+                    'Correct answers: $correctCount/$questionCount',
+                    style: const TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 55.0),
+                  !isGameCompleted
+                      ? const SizedBox(
+                          height: 15,
+                        )
+                      : ElevatedButton(
+                          onPressed: saveScore,
+                          child: const Text(
+                            "Finish Game",
+                            style: TextStyle(fontSize: 18),
+                          )),
+                ],
+              ),
             ),
           ),
         ),

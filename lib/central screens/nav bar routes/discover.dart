@@ -54,12 +54,11 @@ class _DiscoverPageState extends State<DiscoverPage> {
     double relativeTextSizeVerySmall = 0.05 * logicalWidth;
     return SafeArea(
       child: Scaffold(
-          // appBar: AppBar(
-          //   automaticallyImplyLeading: false,
-          //   elevation: 0.0,
-          // ),
           body: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          const SizedBox(
+            height: 40,
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
