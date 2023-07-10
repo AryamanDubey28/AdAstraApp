@@ -14,12 +14,26 @@ class SharedPreferencesHelper {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool("isDarkMode", newVal);
   }
+
+  Future<bool?> getSystemModeFromSharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool? isSystemMode = prefs.getBool("isSystemMode");
+    return isSystemMode;
+  }
+
+  Future setSystemModeInSharedPref(bool newVal) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool("isSystemMode", newVal);
+  }
 }
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;
 
   bool get isDarkMode => themeMode == ThemeMode.dark;
+
+  // bool get isSystemThemeMode => themeMode == ThemeMode.system;
+
   final SharedPreferencesHelper sharedPreferencesHelper =
       SharedPreferencesHelper();
   Future<void> _saveThemeMode(bool isOn) async {
@@ -27,8 +41,18 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   Future<void> loadThemeMode() async {
+    // bool? isSystemMode =
+    //     await sharedPreferencesHelper.getSystemModeFromSharedPref();
     bool isDark = await sharedPreferencesHelper.getDarkModeFromSharedPref();
+
     themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
+
+  void setSystemTheme() {
+    themeMode = ThemeMode.system;
+    bool isDark = (themeMode == ThemeMode.dark);
+    _saveThemeMode(isDark);
     notifyListeners();
   }
 

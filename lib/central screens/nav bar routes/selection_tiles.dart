@@ -474,7 +474,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
             Center(
               child: FocusedMenuHolder(
                 menuWidth: MediaQuery.of(context).size.width * 0.5,
-                blurBackgroundColor: Colors.grey,
+                blurBackgroundColor: Colors.transparent,
                 openWithTap: true,
                 duration: const Duration(seconds: 0),
                 animateMenuItems: false,
@@ -496,10 +496,12 @@ class _SelectionTilesState extends State<SelectionTiles> {
                             reverseTransitionDuration: Duration.zero,
                           ),
                         );
-                      }),
+                      },
+                      backgroundColor: Colors.transparent),
                   FocusedMenuItem(
                       title: const Text("NVR",
                           style: TextStyle(fontSize: 18, color: Colors.black)),
+                      backgroundColor: Colors.transparent,
                       onPressed: () {
                         ExplorePage.index = 1;
                         Navigator.pushReplacement(
@@ -515,6 +517,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   FocusedMenuItem(
                       title: const Text("Numeracy",
                           style: TextStyle(fontSize: 18, color: Colors.black)),
+                      backgroundColor: Colors.transparent,
                       onPressed: () {
                         ExplorePage.index = 2;
                         Navigator.pushReplacement(

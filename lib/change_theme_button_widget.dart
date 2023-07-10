@@ -17,3 +17,23 @@ class ChangeThemeButtonWidget extends StatelessWidget {
         });
   }
 }
+
+// class DeviceThemeButtonWidget extends StatelessWidget {
+//   const DeviceThemeButtonWidget({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final themeProvider = Provider.of<ThemeProvider>(context);
+//     return Container(
+//       width: 30,
+//       height: 30,
+//       child: CheckboxListTile(
+//           value: themeProvider.isSystemThemeMode,
+//           onChanged: (value) {
+//             final provider = Provider.of<ThemeProvider>(context, listen: false);
+//             provider.setSystemTheme();
+//           }),
+//     );
+  
+//   }
+// }
