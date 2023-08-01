@@ -417,6 +417,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
   }
 
   Future _refresh() async {
+    List<bool> my_list4 = List.empty(growable: false);
+
     setState(() {});
     return Future.delayed(const Duration(seconds: 1));
   }
@@ -481,27 +483,40 @@ class _SelectionTilesState extends State<SelectionTiles> {
                 onPressed: () {},
                 menuItems: [
                   FocusedMenuItem(
-                      title: const Text(
-                        "VR",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
-                      ),
-                      onPressed: () {
-                        ExplorePage.index = 0;
-                        Navigator.pushReplacement(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) =>
-                                const PlayPage(),
-                            transitionDuration: Duration.zero,
-                            reverseTransitionDuration: Duration.zero,
-                          ),
-                        );
+                    title: GestureDetector(
+                      onHorizontalDragDown: (details) {
+                        //Move to NVR
                       },
-                      backgroundColor: Colors.transparent),
+                      child: const Text(
+                        "VR",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      ExplorePage.index = 0;
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              const PlayPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    },
+                  ),
                   FocusedMenuItem(
-                      title: const Text("NVR",
-                          style: TextStyle(fontSize: 18, color: Colors.black)),
-                      backgroundColor: Colors.transparent,
+                      title: GestureDetector(
+                        onHorizontalDragDown: (details) {
+                          //move to Numeracy
+                        },
+                        child: const Text("NVR",
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.black)),
+                      ),
                       onPressed: () {
                         ExplorePage.index = 1;
                         Navigator.pushReplacement(
@@ -515,9 +530,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         );
                       }),
                   FocusedMenuItem(
-                      title: const Text("Numeracy",
-                          style: TextStyle(fontSize: 18, color: Colors.black)),
-                      backgroundColor: Colors.transparent,
+                      title: GestureDetector(
+                        onHorizontalDragDown: (details) {
+                          //move to VR
+                        },
+                        child: const Text("Numeracy",
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.black)),
+                      ),
                       onPressed: () {
                         ExplorePage.index = 2;
                         Navigator.pushReplacement(
