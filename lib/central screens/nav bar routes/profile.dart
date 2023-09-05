@@ -45,6 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     final User user = auth.currentUser!;
     final email = user.email!;
 
@@ -57,8 +58,8 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Text(
               user,
-              style:
-                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: screenWidth * 0.045, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -91,12 +92,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 imagePath: "lib/assets/adastralogo.jpg",
                 onClicked: () async {}),
             buildName(email),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: screenWidth * 0.05,
             ),
             Center(child: buildUpgradeButton()),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: screenWidth * 0.05,
             ),
             Center(child: StatisticsWidget()),
             SizedBox(
@@ -158,15 +159,17 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget StatisticsWidget() {
+    double screenSize = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Text(
+          Text(
             "Your statistics: ",
             style: TextStyle(
-              fontSize: 38,
+              fontSize: screenSize * 0.09,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -233,7 +236,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   TextStyle getTextStyle() {
-    return const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);
+    double screenSize = MediaQuery.of(context).size.width;
+    return TextStyle(fontSize: screenSize * 0.045, fontWeight: FontWeight.bold);
   }
 }
 
@@ -244,7 +248,9 @@ class ProfileWidget extends StatelessWidget {
   const ProfileWidget(
       {super.key, required this.imagePath, required this.onClicked});
 
-  Widget buildImage() {
+  Widget buildImage(context) {
+    double screenSize = MediaQuery.of(context).size.width;
+
     const image = AssetImage("lib/assets/adastralogo.jpg");
     return ClipOval(
       child: Material(
@@ -252,8 +258,8 @@ class ProfileWidget extends StatelessWidget {
         child: Ink.image(
           image: image,
           fit: BoxFit.cover,
-          width: 128,
-          height: 128,
+          width: screenSize * 0.3,
+          height: screenSize * 0.3,
           child: InkWell(
             onTap: onClicked,
           ),
@@ -262,17 +268,19 @@ class ProfileWidget extends StatelessWidget {
     );
   }
 
-  Widget buildEditIcon(Color color) {
+  Widget buildEditIcon(Color color, context) {
+    double screenSize = MediaQuery.of(context).size.width;
+
     return buildCircle(
       color: Colors.white,
-      all: 3,
+      all: screenSize * 0.0075,
       child: buildCircle(
         color: color,
-        all: 8,
-        child: const Icon(
+        all: screenSize * 0.02,
+        child: Icon(
           Icons.edit,
           color: Colors.white,
-          size: 20,
+          size: screenSize * 0.046,
         ),
       ),
     );
@@ -283,8 +291,8 @@ class ProfileWidget extends StatelessWidget {
     final color = Colors.blue[900];
     return Center(
       child: Stack(children: [
-        buildImage(),
-        Positioned(bottom: 0, right: 4, child: buildEditIcon(color!)),
+        buildImage(context),
+        Positioned(bottom: 0, right: 4, child: buildEditIcon(color!, context)),
       ]),
     );
   }
@@ -313,15 +321,18 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenSize = MediaQuery.of(context).size.width;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
           shape: const StadiumBorder(),
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
+          padding: EdgeInsets.symmetric(
+              horizontal: screenSize * 0.07, vertical: screenSize * 0.03)),
       onPressed: onClicked,
       child: Text(
         text,
-        style: const TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: screenSize * 0.04),
       ),
     );
   }
