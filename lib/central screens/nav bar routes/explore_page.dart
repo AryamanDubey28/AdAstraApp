@@ -5,7 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
 class ExplorePage extends StatelessWidget {
-  static int index = 0;
+  static int index = 2;
 
   const ExplorePage({super.key});
 
