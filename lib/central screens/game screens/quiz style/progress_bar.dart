@@ -1,5 +1,6 @@
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/controllers/question_controller.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
+import 'package:firebase_attempt/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,7 +14,7 @@ class ProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 35,
+      height: logicalHeight * 0.04,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade200, width: 1),
         borderRadius: BorderRadius.circular(5),
