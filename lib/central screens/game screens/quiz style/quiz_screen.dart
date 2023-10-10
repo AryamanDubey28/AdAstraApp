@@ -99,8 +99,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: Text(
               "Start",
               style: TextStyle(
-                fontSize: logicalWidth * 0.07,
-              ),
+                  fontSize: logicalWidth * 0.07, fontFamily: 'Calibri'),
             )),
       );
     } else {
@@ -113,8 +112,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: Text(
               "Start",
               style: TextStyle(
-                fontSize: logicalWidth * 0.07,
-              ),
+                  fontSize: logicalWidth * 0.07, fontFamily: 'Calibri'),
             )),
       );
     }

@@ -78,16 +78,17 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const Text(
                   "Hello There!",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 52),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 52,
+                      fontFamily: 'Cambria'),
                 ),
                 const SizedBox(
                   height: 20.0,
                 ),
                 const Text(
                   "Welcome back",
-                  style: TextStyle(
-                    fontSize: 32.0,
-                  ),
+                  style: TextStyle(fontSize: 32.0, fontFamily: 'Cambria'),
                 ),
                 const SizedBox(
                   height: 55.0,
@@ -106,9 +107,9 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         controller: emailController,
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email address',
-                        ),
+                            border: InputBorder.none,
+                            hintText: 'Email address',
+                            hintStyle: TextStyle(fontFamily: 'Cambria')),
                       ),
                     ),
                   ),
@@ -131,9 +132,9 @@ class _LoginPageState extends State<LoginPage> {
                         controller: passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Password',
-                        ),
+                            border: InputBorder.none,
+                            hintText: 'Password',
+                            hintStyle: TextStyle(fontFamily: 'Cambria')),
                       ),
                     ),
                   ),
@@ -150,9 +151,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(
                     "Forgot Password?",
                     style: TextStyle(
-                      color: Colors.blue[900],
-                      fontWeight: FontWeight.bold,
-                    ),
+                        color: Colors.blue[900],
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Cambria'),
                   ),
                 ),
                 const SizedBox(
@@ -188,10 +189,10 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                         "Sign In",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Cambria'),
                       )),
                     ),
                   ),
@@ -202,7 +203,10 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Not a member?"),
+                    const Text(
+                      "Not a member?",
+                      style: TextStyle(fontFamily: 'Cambria'),
+                    ),
                     const SizedBox(
                       width: 5.0,
                     ),
@@ -210,9 +214,9 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: widget.showRegisterPage,
                       child: Text("Register Now",
                           style: TextStyle(
-                            color: Colors.blue[900],
-                            fontWeight: FontWeight.bold,
-                          )),
+                              color: Colors.blue[900],
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Cambria')),
                     ),
                   ],
                 ),
