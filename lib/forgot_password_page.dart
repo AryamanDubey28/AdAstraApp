@@ -91,9 +91,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   padding: const EdgeInsets.only(left: 20.0),
                   child: TextField(
                     controller: emailController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Email address',
+                      hintStyle:
+                          TextStyle(fontFamily: 'Cambria', color: Colors.black),
+                      labelStyle: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
