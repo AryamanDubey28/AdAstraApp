@@ -96,7 +96,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       hintText: 'Email address',
                       hintStyle:
                           TextStyle(fontFamily: 'Cambria', color: Colors.black),
-                      labelStyle: TextStyle(color: Colors.black),
+                      // labelStyle: TextStyle(color: Colors.black), CHANGE COLOUR TO BLACK?
                     ),
                   ),
                 ),
