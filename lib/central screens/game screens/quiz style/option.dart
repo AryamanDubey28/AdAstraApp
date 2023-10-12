@@ -31,6 +31,8 @@ class _OptionState extends State<Option> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width= MediaQuery.of(context).size.width;
     return GetBuilder<QuestionController>(
         init: QuestionController(ExplorePage.index),
         builder: (qnController) {
@@ -53,20 +55,26 @@ class _OptionState extends State<Option> {
           Widget getOptionImage(String text) {
             if (text.startsWith("lib/assets")) {
               return SizedBox(
-                  height: 200, width: 200, child: Image.asset(text));
+                
+                height: height*0.105, width: width*0.105, child: Image.asset(text));
             } else {
-              return Text(
+              return SizedBox(height: 100, child: Text(
                 "${widget.index + 1}) $text",
-                style: TextStyle(color: getRightColor(), fontSize: 18),
-              );
+                style: TextStyle(color: getRightColor(), fontSize: 40),
+              ),);
+              
             }
-          }
+          } 
 
           return InkWell(
+            
             onTap: widget.press,
             child: Container(
               margin: const EdgeInsets.only(top: 15),
-              padding: const EdgeInsets.all(25),
+              
+              padding: 
+
+              const EdgeInsets.only(top: 0.1, bottom: 0.1, right: 10, left: 10),
               decoration: BoxDecoration(
                 border: Border.all(color: getRightColor()),
                 borderRadius: BorderRadius.circular(15),

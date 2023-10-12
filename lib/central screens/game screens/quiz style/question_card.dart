@@ -34,34 +34,40 @@ class _QuestionCardState extends State<QuestionCard> {
         height: 1,
       );
     } else {
-      return Text(
+      return FittedBox(fit:BoxFit.scaleDown, child:
+      Text(
         question,
-        style: Theme.of(context)
+        style: 
+        
+        Theme.of(context)
+        
             .textTheme
             .displaySmall
             ?.copyWith(color: Colors.black),
-      );
+
+      ));
+      
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     QuestionController controller =
         Get.put(QuestionController(ExplorePage.index));
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-          color: Colors.grey[200], borderRadius: BorderRadius.circular(25)),
+          color: Colors.grey[200], borderRadius: BorderRadius.circular(25)), height: height,
       child: SingleChildScrollView(
         child: Column(
           children: [
             getTextWidg(widget.question.question),
 
             getImage(widget.question.image!),
-
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: height*0.005 ,
             ),
 
             //new
@@ -72,7 +78,11 @@ class _QuestionCardState extends State<QuestionCard> {
                     index: index,
                     press: () {
                       controller.checkAns(widget.question, index);
-                    }))
+                    })),
+            
+],),)
+
+    
 
             // ...List.generate(
             //     widget.question.options!.length,
@@ -82,9 +92,9 @@ class _QuestionCardState extends State<QuestionCard> {
             //         press: () {
             //           _controller.checkAns(widget.question, index);
             //         }))
-          ],
-        ),
-      ),
-    );
+          
+        );
+      
+    
   }
 }
