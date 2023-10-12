@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:firebase_attempt/main.dart';
 
 class ScoreScreen extends StatelessWidget {
   final double percentage;
@@ -46,15 +47,16 @@ class ScoreScreen extends StatelessWidget {
                     "Your Score:",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
-                      fontSize: 58.0,
+                      fontSize: logicalHeight * 0.076,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 15.0,
+             SizedBox(
+              height: logicalHeight * 0.018
+               
             ),
             FadeIn(
               duration: const Duration(milliseconds: 1800),
@@ -65,7 +67,7 @@ class ScoreScreen extends StatelessWidget {
                     "$percentage%",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.ubuntu(
-                      fontSize: 38.0,
+                      fontSize: logicalHeight * 0.0495,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -75,15 +77,15 @@ class ScoreScreen extends StatelessWidget {
             Center(
               child: Lottie.network(getAnimation(percentage)),
             ),
-            const SizedBox(
-              height: 35.0,
+             SizedBox(
+              height: logicalHeight * 0.042,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                 Text(
                   "Back to home screen",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: logicalHeight * 0.03, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
                     onPressed: () => Navigator.pushNamedAndRemoveUntil(
