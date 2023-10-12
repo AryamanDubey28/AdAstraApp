@@ -552,12 +552,20 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       }),
                 ],
                 menuOffset: 10,
-                child: Text(
-                  getTitle(),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
-                  ),
+                child: Row(
+                  children: [
+                    Text(
+                      getTitle(),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_drop_down,
+                      size: 30,
+                    )
+                  ],
                 ),
               ),
             ),

@@ -167,11 +167,13 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialStateProperty.all<Color>(Colors.blue),
                       overlayColor: MaterialStateProperty.resolveWith<Color?>(
                         (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.hovered))
+                          if (states.contains(MaterialState.hovered)) {
                             return Colors.blue.withOpacity(0.04);
+                          }
                           if (states.contains(MaterialState.focused) ||
-                              states.contains(MaterialState.pressed))
+                              states.contains(MaterialState.pressed)) {
                             return Colors.blue.withOpacity(0.12);
+                          }
                           return null; // Defer to the widget's default.
                         },
                       ),
