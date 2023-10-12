@@ -2,6 +2,7 @@ import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/c
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/progress_bar.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/question_card.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
+import 'package:firebase_attempt/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,8 +35,8 @@ class _BodyState extends State<Body> {
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: ProgressBar(),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: logicalHeight * 0.02,
               ),
               Padding(
                   padding: const EdgeInsets.all(8.0),

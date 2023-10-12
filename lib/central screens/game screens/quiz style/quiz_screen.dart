@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_attempt/central%20screens/game%20screens/quiz%20style/question.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/selection_tiles.dart';
+import 'package:firebase_attempt/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -95,11 +96,10 @@ class _QuizScreenState extends State<QuizScreen> {
             onPressed: () {
               _showUnavailableDialog(context);
             },
-            child: const Text(
+            child: Text(
               "Start",
               style: TextStyle(
-                fontSize: 30,
-              ),
+                  fontSize: logicalWidth * 0.07, fontFamily: 'Calibri'),
             )),
       );
     } else {
@@ -109,11 +109,10 @@ class _QuizScreenState extends State<QuizScreen> {
             onPressed: () {
               Navigator.popAndPushNamed(context, "/game2");
             },
-            child: const Text(
+            child: Text(
               "Start",
               style: TextStyle(
-                fontSize: 30,
-              ),
+                  fontSize: logicalWidth * 0.07, fontFamily: 'Calibri'),
             )),
       );
     }
@@ -135,8 +134,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: FadeIn(
                       duration: const Duration(milliseconds: 1400),
                       child: SizedBox(
-                        height: 275,
-                        width: 275,
+                        height: logicalHeight * 0.3,
+                        width: logicalWidth * 0.7,
                         child: Center(
                           child: Lottie.network(getAnim(),
                               width: 400, height: 400),
@@ -148,7 +147,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: Text(
                       "Lets Play",
                       style: GoogleFonts.bebasNeue(
-                        fontSize: 96.0,
+                        fontSize: logicalWidth * 0.225,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -161,7 +160,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       getText(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.bebasNeue(
-                        fontSize: 30.0,
+                        fontSize: logicalWidth * 0.075,
                       ),
                     ),
                   ),
@@ -177,9 +176,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       child: Text(
                         getDescription(),
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Cambria",
-                          fontSize: 18,
+                          fontSize: logicalWidth * 0.045,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
