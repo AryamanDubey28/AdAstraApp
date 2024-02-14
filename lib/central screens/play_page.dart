@@ -26,7 +26,6 @@ class _PlayPageState extends State<PlayPage> {
   //all screens shown in the bottom tabs
   final screens = [
     SelectionTiles(ExplorePage.index),
-    const ExplorePage(),
     const DiscoverPage(),
     const ProfilePage(),
   ];
@@ -59,7 +58,7 @@ class _PlayPageState extends State<PlayPage> {
             color: Theme.of(context).primaryColor,
             activeColor: Colors.grey[600],
             tabBackgroundColor: Colors.grey[100]!,
-            gap: 7,
+            gap: 5,
             onTabChange: (value) {
               setState(() {
                 oldIndex = currentIndex;
@@ -71,10 +70,6 @@ class _PlayPageState extends State<PlayPage> {
               GButton(
                 icon: Iconsax.home1,
                 text: "Home",
-              ),
-              GButton(
-                icon: Icons.explore,
-                text: "Explore",
               ),
               GButton(
                 icon: Icons.rocket_launch,

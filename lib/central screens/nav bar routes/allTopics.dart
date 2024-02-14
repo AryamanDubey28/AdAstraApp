@@ -45,11 +45,13 @@ class _AllTopicsState extends State<AllTopics> {
 
   List buildTopicsList() {
     if (ExplorePage.index == 0) {
-      return SelectionTiles.vr_section;
+      return SelectionTiles.variables_and_dataTypes;
     } else if (ExplorePage.index == 1) {
-      return SelectionTiles.nvr_section;
+      return SelectionTiles.operations;
+    } else if (ExplorePage.index == 2) {
+      return SelectionTiles.conditionalStatements;
     } else {
-      return SelectionTiles.numeracy_section;
+      return SelectionTiles.loops;
     }
   }
 
@@ -184,11 +186,11 @@ class _AllTopicsState extends State<AllTopics> {
     super.dispose();
 
     if (ExplorePage.index == 0) {
-      SelectionTiles.vr_section = allTopics;
+      SelectionTiles.variables_and_dataTypes = allTopics;
     } else if (ExplorePage.index == 1) {
-      SelectionTiles.nvr_section = allTopics;
+      SelectionTiles.operations = allTopics;
     } else if (ExplorePage.index == 2) {
-      SelectionTiles.numeracy_section = allTopics;
+      SelectionTiles.conditionalStatements = allTopics;
     }
   }
 

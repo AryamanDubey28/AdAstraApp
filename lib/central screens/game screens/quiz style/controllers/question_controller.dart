@@ -34,21 +34,31 @@ class QuestionController extends GetxController
   List buildQuestionList(int index, String topic) {
     List topicList = [];
     if (index == 0) {
-      for (int i = 0; i < sample_data_vr.length; i++) {
-        if (sample_data_vr[i]["category"] == topic.toLowerCase()) {
-          topicList.add(sample_data_vr[i]);
+      for (int i = 0; i < sample_data_variables.length; i++) {
+        if (sample_data_variables[i]["category"].toString().toLowerCase() ==
+            topic.toLowerCase()) {
+          topicList.add(sample_data_variables[i]);
         }
       }
     } else if (index == 1) {
-      for (int i = 0; i < sample_data_nvr.length; i++) {
-        if (sample_data_nvr[i]["category"] == topic.toLowerCase()) {
-          topicList.add(sample_data_nvr[i]);
+      for (int i = 0; i < sample_data_operations.length; i++) {
+        if (sample_data_operations[i]["category"].toString().toLowerCase() ==
+            topic.toLowerCase()) {
+          topicList.add(sample_data_operations[i]);
         }
       }
     } else if (index == 2) {
-      for (int i = 0; i < sample_data_numeracy.length; i++) {
-        if (sample_data_numeracy[i]["category"] == topic.toLowerCase()) {
-          topicList.add(sample_data_numeracy[i]);
+      for (int i = 0; i < sample_data_conditionals.length; i++) {
+        if (sample_data_conditionals[i]["category"].toString().toLowerCase() ==
+            topic.toLowerCase()) {
+          topicList.add(sample_data_conditionals[i]);
+        }
+      }
+    } else if (index == 3) {
+      for (int i = 0; i < sample_data_loops.length; i++) {
+        if (sample_data_loops[i]["category"].toString().toLowerCase() ==
+            topic.toLowerCase()) {
+          topicList.add(sample_data_loops[i]);
         }
       }
     }

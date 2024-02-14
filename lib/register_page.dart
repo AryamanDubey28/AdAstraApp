@@ -102,9 +102,9 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage('lib/assets/adastralogo.jpg'),
-                  radius: 85.0,
+                Image.asset(
+                  "lib/assets/binary.png",
+                  scale: 2.85,
                 ),
                 const SizedBox(
                   height: 30.0,
@@ -113,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                   child: Text(
                     "Nice To Meet You",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 44),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                   ),
                 ),
                 const SizedBox(

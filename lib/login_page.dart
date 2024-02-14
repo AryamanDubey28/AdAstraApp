@@ -69,9 +69,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage('lib/assets/adastralogo.jpg'),
-                  radius: 85.0,
+                Image.asset(
+                  "lib/assets/programming.png",
+                  scale: 2.75,
                 ),
                 const SizedBox(
                   height: 30.0,

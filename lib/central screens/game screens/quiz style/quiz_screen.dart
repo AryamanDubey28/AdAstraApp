@@ -58,13 +58,13 @@ class _QuizScreenState extends State<QuizScreen> {
     return "No description found...";
   }
 
-  Future addQuestions() async {
-    for (int i = 0; i < sample_data_numeracy.length; i++) {
-      Map<String, dynamic> question = sample_data_numeracy[i];
+  // Future addQuestions() async {
+  //   for (int i = 0; i < sample_data_numeracy.length; i++) {
+  //     Map<String, dynamic> question = sample_data_numeracy[i];
 
-      await FirebaseFirestore.instance.collection('maths').add(question);
-    }
-  }
+  //     await FirebaseFirestore.instance.collection('maths').add(question);
+  //   }
+  // }
 
   void _showUnavailableDialog(BuildContext context) {
     showDialog(
@@ -88,35 +88,48 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget getStartButton() {
-    if (getDescription() == "No description found...") {
-      return Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: ElevatedButton(
-            onPressed: () {
-              _showUnavailableDialog(context);
-            },
-            child: const Text(
-              "Start",
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            )),
-      );
-    } else {
-      return Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, "/game2");
-            },
-            child: const Text(
-              "Start",
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            )),
-      );
-    }
+    // if (getDescription() == "No description found...") {
+    //   return Padding(
+    //     padding: const EdgeInsets.all(30.0),
+    //     child: ElevatedButton(
+    //         onPressed: () {
+    //           _showUnavailableDialog(context);
+    //         },
+    //         child: const Text(
+    //           "Start",
+    //           style: TextStyle(
+    //             fontSize: 30,
+    //           ),
+    //         )),
+    //   );
+    // } else {
+    //   return Padding(
+    //     padding: const EdgeInsets.all(30.0),
+    //     child: ElevatedButton(
+    //         onPressed: () {
+    //           Navigator.popAndPushNamed(context, "/game2");
+    //         },
+    //         child: const Text(
+    //           "Start",
+    //           style: TextStyle(
+    //             fontSize: 30,
+    //           ),
+    //         )),
+    //   );
+    // }
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: ElevatedButton(
+          onPressed: () {
+            Navigator.popAndPushNamed(context, "/game2");
+          },
+          child: const Text(
+            "Start",
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          )),
+    );
   }
 
   @override

@@ -88,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
           physics: const AlwaysScrollableScrollPhysics(),
           children: [
             ProfileWidget(
-                imagePath: "lib/assets/adastralogo.jpg",
+                imagePath: "lib/assets/code-simple.png",
                 onClicked: () async {}),
             buildName(email),
             const SizedBox(
@@ -245,7 +245,7 @@ class ProfileWidget extends StatelessWidget {
       {super.key, required this.imagePath, required this.onClicked});
 
   Widget buildImage() {
-    const image = AssetImage("lib/assets/adastralogo.jpg");
+    const image = AssetImage("lib/assets/code-review.png");
     return ClipOval(
       child: Material(
         color: Colors.transparent,

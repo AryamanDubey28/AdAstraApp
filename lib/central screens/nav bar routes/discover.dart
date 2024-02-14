@@ -105,7 +105,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Expand your Vocabulary with:",
+                  "Train Your Brain with:",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.ubuntu(
                     fontSize: relativeTextSizeSmall,
@@ -117,34 +117,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
           ),
           const SizedBox(
             height: 10,
-          ),
-          FutureBuilder<Map>(
-              future: wordMap,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Text("Unable to show word");
-                } else if (snapshot.hasData) {
-                  Map<dynamic, dynamic>? map = snapshot.data;
-                  String word = map?["word"];
-                  String def = map?["definition"];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      "$word - $def",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Cambria",
-                        fontSize: relativeTextSizeVerySmall,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  );
-                } else {
-                  return const CircularProgressIndicator();
-                }
-              }),
-          const SizedBox(
-            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

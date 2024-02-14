@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
+// // ignore_for_file: must_be_immutable, non_constant_identifier_names
 
 import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -29,59 +29,22 @@ class SelectionTiles extends StatefulWidget {
   }
   static List likedTopics = [];
 
-  static List vr_section = [
-    "Letter Codes",
-    "Word Codes",
-    "Number Sequences",
-    "Word Connections",
-    "Missing Letter",
-    "Missing Number",
-    "Make A Word From Another Word",
-    // "Match the Codes",
-    // "Make a Word",
-    // "Word and Letter Patterns Practice",
-    // "Synonyms",
-    // "Antonyms",
-    // "Analogies",
-    // "Odd One Out",
-    // "Vocabulary Practice",
-    // "Shuffled Sentences",
-    // "Move a Letter",
-    // "Missing Three Letters",
-    // "Spot the Word",
-    // "Join Two Words to Make One",
-    // "Spelling Practice",
-    // "Letters for Numbers",
-    // "Number Connections",
-    // "Number Patterns Practice",
-    // "Days and Dates",
-    // "Time",
-    // "Position",
-    // "Sorting Information",
-    // "True Statements",
-    // "Problem Solving Practice",
+  static List variables_and_dataTypes = [
+    "Data Types",
+    "Variables",
+    "Smart Variable Names",
+    "Strings"
   ];
 
-  static List nvr_section = [
-    "Practice Quiz",
-    "Odd One Out",
-    "Series",
-    "Similarities",
-    "Analogies",
-    "Hidden Shapes",
-    "Matricies",
-    "Reflected Shapes",
-    "Nets of Cubes",
-    "Codes",
-    "Combined Shapes"
+  static List operations = [
+    "Arithmetic Operations",
+    "Comparison Operations",
+    "Using Variables in Operations"
   ];
 
-  static List numeracy_section = [
-    "Quick Maths",
-    "Fractions",
-    "Algebra",
-    "Shapes"
-  ];
+  static List conditionalStatements = ["If Else", "Elif", "Logic Problems"];
+
+  static List loops = ["For Loops", "While Loops", "Nested Loops"];
 
   @override
   State<SelectionTiles> createState() => _SelectionTilesState();
@@ -129,94 +92,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
     _myBox.put("LIKEDTOPICS_${widget.uid}", SelectionTiles.likedTopics);
   }
 
-  Widget getVRScreen(BuildContext context, bool isDarkMode) {
-    double tilesHeight = 0.78 * logicalHeight;
-    double tilesWidth = 0.75 * logicalWidth;
-    double tilesText = 0.0825 * tilesWidth;
-    return CarouselSlider.builder(
-        options: CarouselOptions(
-          height: tilesHeight,
-          viewportFraction: 0.8,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: false,
-        ),
-        itemCount: SelectionTiles.vr_section.length,
-        itemBuilder: ((context, index, realIndex) {
-          return Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      SelectionTiles.topic = SelectionTiles.vr_section[index];
-                      Widget screen = const QuizScreen();
-                      Get.to(
-                        () => screen,
-                        transition: Transition.upToDown,
-                      );
-                    },
-                    onDoubleTap: () {
-                      SelectionTiles.topic = SelectionTiles.vr_section[index];
-                      if (ExplorePage.index == 0) {
-                        SelectionTiles.likedTopics
-                            .add("${SelectionTiles.topic} - VR");
-                      } else if (ExplorePage.index == 1) {
-                        SelectionTiles.likedTopics
-                            .add("${SelectionTiles.topic} - NVR");
-                      } else if (ExplorePage.index == 2) {
-                        SelectionTiles.likedTopics
-                            .add("${SelectionTiles.topic} - Numeracy");
-                      }
-                      showLike(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          border: Border.all(color: Colors.white10),
-                          borderRadius: BorderRadius.circular(30),
-                          image: DecorationImage(
-                            image: isDarkMode
-                                ? const AssetImage(
-                                    'lib/assets/tile_images/VR_DM.JPEG')
-                                : const AssetImage(
-                                    'lib/assets/tile_images/VR_LM.JPEG'),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        width: tilesWidth,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Text(
-                                SelectionTiles.vr_section[index],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: tilesText,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          );
-        }));
-  }
-
-  Widget getNVRScreen(BuildContext context, bool isDarkMode) {
+  Widget buildScreen(BuildContext context, bool isDarkMode, String l_imagePath,
+      String d_imagePath, List currentTopic) {
     double tilesHeight = 0.78 * logicalHeight;
     double tilesWidth = 0.75 * logicalWidth;
     double tilesText = 0.0825 * tilesWidth;
@@ -227,7 +104,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
       ),
-      itemCount: 5,
+      itemCount: currentTopic.length,
       itemBuilder: ((context, index, realIndex) {
         return Column(
           children: [
@@ -236,7 +113,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                 padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
                 child: GestureDetector(
                   onTap: () {
-                    SelectionTiles.topic = SelectionTiles.nvr_section[index];
+                    SelectionTiles.topic = currentTopic[index];
 
                     Widget screen = const QuizScreen();
                     Get.to(
@@ -245,10 +122,10 @@ class _SelectionTilesState extends State<SelectionTiles> {
                     );
                   },
                   onDoubleTap: () {
-                    SelectionTiles.topic = SelectionTiles.nvr_section[index];
+                    SelectionTiles.topic = currentTopic[index];
                     if (ExplorePage.index == 0) {
                       SelectionTiles.likedTopics
-                          .add("${SelectionTiles.topic} - VR");
+                          .add("${SelectionTiles.topic} - V&D");
                     } else if (ExplorePage.index == 1) {
                       SelectionTiles.likedTopics
                           .add("${SelectionTiles.topic} - NVR");
@@ -267,10 +144,8 @@ class _SelectionTilesState extends State<SelectionTiles> {
                         borderRadius: BorderRadius.circular(30),
                         image: DecorationImage(
                           image: isDarkMode
-                              ? const AssetImage(
-                                  'lib/assets/tile_images/NonVerbalR_DM.png')
-                              : const AssetImage(
-                                  'lib/assets/tile_images/NVR_LM.png'),
+                              ? AssetImage(d_imagePath)
+                              : AssetImage(l_imagePath),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -280,98 +155,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                           Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Text(
-                              SelectionTiles.nvr_section[index],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: tilesText,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        );
-      }),
-    );
-  }
-
-  Widget getNumeracyScreen(BuildContext context, bool isDarkMode) {
-    double tilesHeight = 0.78 * logicalHeight;
-    double tilesWidth = 0.75 * logicalWidth;
-    double tilesText = 0.0825 * tilesWidth;
-    return CarouselSlider.builder(
-      options: CarouselOptions(
-        height: tilesHeight,
-        viewportFraction: 0.8,
-        enlargeCenterPage: true,
-        enableInfiniteScroll: false,
-      ),
-      itemCount: SelectionTiles.numeracy_section.length,
-      itemBuilder: ((context, index, realIndex) {
-        return Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(2, 25, 2, 10),
-                child: GestureDetector(
-                  onTap: () {
-                    SelectionTiles.topic =
-                        SelectionTiles.numeracy_section[index];
-
-                    Widget screen = const QuizScreen();
-                    Get.to(
-                      () => screen,
-                      transition: Transition.upToDown,
-                    );
-                  },
-                  onDoubleTap: () {
-                    SelectionTiles.topic =
-                        SelectionTiles.numeracy_section[index];
-                    if (ExplorePage.index == 0) {
-                      SelectionTiles.likedTopics
-                          .add("${SelectionTiles.topic} - VR");
-                    } else if (ExplorePage.index == 1) {
-                      SelectionTiles.likedTopics
-                          .add("${SelectionTiles.topic} - NVR");
-                    } else if (ExplorePage.index == 2) {
-                      SelectionTiles.likedTopics
-                          .add("${SelectionTiles.topic} - Numeracy");
-                    }
-                    showLike(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        border: Border.all(color: Colors.white10),
-                        borderRadius: BorderRadius.circular(30),
-                        image: DecorationImage(
-                          image: isDarkMode
-                              ? const AssetImage(
-                                  'lib/assets/tile_images/Numeracy_DM.JPEG')
-                              : const AssetImage(
-                                  'lib/assets/tile_images/Numeracy_LM.JPEG'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      width: tilesWidth,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Text(
-                              SelectionTiles.numeracy_section[index],
+                              currentTopic[index],
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: tilesText,
@@ -398,27 +182,50 @@ class _SelectionTilesState extends State<SelectionTiles> {
 
   Widget getScreen(BuildContext context, bool isDarkMode) {
     if (ExplorePage.index == 0) {
-      return getVRScreen(context, isDarkMode);
+      return buildScreen(
+          //variables and data types
+          context,
+          isDarkMode,
+          'lib/assets/tile_images/blue_tile.png',
+          'lib/assets/tile_images/blue_tile.png',
+          SelectionTiles.variables_and_dataTypes);
     } else if (ExplorePage.index == 1) {
-      return getNVRScreen(context, isDarkMode);
+      return buildScreen(
+          context, //operations
+          isDarkMode,
+          'lib/assets/tile_images/phone.png',
+          'lib/assets/tile_images/phone.png',
+          SelectionTiles.operations);
+    } else if (ExplorePage.index == 2) {
+      return buildScreen(
+          context, //conditionals
+          isDarkMode,
+          'lib/assets/tile_images/two_colour.png',
+          'lib/assets/tile_images/two_colour.png',
+          SelectionTiles.conditionalStatements);
     } else {
-      return getNumeracyScreen(context, isDarkMode);
+      return buildScreen(
+          context, //loops
+          isDarkMode,
+          'lib/assets/tile_images/yellow_tile.png',
+          'lib/assets/tile_images/yellow_tile.png',
+          SelectionTiles.loops);
     }
   }
 
   String getTitle() {
     if (ExplorePage.index == 0) {
-      return "Verbal Reasoning";
+      return "Variables & Data Types";
     } else if (ExplorePage.index == 1) {
-      return "NVR";
+      return "Operations";
+    } else if (ExplorePage.index == 2) {
+      return "Conditionals";
     } else {
-      return "Numeracy";
+      return "Loops";
     }
   }
 
   Future _refresh() async {
-    List<bool> my_list4 = List.empty(growable: false);
-
     setState(() {});
     return Future.delayed(const Duration(seconds: 1));
   }
@@ -484,13 +291,10 @@ class _SelectionTilesState extends State<SelectionTiles> {
                 menuItems: [
                   FocusedMenuItem(
                     title: GestureDetector(
-                      onHorizontalDragDown: (details) {
-                        //Move to NVR
-                      },
                       child: const Text(
-                        "VR",
+                        "Variables \n& Data Types",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 14,
                           color: Colors.black,
                         ),
                       ),
@@ -510,10 +314,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                   ),
                   FocusedMenuItem(
                       title: GestureDetector(
-                        onHorizontalDragDown: (details) {
-                          //move to Numeracy
-                        },
-                        child: const Text("NVR",
+                        child: const Text("Operations",
                             style:
                                 TextStyle(fontSize: 18, color: Colors.black)),
                       ),
@@ -531,15 +332,30 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       }),
                   FocusedMenuItem(
                       title: GestureDetector(
-                        onHorizontalDragDown: (details) {
-                          //move to VR
-                        },
-                        child: const Text("Numeracy",
+                        child: const Text("Conditionals",
                             style:
                                 TextStyle(fontSize: 18, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 2;
+                        Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                const PlayPage(),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
+                          ),
+                        );
+                      }),
+                  FocusedMenuItem(
+                      title: GestureDetector(
+                        child: const Text("Loops",
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.black)),
+                      ),
+                      onPressed: () {
+                        ExplorePage.index = 3;
                         Navigator.pushReplacement(
                           context,
                           PageRouteBuilder(
@@ -558,7 +374,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       getTitle(),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 28,
+                        fontSize: 22,
                       ),
                     ),
                     const Icon(
@@ -570,7 +386,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(2.0),
               child: GestureDetector(
                   onTap: () {
                     Get.to(
