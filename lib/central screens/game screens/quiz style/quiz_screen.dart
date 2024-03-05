@@ -40,15 +40,7 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   String getAnim() {
-    if (ExplorePage.index == 0) {
-      return "https://assets3.lottiefiles.com/packages/lf20_2scSKA.json";
-    } else if (ExplorePage.index == 1) {
-      return "https://assets3.lottiefiles.com/packages/lf20_bshezgfo.json";
-    } else if (ExplorePage.index == 2) {
-      return "https://assets6.lottiefiles.com/packages/lf20_neoi7cp3.json";
-    } else {
-      return "";
-    }
+    return "https://lottie.host/859db97a-026d-4199-86c5-4c6aa6735cea/MVXBsK0Cg8.json";
   }
 
   String getDescription() {
@@ -57,14 +49,6 @@ class _QuizScreenState extends State<QuizScreen> {
     }
     return "No description found...";
   }
-
-  // Future addQuestions() async {
-  //   for (int i = 0; i < sample_data_numeracy.length; i++) {
-  //     Map<String, dynamic> question = sample_data_numeracy[i];
-
-  //     await FirebaseFirestore.instance.collection('maths').add(question);
-  //   }
-  // }
 
   void _showUnavailableDialog(BuildContext context) {
     showDialog(
@@ -88,35 +72,6 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget getStartButton() {
-    // if (getDescription() == "No description found...") {
-    //   return Padding(
-    //     padding: const EdgeInsets.all(30.0),
-    //     child: ElevatedButton(
-    //         onPressed: () {
-    //           _showUnavailableDialog(context);
-    //         },
-    //         child: const Text(
-    //           "Start",
-    //           style: TextStyle(
-    //             fontSize: 30,
-    //           ),
-    //         )),
-    //   );
-    // } else {
-    //   return Padding(
-    //     padding: const EdgeInsets.all(30.0),
-    //     child: ElevatedButton(
-    //         onPressed: () {
-    //           Navigator.popAndPushNamed(context, "/game2");
-    //         },
-    //         child: const Text(
-    //           "Start",
-    //           style: TextStyle(
-    //             fontSize: 30,
-    //           ),
-    //         )),
-    //   );
-    // }
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: ElevatedButton(
@@ -159,7 +114,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                   Center(
                     child: Text(
-                      "Lets Play",
+                      "Let's Play",
                       style: GoogleFonts.bebasNeue(
                         fontSize: 96.0,
                         fontWeight: FontWeight.bold,
@@ -183,20 +138,6 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                   const Divider(
                     thickness: 2,
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        getDescription(),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontFamily: "Cambria",
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
                   ),
                   getStartButton()
                 ],

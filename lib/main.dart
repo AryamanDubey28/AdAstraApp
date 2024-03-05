@@ -16,11 +16,9 @@ import 'central screens/question_sheets.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp();
   await QuestionSheets.init();
   await Hive.initFlutter(); //init local storage
-
   var box = await Hive.openBox('mybox');
   runApp(const MyApp());
 }

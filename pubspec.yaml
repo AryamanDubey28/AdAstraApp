@@ -63,6 +63,8 @@ dependencies:
   liquid_pull_to_refresh: ^3.0.1
   flutter_launcher_icons: ^0.13.1
   shared_preferences: ^2.2.0
+  http: ^0.13.6
+  # tensorflow_lite_flutter: ^2.0.1
 
 flutter_icons:
   image_path: "icon/launcher_icon.JPEG"  
@@ -99,8 +101,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/
-    - lib/assets/nvr_images/
-    - lib/assets/animations/
+    - lib/assets/tensorflowmodel/
     - lib/assets/tile_images/
 
 

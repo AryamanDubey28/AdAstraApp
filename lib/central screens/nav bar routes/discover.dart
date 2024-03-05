@@ -143,6 +143,9 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   })
             ],
           ),
+          const SizedBox(
+            height: 10,
+          ),
         ]),
       )),
     );

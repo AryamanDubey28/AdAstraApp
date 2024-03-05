@@ -294,7 +294,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       child: const Text(
                         "Variables \n& Data Types",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -316,7 +316,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       title: GestureDetector(
                         child: const Text("Operations",
                             style:
-                                TextStyle(fontSize: 18, color: Colors.black)),
+                                TextStyle(fontSize: 16, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 1;
@@ -334,7 +334,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       title: GestureDetector(
                         child: const Text("Conditionals",
                             style:
-                                TextStyle(fontSize: 18, color: Colors.black)),
+                                TextStyle(fontSize: 16, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 2;
@@ -352,7 +352,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       title: GestureDetector(
                         child: const Text("Loops",
                             style:
-                                TextStyle(fontSize: 18, color: Colors.black)),
+                                TextStyle(fontSize: 16, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 3;
@@ -374,7 +374,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       getTitle(),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                        fontSize: 18,
                       ),
                     ),
                     const Icon(
@@ -385,17 +385,14 @@ class _SelectionTilesState extends State<SelectionTiles> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.to(
-                      () => AllTopics(),
-                      transition: Transition.upToDown,
-                    );
-                  },
-                  child: const Icon(Icons.list)),
-            ),
+            GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => AllTopics(),
+                    transition: Transition.upToDown,
+                  );
+                },
+                child: const Icon(Icons.list)),
           ],
         ),
         elevation: 0.0,

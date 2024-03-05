@@ -17,8 +17,6 @@ class QuestionController extends GetxController
 
   List<Question> _questions = [];
 
-  //SelectionTiles.topic
-
   QuestionController(int index) {
     _questions = buildQuestionList(index, SelectionTiles.topic)
         .map((question) => Question(
@@ -89,7 +87,7 @@ class QuestionController extends GetxController
   void onInit() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: getSeconds()),
+      duration: const Duration(seconds: 120),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_animationController)
       ..addListener(() {
@@ -99,14 +97,6 @@ class QuestionController extends GetxController
     _animationController.forward().whenComplete(nextQuestion);
     _pageController = PageController();
     super.onInit();
-  }
-
-  int getSeconds() {
-    if (ExplorePage.index == 2) {
-      return 15;
-    } else {
-      return 60;
-    }
   }
 
   @override

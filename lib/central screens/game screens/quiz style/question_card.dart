@@ -36,10 +36,7 @@ class _QuestionCardState extends State<QuestionCard> {
     } else {
       return Text(
         question,
-        style: Theme.of(context)
-            .textTheme
-            .displaySmall
-            ?.copyWith(color: Colors.black),
+        style: const TextStyle(color: Colors.black, fontSize: 24),
       );
     }
   }
@@ -57,14 +54,10 @@ class _QuestionCardState extends State<QuestionCard> {
         child: Column(
           children: [
             getTextWidg(widget.question.question),
-
             getImage(widget.question.image!),
-
             const SizedBox(
               height: 20,
             ),
-
-            //new
             ...List.generate(
                 widget.question.options!.length,
                 (index) => Option(
@@ -73,15 +66,6 @@ class _QuestionCardState extends State<QuestionCard> {
                     press: () {
                       controller.checkAns(widget.question, index);
                     }))
-
-            // ...List.generate(
-            //     widget.question.options!.length,
-            //     (index) => Option(
-            //         text: widget.question.options![index],
-            //         index: index,
-            //         press: () {
-            //           _controller.checkAns(widget.question, index);
-            //         }))
           ],
         ),
       ),

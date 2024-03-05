@@ -57,7 +57,7 @@ class _OptionState extends State<Option> {
             } else {
               return Text(
                 "${widget.index + 1}) $text",
-                style: TextStyle(color: getRightColor(), fontSize: 18),
+                style: TextStyle(color: getRightColor(), fontSize: 14),
               );
             }
           }
@@ -71,23 +71,26 @@ class _OptionState extends State<Option> {
                 border: Border.all(color: getRightColor()),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  getOptionImage(widget.text),
-                  Container(
-                      height: 26,
-                      width: 26,
-                      decoration: BoxDecoration(
-                          color: getRightColor() == Colors.grey
-                              ? Colors.transparent
-                              : getRightColor(),
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(color: getRightColor())),
-                      child: getRightColor() == Colors.grey
-                          ? null
-                          : Icon(getRightIcon(), size: 16))
-                ],
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    getOptionImage(widget.text),
+                    Container(
+                        height: 26,
+                        width: 26,
+                        decoration: BoxDecoration(
+                            color: getRightColor() == Colors.grey
+                                ? Colors.transparent
+                                : getRightColor(),
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(color: getRightColor())),
+                        child: getRightColor() == Colors.grey
+                            ? null
+                            : Icon(getRightIcon(), size: 16))
+                  ],
+                ),
               ),
             ),
           );

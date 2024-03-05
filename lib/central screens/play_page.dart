@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/chatPage.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/discover.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/explore_page.dart';
 import 'package:firebase_attempt/central%20screens/nav%20bar%20routes/profile.dart';
@@ -26,6 +27,7 @@ class _PlayPageState extends State<PlayPage> {
   //all screens shown in the bottom tabs
   final screens = [
     SelectionTiles(ExplorePage.index),
+    const ChatBotPage(),
     const DiscoverPage(),
     const ProfilePage(),
   ];
@@ -70,6 +72,10 @@ class _PlayPageState extends State<PlayPage> {
               GButton(
                 icon: Iconsax.home1,
                 text: "Home",
+              ),
+              GButton(
+                icon: Iconsax.message,
+                text: "Chat",
               ),
               GButton(
                 icon: Icons.rocket_launch,
