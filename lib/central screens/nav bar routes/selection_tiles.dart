@@ -11,6 +11,7 @@ import 'package:firebase_attempt/database/database.dart';
 import 'package:firebase_attempt/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:get/get.dart';
@@ -316,7 +317,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       title: GestureDetector(
                         child: const Text("Operations",
                             style:
-                                TextStyle(fontSize: 16, color: Colors.black)),
+                                TextStyle(fontSize: 14, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 1;
@@ -334,7 +335,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       title: GestureDetector(
                         child: const Text("Conditionals",
                             style:
-                                TextStyle(fontSize: 16, color: Colors.black)),
+                                TextStyle(fontSize: 14, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 2;
@@ -352,7 +353,7 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       title: GestureDetector(
                         child: const Text("Loops",
                             style:
-                                TextStyle(fontSize: 16, color: Colors.black)),
+                                TextStyle(fontSize: 14, color: Colors.black)),
                       ),
                       onPressed: () {
                         ExplorePage.index = 3;
@@ -368,20 +369,24 @@ class _SelectionTilesState extends State<SelectionTiles> {
                       }),
                 ],
                 menuOffset: 10,
-                child: Row(
-                  children: [
-                    Text(
-                      getTitle(),
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Text(
+                        getTitle(),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    const Icon(
-                      Icons.arrow_drop_down,
-                      size: 30,
-                    )
-                  ],
+                      const Icon(
+                        Icons.arrow_drop_down,
+                        size: 25,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

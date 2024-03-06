@@ -64,6 +64,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   shared_preferences: ^2.2.0
   http: ^0.13.6
+  dotenv: ^4.2.0
   # tensorflow_lite_flutter: ^2.0.1
 
 flutter_icons:

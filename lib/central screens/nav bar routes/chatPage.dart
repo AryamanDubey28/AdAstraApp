@@ -23,8 +23,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
     });
     past_messages.add({"role": "user", "content": text});
     var apiKey =
-        "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"; // Your OpenAI API Key
-    print("before response, text = $text");
+        "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"; // Your OpenAI API Key
     var response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'),
       headers: {

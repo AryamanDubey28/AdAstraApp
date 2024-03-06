@@ -77,6 +77,9 @@ class _OptionState extends State<Option> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     getOptionImage(widget.text),
+                    const SizedBox(
+                      width: 5,
+                    ),
                     Container(
                         height: 26,
                         width: 26,
